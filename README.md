@@ -3,7 +3,9 @@
 The application layer of the [POGO Studios Archive](https://github.com/POGO-XYZ/POGO-ARCHIVE) — interactive tools for exploring archived works.
 
 LIVE at: **[pogo-xyz.github.io/POGO-APP](https://pogo-xyz.github.io/POGO-APP/)**
-Sequence :**[pogo-xyz.github.io/POGO-APP/art-to-text-live-sequence.html](https://pogo-xyz.github.io/POGO-APP/art-to-text-live-sequence.html)**
+
+Sequence : **[pogo-xyz.github.io/POGO-APP/art-to-text-live-sequence.html](https://pogo-xyz.github.io/POGO-APP/art-to-text-live-sequence.html)**
+
 Sequence Embed: **[pogo-xyz.github.io/POGO-APP/art-to-text-live-sequence.html](https://pogo-xyz.github.io/POGO-APP/art-to-text-live-sequence.html?embed)**
 
 ## Tools
