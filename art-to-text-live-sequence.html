@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POGO Studios — Live Sequence</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #171512;
+    color: #EFEDE6;
+    font-family: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Menlo, monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    border-bottom: 2px solid #EFEDE6;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .eyebrow { font-size: 10px; letter-spacing: 0.18em; opacity: 0.5; }
+  h1 { font-size: 18px; font-weight: 700; margin-top: 3px; letter-spacing: -0.01em; }
+  .status { font-size: 10px; letter-spacing: 0.1em; opacity: 0.5; }
+  .stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    min-height: 300px;
+  }
+  canvas { max-width: 100%; max-height: 78vh; display: block; }
+  .panel {
+    border-top: 2px solid #EFEDE6;
+    padding: 16px 24px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+  .ctl { display: flex; flex-direction: column; gap: 5px; }
+  .label { font-size: 10px; letter-spacing: 0.12em; opacity: 0.6; }
+  select, button {
+    font-family: inherit; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.06em; padding: 7px 12px;
+    border: 2px solid #EFEDE6; background: #171512; color: #EFEDE6;
+    cursor: pointer;
+  }
+  button.on { background: #EFEDE6; color: #171512; }
+  button.rec { border-color: #C4452F; color: #C4452F; }
+  button.rec.on { background: #C4452F; color: #EFEDE6; }
+  .idtag {
+    position: fixed; bottom: 92px; left: 24px;
+    font-size: 10px; letter-spacing: 0.16em; opacity: 0.35;
+    pointer-events: none; transition: opacity 0.6s;
+  }
+  body.embed header, body.embed .panel, body.embed .idtag { display: none; }
+  body.embed .stage { padding: 0; }
+  body.embed canvas { max-height: 100vh; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="eyebrow">POGO STUDIOS — TOOL 002</div>
+    <h1>LIVE SEQUENCE</h1>
+  </div>
+  <div class="status" id="status">LOADING ARCHIVE…</div>
+</header>
+
+<div class="stage">
+  <canvas id="stage"></canvas>
+</div>
+
+<div class="idtag" id="idtag"></div>
+
+<div class="panel">
+  <div class="ctl">
+    <span class="label">STYLE</span>
+    <select id="modeSel">
+      <option value="mixed">Mixed</option>
+      <option value="ascii">ASCII</option>
+      <option value="braille">Braille</option>
+    </select>
+  </div>
+  <div class="ctl">
+    <span class="label">PACE</span>
+    <select id="paceSel">
+      <option value="slow">Slow</option>
+      <option value="mid" selected>Medium</option>
+      <option value="fast">Fast</option>
+    </select>
+  </div>
+  <div class="ctl">
+    <span class="label">DETAIL</span>
+    <select id="detailSel">
+      <option value="110">Coarse</option>
+      <option value="150" selected>Standard</option>
+      <option value="190">Fine</option>
+    </select>
+  </div>
+  <div class="ctl">
+    <span class="label">DISPLAY</span>
+    <button id="pauseBtn">PAUSE</button>
+  </div>
+  <div class="ctl">
+    <span class="label">EXPORT</span>
+    <button id="recBtn" class="rec">RECORD 30s</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var OWNER = "POGO-XYZ";
+  var REPO = "POGO-ARCHIVE-MEDIA";
+  var API = "https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/";
+
+  var RAMP = "@%#*+=-:. ";          // dark → light
+  var BG = "#171512";
+  var CELL_W = 8, CELL_H = 14;
+  var ASPECT = 9 / 16;
+
+  // Ordered dither matrix — cheap enough to run every frame
+  var BAYER = [
+    [0, 8, 2, 10],
+    [12, 4, 14, 6],
+    [3, 11, 1, 9],
+    [15, 7, 13, 5]
+  ];
+  var BRAILLE_BITS = [
+    [0x01, 0x08],
+    [0x02, 0x10],
+    [0x04, 0x20],
+    [0x40, 0x80]
+  ];
+
+  var PACE = {
+    slow: { hold: 3800, trans: 3400 },
+    mid:  { hold: 2200, trans: 2200 },
+    fast: { hold: 1200, trans: 1300 }
+  };
+
+  var cols = 150, rows = 48;
+  var subW = cols * 2, subH = rows * 4;
+
+  var canvas = document.getElementById("stage");
+  var ctx = canvas.getContext("2d");
+  var work = document.createElement("canvas");
+  var wctx = work.getContext("2d", { willReadFrequently: true });
+  var tiny = document.createElement("canvas");
+  tiny.width = 24; tiny.height = 24;
+  var tctx = tiny.getContext("2d", { willReadFrequently: true });
+
+  var playlist = [];
+  var analyzed = [];        // entries with signatures, ready to sequence
+  var played = {};
+  var current = null, nextEntry = null;
+  var frameA = null, frameB = null;    // { tones: Float32Array, colors: Float32Array }
+  var modeA = "ascii", modeB = "ascii";
+  var mixTones = null, mixColors = null;
+  var phase = "hold", phaseStart = 0;
+  var paused = false;
+  var styleMode = "mixed";
+  var pace = PACE.mid;
+  var imgCache = {};
+  var recorder = null;
+  var loadingMore = false;
+
+  function setStatus(t) { document.getElementById("status").textContent = t; }
+
+  function sizeGrid() {
+    var frameW = cols * CELL_W;
+    rows = Math.max(10, Math.round((frameW * ASPECT) / CELL_H));
+    subW = cols * 2; subH = rows * 4;
+    canvas.width = cols * CELL_W;
+    canvas.height = rows * CELL_H;
+    ctx.font = CELL_H + 'px ui-monospace, "Cascadia Code", Menlo, monospace';
+    ctx.textBaseline = "top";
+    mixTones = new Float32Array(subW * subH);
+    mixColors = new Float32Array(cols * rows * 3);
+  }
+
+  // ---------- archive ----------
+
+  function loadArchive() {
+    fetch(API)
+      .then(function (r) { return r.json(); })
+      .then(function (items) {
+        var years = items.filter(function (i) {
+          return i.type === "dir" && /^\d{4}$/.test(i.name);
+        }).map(function (i) { return i.name; });
+        if (!years.length) throw new Error("no years");
+        return Promise.all(years.map(function (y) {
+          return fetch(API + y).then(function (r) { return r.json(); });
+        }));
+      })
+      .then(function (folders) {
+        folders.forEach(function (files) {
+          if (!Array.isArray(files)) return;
+          files.forEach(function (f) {
+            if (f.type === "file" && /\.(jpe?g|png|webp)$/i.test(f.name)) {
+              playlist.push({ name: f.name.replace(/\.[^.]+$/, ""), url: f.download_url });
+            }
+          });
+        });
+        if (!playlist.length) throw new Error("no works");
+        shuffle(playlist);
+        setStatus(playlist.length + " WORKS");
+        return fillPool(8);
+      })
+      .then(start)
+      .catch(function () { setStatus("ARCHIVE UNAVAILABLE"); });
+  }
+
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+  }
+
+  function getImage(entry) {
+    if (imgCache[entry.url]) return Promise.resolve(imgCache[entry.url]);
+    return new Promise(function (res, rej) {
+      var img = new Image();
+      img.crossOrigin = "anonymous";
+      img.onload = function () { imgCache[entry.url] = img; res(img); };
+      img.onerror = rej;
+      img.src = entry.url;
+    });
+  }
+
+  // Tonal signature: mean colour, mean luminance, contrast
+  function signature(img) {
+    tctx.drawImage(img, 0, 0, 24, 24);
+    var d = tctx.getImageData(0, 0, 24, 24).data;
+    var r = 0, g = 0, b = 0, l = 0, n = 24 * 24, lums = new Float32Array(n);
+    for (var i = 0; i < n; i++) {
+      var k = i * 4;
+      r += d[k]; g += d[k + 1]; b += d[k + 2];
+      var lum = 0.2126 * d[k] + 0.7152 * d[k + 1] + 0.0722 * d[k + 2];
+      lums[i] = lum; l += lum;
+    }
+    r /= n; g /= n; b /= n; l /= n;
+    var v = 0;
+    for (var j = 0; j < n; j++) { var dd = lums[j] - l; v += dd * dd; }
+    return { r: r, g: g, b: b, l: l, c: Math.sqrt(v / n) };
+  }
+
+  function distance(a, b) {
+    var dl = (a.l - b.l) / 255, dc = (a.c - b.c) / 128;
+    var dr = (a.r - b.r) / 255, dg = (a.g - b.g) / 255, db = (a.b - b.b) / 255;
+    // luminance and contrast weighted heaviest — they drive perceived jump
+    return Math.sqrt(dl * dl * 3 + dc * dc * 1.5 + dr * dr + dg * dg + db * db);
+  }
+
+  // Pull the next N unanalysed works into the pool
+  function fillPool(n) {
+    if (loadingMore) return Promise.resolve();
+    loadingMore = true;
+    var batch = [];
+    for (var i = 0; i < playlist.length && batch.length < n; i++) {
+      var e = playlist[i];
+      if (!e._seen) { e._seen = true; batch.push(e); }
+    }
+    return Promise.all(batch.map(function (e) {
+      return getImage(e).then(function (img) {
+        e.sig = signature(img);
+        analyzed.push(e);
+      }).catch(function () {});
+    })).then(function () { loadingMore = false; });
+  }
+
+  // Nearest tonal neighbour among unplayed, analysed works
+  function chooseNext(from) {
+    var pool = analyzed.filter(function (e) { return !played[e.url]; });
+    if (!pool.length) { played = {}; pool = analyzed.slice(); }
+    if (!from) return pool[Math.floor(Math.random() * pool.length)];
+    var best = null, bestD = Infinity;
+    pool.forEach(function (e) {
+      var d = distance(from.sig, e.sig);
+      if (d < bestD) { bestD = d; best = e; }
+    });
+    return best || pool[0];
+  }
+
+  // ---------- frame building ----------
+
+  function buildFrame(img) {
+    work.width = subW; work.height = subH;
+    wctx.fillStyle = BG;
+    wctx.fillRect(0, 0, subW, subH);
+
+    // fit within frame, preserving aspect (cells are 2x4 sub-pixels)
+    var frameAspect = (subW / 2 * CELL_W) / (subH / 4 * CELL_H);
+    var ia = img.width / img.height;
+    var w, h;
+    if (ia > frameAspect) { w = subW; h = subW / ia * (CELL_W / CELL_H) * 2; }
+    else { h = subH; w = subH * ia / (CELL_W / CELL_H) / 2; }
+    w = Math.round(w); h = Math.round(h);
+    wctx.drawImage(img, Math.floor((subW - w) / 2), Math.floor((subH - h) / 2), w, h);
+
+    var d = wctx.getImageData(0, 0, subW, subH).data;
+    var tones = new Float32Array(subW * subH);
+    for (var p = 0; p < subW * subH; p++) {
+      var k = p * 4;
+      tones[p] = 0.2126 * d[k] + 0.7152 * d[k + 1] + 0.0722 * d[k + 2];
+    }
+
+    // per-cell average colour
+    var colors = new Float32Array(cols * rows * 3);
+    for (var cy = 0; cy < rows; cy++) {
+      for (var cx = 0; cx < cols; cx++) {
+        var r = 0, g = 0, b = 0;
+        for (var dy = 0; dy < 4; dy++) {
+          for (var dx = 0; dx < 2; dx++) {
+            var kk = ((cy * 4 + dy) * subW + (cx * 2 + dx)) * 4;
+            r += d[kk]; g += d[kk + 1]; b += d[kk + 2];
+          }
+        }
+        var ci = (cy * cols + cx) * 3;
+        colors[ci] = r / 8; colors[ci + 1] = g / 8; colors[ci + 2] = b / 8;
+      }
+    }
+    return { tones: tones, colors: colors };
+  }
+
+  // ---------- painting ----------
+
+  function paint(p) {
+    ctx.fillStyle = BG;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (!frameB) return;
+
+    var A = frameA, B = frameB;
+    var blending = A && p < 1;
+    // ease in-out so the middle of a blend moves fastest
+    var e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+    var mode = (!blending || e >= 0.5) ? modeB : modeA;
+
+    var i, n;
+    if (blending) {
+      n = subW * subH;
+      for (i = 0; i < n; i++) mixTones[i] = A.tones[i] + (B.tones[i] - A.tones[i]) * e;
+      n = cols * rows * 3;
+      for (i = 0; i < n; i++) mixColors[i] = A.colors[i] + (B.colors[i] - A.colors[i]) * e;
+    } else {
+      mixTones.set(B.tones);
+      mixColors.set(B.colors);
+    }
+
+    for (var cy = 0; cy < rows; cy++) {
+      for (var cx = 0; cx < cols; cx++) {
+        var ch, cellTone = 0;
+
+        if (mode === "braille") {
+          var code = 0;
+          for (var dy = 0; dy < 4; dy++) {
+            for (var dx = 0; dx < 2; dx++) {
+              var sx = cx * 2 + dx, sy = cy * 4 + dy;
+              var t = mixTones[sy * subW + sx];
+              cellTone += t;
+              var thr = (BAYER[sy & 3][sx & 3] + 0.5) / 16 * 255;
+              if (t < thr) code |= BRAILLE_BITS[dy][dx];
+            }
+          }
+          cellTone /= 8;
+          ch = String.fromCharCode(0x2800 + code);
+          if (code === 0) continue;
+        } else {
+          for (var ay = 0; ay < 4; ay++) {
+            for (var ax = 0; ax < 2; ax++) {
+              cellTone += mixTones[(cy * 4 + ay) * subW + (cx * 2 + ax)];
+            }
+          }
+          cellTone /= 8;
+          var idx = Math.min(RAMP.length - 1, Math.floor(cellTone / 255 * RAMP.length));
+          ch = RAMP[idx];
+          if (ch === " ") continue;
+        }
+
+        var ci = (cy * cols + cx) * 3;
+        ctx.fillStyle = "rgb(" + (mixColors[ci] | 0) + "," +
+                        (mixColors[ci + 1] | 0) + "," + (mixColors[ci + 2] | 0) + ")";
+        ctx.fillText(ch, cx * CELL_W, cy * CELL_H);
+      }
+    }
+  }
+
+  // ---------- sequencing ----------
+
+  function pickStyle() {
+    if (styleMode !== "mixed") return styleMode;
+    return Math.random() < 0.5 ? "ascii" : "braille";
+  }
+
+  function advance() {
+    var entry = chooseNext(current);
+    if (!entry) return Promise.resolve();
+    played[entry.url] = true;
+    return getImage(entry).then(function (img) {
+      frameA = frameB;
+      modeA = modeB;
+      frameB = buildFrame(img);
+      modeB = pickStyle();
+      current = entry;
+      document.getElementById("idtag").textContent = entry.name;
+      phase = frameA ? "trans" : "hold";
+      phaseStart = performance.now();
+      if (analyzed.length < playlist.length) fillPool(4);
+    }).catch(function () {});
+  }
+
+  function loop(now) {
+    requestAnimationFrame(loop);
+    if (paused || !frameB) return;
+    var el = now - phaseStart;
+    if (phase === "trans") {
+      var p = Math.min(1, el / pace.trans);
+      paint(p);
+      if (p >= 1) { phase = "hold"; phaseStart = now; frameA = null; }
+    } else {
+      paint(1);
+      if (el > pace.hold) advance();
+    }
+  }
+
+  function start() {
+    sizeGrid();
+    advance().then(function () { requestAnimationFrame(loop); });
+  }
+
+  // ---------- recording ----------
+
+  function record() {
+    if (recorder) return;
+    var btn = document.getElementById("recBtn");
+    var stream = canvas.captureStream(30);
+    var mime = MediaRecorder.isTypeSupported("video/webm;codecs=vp9")
+      ? "video/webm;codecs=vp9" : "video/webm";
+    var chunks = [];
+    recorder = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000 });
+    recorder.ondataavailable = function (e) { if (e.data.size) chunks.push(e.data); };
+    recorder.onstop = function () {
+      var blob = new Blob(chunks, { type: "video/webm" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "pogo-sequence-" + Date.now() + ".webm";
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      recorder = null;
+      btn.classList.remove("on");
+      btn.textContent = "RECORD 30s";
+    };
+    recorder.start();
+    btn.classList.add("on");
+    var left = 30;
+    btn.textContent = "RECORDING " + left + "s";
+    var tick = setInterval(function () {
+      left--;
+      btn.textContent = "RECORDING " + left + "s";
+      if (left <= 0) { clearInterval(tick); if (recorder) recorder.stop(); }
+    }, 1000);
+  }
+
+  // ---------- wiring ----------
+
+  document.getElementById("modeSel").addEventListener("change", function () { styleMode = this.value; });
+  document.getElementById("paceSel").addEventListener("change", function () { pace = PACE[this.value]; });
+  document.getElementById("detailSel").addEventListener("change", function () {
+    cols = +this.value;
+    sizeGrid();
+    frameA = null; frameB = null;
+    advance();
+  });
+  document.getElementById("pauseBtn").addEventListener("click", function () {
+    paused = !paused;
+    this.classList.toggle("on", paused);
+    this.textContent = paused ? "RESUME" : "PAUSE";
+    if (!paused) phaseStart = performance.now();
+  });
+  document.getElementById("recBtn").addEventListener("click", record);
+
+  if (/[?&]embed/.test(location.search)) document.body.classList.add("embed");
+
+  sizeGrid();
+  loadArchive();
+})();
+</script>
+</body>
+</html>

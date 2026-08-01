@@ -10,6 +10,10 @@ The application layer of the [POGO Studios Archive](https://github.com/POGO-XYZ/
 
 Renders archived works as pure text — ASCII and Braille (Unicode) — with adjustable detail, dithering, color, and export to `.txt` and `.png`. Works are pulled live from [POGO-ARCHIVE-MEDIA](https://github.com/POGO-XYZ/POGO-ARCHIVE-MEDIA); only archived works can be rendered.
 
+### 002 — Art to Text Renderer Live Sequence
+
+Archived works rendered continuously as text, moving between pieces by tonal similarity. Includes video export. Add `?embed` to the URL for a clean full-bleed view.
+
 ## About
 
 This repository will grow to include additional tools and, eventually, the full archive application. Everything here runs entirely in-browser — no accounts, no uploads, no data collection.
