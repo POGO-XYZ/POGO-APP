@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POGO Studios — Archive</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #EFEDE6;
+    --ink: #171512;
+    --faint: rgba(23,21,18,0.28);
+    --ok: #2F6B4F;
+    --bad: #B03A28;
+  }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Menlo, monospace;
+    height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+  }
+  nav {
+    border-bottom: 2px solid var(--ink); padding: 12px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px; flex: none;
+  }
+  .mark {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
+    color: #171512; text-decoration: none; opacity: 1;
+  }
+  .mark img { height: 26px; width: auto; display: block;  }
+  .mark:hover { opacity: 0.6; }
+  @media (max-width: 600px) {
+    .mark span { display: none; }
+    .mark img { height: 24px; }
+  }
+  .navlinks { display: flex; gap: 16px; flex-wrap: wrap; }
+  .navlinks a {
+    color: var(--ink); text-decoration: none; font-size: 10px;
+    letter-spacing: 0.14em; opacity: 0.55; padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .navlinks a:hover { opacity: 1; }
+  .navlinks a.here { opacity: 1; border-bottom-color: var(--ink); }
+
+  .workbench { flex: 1; display: flex; overflow: hidden; }
+
+  .index { width: 250px; flex: none; border-right: 2px solid var(--ink);
+    display: flex; flex-direction: column; overflow: hidden; }
+  .idxhead { padding: 14px 16px; border-bottom: 1px solid var(--faint); flex: none; }
+  .lbl { font-size: 9px; letter-spacing: 0.16em; opacity: 0.5; margin-bottom: 6px; }
+  input[type=text] {
+    width: 100%; font-family: inherit; font-size: 11px; padding: 6px 8px;
+    border: 1px solid var(--ink); background: var(--paper); color: var(--ink);
+  }
+  .filters { display: flex; gap: 4px; margin-top: 10px; flex-wrap: wrap; }
+  .filters button {
+    flex: 1 1 44%; font-family: inherit; font-size: 8.5px; letter-spacing: 0.06em;
+    padding: 5px 2px; border: 1px solid var(--ink); background: var(--paper);
+    color: var(--ink); cursor: pointer;
+  }
+  .filters button.on { background: var(--ink); color: var(--paper); }
+  .idxlist { flex: 1; overflow-y: auto; }
+  .yearhead { font-size: 9px; letter-spacing: 0.18em; padding: 10px 16px 6px;
+    opacity: 0.45; position: sticky; top: 0; background: var(--paper); }
+  .item { padding: 7px 16px; font-size: 11px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    border-left: 3px solid transparent; }
+  .item:hover { background: rgba(23,21,18,0.05); }
+  .item.sel { border-left-color: var(--ink); background: rgba(23,21,18,0.08); font-weight: 700; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }
+  .dot.available { background: var(--ok); }
+  .dot.collected { background: var(--ink); }
+  .dot.unavailable { background: var(--faint); }
+  .idxfoot { padding: 10px 16px; border-top: 1px solid var(--faint); font-size: 9px; opacity: 0.5; flex: none; }
+
+  .stage { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+  .stagehead { padding: 12px 20px; border-bottom: 1px solid var(--faint);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px; flex: none; }
+  .wid { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+  .wsub { font-size: 10px; opacity: 0.55; letter-spacing: 0.1em; margin-top: 2px; }
+  .views { display: flex; }
+  .views button {
+    font-family: inherit; font-size: 9px; letter-spacing: 0.1em; font-weight: 700;
+    padding: 7px 11px; border: 1px solid var(--ink); background: var(--paper);
+    color: var(--ink); cursor: pointer; border-right: none;
+  }
+  .views button:last-child { border-right: 1px solid var(--ink); }
+  .views button.on { background: var(--ink); color: var(--paper); }
+  .canvasWrap { flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 20px; overflow: hidden; min-height: 0; }
+  .canvasWrap img, .canvasWrap canvas { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+  .empty { opacity: 0.35; font-size: 12px; letter-spacing: 0.12em; text-align: center; }
+
+  .record { width: 300px; flex: none; border-left: 2px solid var(--ink);
+    overflow-y: auto; padding-bottom: 30px; }
+  .panel { border-bottom: 1px solid var(--faint); padding: 14px 16px; }
+  .ptitle { font-size: 9px; letter-spacing: 0.18em; opacity: 0.5; margin-bottom: 10px; }
+  .row { display: flex; justify-content: space-between; gap: 10px; font-size: 11px; padding: 3px 0; }
+  .row .k { opacity: 0.5; flex: none; }
+  .row .v { text-align: right; word-break: break-word; }
+  .hash { font-size: 8.5px; line-height: 1.5; word-break: break-all; opacity: 0.75; margin-top: 4px; }
+  .status { display: inline-block; font-size: 10px; letter-spacing: 0.12em;
+    padding: 4px 9px; border: 1px solid var(--ink); font-weight: 700; }
+  .status.collected { background: var(--ink); color: var(--paper); }
+  .status.unavailable { opacity: 0.5; }
+  .btn { display: block; text-align: center; text-decoration: none;
+    font-family: inherit; font-size: 10px; letter-spacing: 0.1em; font-weight: 700;
+    padding: 9px; border: 2px solid var(--ink); background: var(--paper);
+    color: var(--ink); cursor: pointer; margin-top: 8px; width: 100%; }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .vstep { display: flex; gap: 9px; align-items: flex-start; padding: 7px 0; font-size: 10.5px; }
+  .vmark { flex: none; width: 13px; opacity: 0.4; }
+  .vstep.pass .vmark { color: var(--ok); opacity: 1; }
+  .vstep.fail .vmark { color: var(--bad); opacity: 1; }
+  .vdesc { opacity: 0.6; font-size: 9.5px; margin-top: 2px; line-height: 1.5; }
+  .note { font-size: 9.5px; line-height: 1.6; opacity: 0.55; margin-top: 8px; }
+
+  /* ---------- mobile ---------- */
+  .tabbar { display: none; }
+
+  @media (max-width: 900px) {
+    nav { padding: 10px 14px; }
+    .navlinks {
+      flex-wrap: nowrap; overflow-x: auto; gap: 14px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      max-width: 100%; padding-bottom: 2px;
+    }
+    .navlinks::-webkit-scrollbar { display: none; }
+    .navlinks a { white-space: nowrap; font-size: 9.5px; }
+
+    .workbench { position: relative; }
+    .index, .stage, .record {
+      position: absolute; inset: 0; width: 100%;
+      border: none; display: none;
+    }
+    body.pane-index .index,
+    body.pane-work .stage,
+    body.pane-record .record { display: flex; }
+    body.pane-record .record { display: block; }
+
+    .index { flex-direction: column; }
+    .idxlist { flex: 1; }
+    .canvasWrap { padding: 12px; }
+    .stagehead { padding: 12px 14px; }
+    .views button { padding: 8px 10px; font-size: 9px; }
+    .panel { padding: 16px 18px; }
+    .record { padding-bottom: 80px; }
+    .filters button { flex: 1 1 46%; padding: 7px 2px; font-size: 9px; }
+    .item { padding: 11px 16px; font-size: 12px; }
+
+    .tabbar {
+      display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
+      border-top: 2px solid var(--ink); background: var(--paper);
+    }
+    .tabbar button {
+      flex: 1; font-family: inherit; font-size: 9.5px; font-weight: 700;
+      letter-spacing: 0.12em; padding: 14px 4px; border: none;
+      border-right: 1px solid var(--faint); background: var(--paper);
+      color: var(--ink); cursor: pointer; opacity: 0.5;
+    }
+    .tabbar button:last-child { border-right: none; }
+    .tabbar button.on { opacity: 1; background: var(--ink); color: var(--paper); }
+    .workbench { padding-bottom: 46px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="mark" href="index.html"><img src="pogo-seal.png" alt=""><span>POGO-XYZ</span></a>
+  <div class="navlinks">
+    <a href="index.html">HOME</a>
+    <a href="archive.html" class="here">ARCHIVE</a>
+    <a href="text-renderer.html">TEXT RENDERER</a>
+    <a href="art-to-text-live-sequence.html">LIVE SEQUENCE</a>
+    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">REPOSITORIES</a>
+    <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO</a>
+  </div>
+</nav>
+
+<div class="workbench">
+
+  <div class="index">
+    <div class="idxhead">
+      <div class="lbl">FIND A WORK</div>
+      <input type="text" id="search" placeholder="POGO ID or sequence…" autocomplete="off">
+      <div class="filters">
+        <button data-f="all" class="on">ALL</button>
+        <button data-f="available">AVAILABLE</button>
+        <button data-f="collected">COLLECTED</button>
+        <button data-f="unavailable">UNAVAILABLE</button>
+      </div>
+    </div>
+    <div class="idxlist" id="idxlist"><div class="yearhead">LOADING…</div></div>
+    <div class="idxfoot" id="idxfoot"></div>
+  </div>
+
+  <div class="stage">
+    <div class="stagehead">
+      <div>
+        <div class="wid" id="wid">—</div>
+        <div class="wsub" id="wsub">Select a work from the index</div>
+      </div>
+      <div class="views">
+        <button data-v="photo" class="on">PHOTOGRAPH</button>
+        <button data-v="ascii">ASCII</button>
+        <button data-v="braille">BRAILLE</button>
+      </div>
+    </div>
+    <div class="canvasWrap" id="canvasWrap">
+      <div class="empty">SELECT A WORK TO BEGIN</div>
+    </div>
+  </div>
+
+  <div class="record" id="record">
+    <div class="panel">
+      <div class="ptitle">RECORD</div>
+      <div class="note">
+        The archive holds a permanent record for every physical work POGO Studios has
+        documented. Choose a work to view its details, media, and verification state.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="tabbar">
+  <button data-p="index" class="on">INDEX</button>
+  <button data-p="work">WORK</button>
+  <button data-p="record">RECORD</button>
+</div>
+
+<canvas id="sampler" style="display:none"></canvas>
+
+<script>
+(function () {
+  "use strict";
+
+  var ARCHIVE = "POGO-XYZ/POGO-ARCHIVE";
+  var MEDIA = "POGO-XYZ/POGO-ARCHIVE-MEDIA";
+  var API = "https://api.github.com/repos/";
+  var RAW = "https://raw.githubusercontent.com/" + ARCHIVE + "/main/";
+  var LEGACY = "https://github.com/POGO-XYZ/POGO-ARCHIVE/blob/main/LEGACY.md";
+
+  var RAMP = "POGO#*+=-:. ";
+  var BRAILLE_BITS = [[0x01,0x08],[0x02,0x10],[0x04,0x20],[0x40,0x80]];
+  var isMobile = function () { return window.innerWidth <= 900; };
+  var CELL_W = 6, CELL_H = 10;
+  var CROP = 0.006;
+
+  var works = {}, listings = {}, order = [];
+  var selected = null, record = null, imgEl = null;
+  var view = "photo", filter = "all", query = "";
+
+  var $ = function (id) { return document.getElementById(id); };
+  var sampler = $("sampler");
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+
+  function boot() {
+    Promise.all([
+      fetch(RAW + "LINKS/LISTINGS.JSON").then(function (r) { return r.json(); })
+        .catch(function () { return { listings: {} }; }),
+      fetch(API + ARCHIVE + "/contents/").then(function (r) { return r.json(); })
+    ]).then(function (res) {
+      listings = (res[0] && res[0].listings) || {};
+      var years = res[1].filter(function (i) {
+        return i.type === "dir" && /^\d{4}$/.test(i.name);
+      }).map(function (i) { return i.name; }).sort().reverse();
+      return Promise.all(years.map(loadYear));
+    }).then(function () {
+      order.sort(function (a, b) { return a > b ? -1 : a < b ? 1 : 0; });
+      renderIndex();
+      $("idxfoot").textContent = order.length + " WORKS ARCHIVED";
+    }).catch(function () {
+      $("idxlist").innerHTML = '<div class="yearhead">ARCHIVE UNAVAILABLE</div>';
+    });
+  }
+
+  function loadYear(year) {
+    return Promise.all([
+      fetch(API + ARCHIVE + "/contents/" + year + "/records-" + year)
+        .then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }),
+      fetch(API + MEDIA + "/contents/" + year)
+        .then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; })
+    ]).then(function (res) {
+      var media = {};
+      if (Array.isArray(res[1])) res[1].forEach(function (f) {
+        if (f.type === "file") media[f.name.replace(/\.[^.]+$/, "").toUpperCase()] = f.download_url;
+      });
+      if (!Array.isArray(res[0])) return;
+      res[0].forEach(function (f) {
+        if (f.type !== "file" || !/\.json$/i.test(f.name)) return;
+        var id = f.name.replace(/\.[^.]+$/, "").toUpperCase();
+        works[id] = { id: id, year: year, recordUrl: f.download_url, mediaUrl: media[id] || null };
+        order.push(id);
+      });
+    });
+  }
+
+  function statusOf(id) {
+    var l = listings[id];
+    return (l && l.status ? l.status : "unavailable").toLowerCase().replace(/\s+/g, "");
+  }
+
+  function renderIndex() {
+    var html = "", lastYear = null, shown = 0;
+    order.forEach(function (id) {
+      var w = works[id], st = statusOf(id);
+      if (filter !== "all" && st !== filter) return;
+      if (query && id.toLowerCase().indexOf(query) === -1) return;
+      if (w.year !== lastYear) { html += '<div class="yearhead">' + w.year + '</div>'; lastYear = w.year; }
+      html += '<div class="item' + (id === selected ? " sel" : "") + '" data-id="' + id + '">' +
+              '<span>' + esc(id.replace("POGO-", "")) + '</span>' +
+              '<span class="dot ' + st + '"></span></div>';
+      shown++;
+    });
+    if (!shown) html = '<div class="yearhead">NO MATCHES</div>';
+    $("idxlist").innerHTML = html;
+  }
+
+  $("idxlist").addEventListener("click", function (e) {
+    var el = e.target.closest(".item");
+    if (el) select(el.getAttribute("data-id"));
+  });
+  $("search").addEventListener("input", function () {
+    query = this.value.trim().toLowerCase(); renderIndex();
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function (b) {
+    b.addEventListener("click", function () {
+      filter = b.getAttribute("data-f");
+      Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function (x) {
+        x.classList.toggle("on", x === b);
+      });
+      renderIndex();
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".views button"), function (b) {
+    b.addEventListener("click", function () {
+      view = b.getAttribute("data-v");
+      Array.prototype.forEach.call(document.querySelectorAll(".views button"), function (x) {
+        x.classList.toggle("on", x === b);
+      });
+      paint();
+    });
+  });
+
+  function select(id) {
+    selected = id; record = null; imgEl = null;
+    renderIndex();
+    if (isMobile()) setPane("work");
+    var w = works[id];
+    $("wid").textContent = id;
+    $("wsub").textContent = "Loading record…";
+    $("canvasWrap").innerHTML = '<div class="empty">LOADING…</div>';
+
+    fetch(w.recordUrl).then(function (r) { return r.json(); }).then(function (rec) {
+      record = rec;
+      $("wsub").textContent = [rec.medium, rec.dimensions].filter(Boolean).join(" \u00B7 ");
+      renderRecord();
+      if (w.mediaUrl) {
+        var img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = function () { imgEl = img; paint(); };
+        img.onerror = function () {
+          $("canvasWrap").innerHTML = '<div class="empty">MEDIA UNAVAILABLE</div>';
+        };
+        img.src = w.mediaUrl;
+      } else {
+        $("canvasWrap").innerHTML = '<div class="empty">NO MEDIA FILE FOUND</div>';
+      }
+    }).catch(function () { $("wsub").textContent = "Record could not be loaded"; });
+  }
+
+  function paint() {
+    if (!imgEl) return;
+    var wrap = $("canvasWrap");
+    wrap.innerHTML = "";
+
+    if (view === "photo") {
+      var i = new Image();
+      i.src = imgEl.src;
+      wrap.appendChild(i);
+      return;
+    }
+
+    var braille = view === "braille";
+    // larger cells on phones: fewer characters, far lighter to draw
+    CELL_W = isMobile() ? 5 : 6;
+    CELL_H = isMobile() ? 8 : 10;
+    var availW = wrap.clientWidth - 40;
+    var availH = wrap.clientHeight - 40;
+    var ia = imgEl.height / imgEl.width;
+
+    var cols = Math.floor(availW / CELL_W);
+    var rows = Math.round(cols * ia * CELL_W / CELL_H);
+    if (rows * CELL_H > availH) {
+      rows = Math.floor(availH / CELL_H);
+      cols = Math.round(rows * CELL_H / (ia * CELL_W));
+    }
+    cols = Math.max(40, cols); rows = Math.max(20, rows);
+
+    var sx = braille ? 2 : 1, sy = braille ? 4 : 1;
+    var pxW = cols * sx, pxH = rows * sy;
+    sampler.width = pxW; sampler.height = pxH;
+    var sctx = sampler.getContext("2d", { willReadFrequently: true });
+
+    var cw = imgEl.width * CROP, chh = imgEl.height * CROP;
+    sctx.drawImage(imgEl, cw, chh, imgEl.width - cw * 2, imgEl.height - chh * 2, 0, 0, pxW, pxH);
+    var d = sctx.getImageData(0, 0, pxW, pxH).data;
+
+    var out = document.createElement("canvas");
+    out.width = cols * CELL_W; out.height = rows * CELL_H;
+    var ctx = out.getContext("2d");
+    ctx.fillStyle = "#EFEDE6";
+    ctx.fillRect(0, 0, out.width, out.height);
+    ctx.font = CELL_H + 'px ui-monospace, "Cascadia Code", Menlo, monospace';
+    ctx.textBaseline = "top";
+
+    if (braille) {
+      var total = pxW * pxH;
+      var lum = new Float32Array(total);
+      for (var p = 0; p < total; p++) {
+        var k = p * 4;
+        lum[p] = 0.2126*d[k] + 0.7152*d[k+1] + 0.0722*d[k+2];
+      }
+      for (var y = 0; y < pxH; y++) {
+        for (var x = 0; x < pxW; x++) {
+          var i0 = y*pxW+x, old = lum[i0], nv = old < 128 ? 0 : 255, err = old - nv;
+          lum[i0] = nv;
+          if (x+1 < pxW) lum[i0+1] += err*7/16;
+          if (y+1 < pxH) {
+            if (x > 0) lum[i0+pxW-1] += err*3/16;
+            lum[i0+pxW] += err*5/16;
+            if (x+1 < pxW) lum[i0+pxW+1] += err*1/16;
+          }
+        }
+      }
+      for (var cy = 0; cy < rows; cy++) {
+        for (var cx = 0; cx < cols; cx++) {
+          var code = 0, r = 0, g = 0, b = 0, n = 0;
+          for (var dy = 0; dy < 4; dy++) {
+            for (var dx = 0; dx < 2; dx++) {
+              var pp = (cy*4+dy)*pxW + (cx*2+dx);
+              if (lum[pp] === 0) {
+                code |= BRAILLE_BITS[dy][dx];
+                var ii = pp*4;
+                r += d[ii]; g += d[ii+1]; b += d[ii+2]; n++;
+              }
+            }
+          }
+          if (!code) continue;
+          ctx.fillStyle = "rgb(" + ((r/n)|0) + "," + ((g/n)|0) + "," + ((b/n)|0) + ")";
+          ctx.fillText(String.fromCharCode(0x2800 + code), cx*CELL_W, cy*CELL_H);
+        }
+      }
+    } else {
+      for (var ay = 0; ay < rows; ay++) {
+        for (var ax = 0; ax < cols; ax++) {
+          var kk = (ay*pxW+ax)*4;
+          var R = d[kk], G = d[kk+1], B = d[kk+2];
+          var L = (0.2126*R + 0.7152*G + 0.0722*B) / 255;
+          var ch = RAMP[Math.min(RAMP.length-1, Math.floor(L * RAMP.length))];
+          if (ch === " ") continue;
+          ctx.fillStyle = "rgb(" + R + "," + G + "," + B + ")";
+          ctx.fillText(ch, ax*CELL_W, ay*CELL_H);
+        }
+      }
+    }
+    wrap.appendChild(out);
+  }
+
+  var rt;
+  window.addEventListener("resize", function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { if (view !== "photo") paint(); }, 200);
+  });
+
+  function fileOf(role) {
+    if (!record || !record.files) return null;
+    for (var i = 0; i < record.files.length; i++)
+      if (record.files[i].role === role) return record.files[i];
+    return null;
+  }
+
+  function row(k, v) {
+    if (v == null || v === "" || v === "none") return "";
+    return '<div class="row"><span class="k">' + esc(k) + '</span><span class="v">' + esc(v) + '</span></div>';
+  }
+
+  function renderRecord() {
+    var id = selected, w = works[id], st = statusOf(id);
+    var listing = listings[id] || {};
+    var src = fileOf("reference_image_source"), web = fileOf("reference_image_web");
+    var created = "", archived = "";
+    (record.events || []).forEach(function (e) {
+      if (e.type === "creation") created = e.date;
+      if (e.type === "archival") archived = e.date;
+    });
+    var isLegacy = record.year === "2024";
+
+    var h = "";
+
+    h += '<div class="panel"><div class="ptitle">DETAILS</div>' +
+      row("ID", id) +
+      row("Title", record.title === "untitled" ? "Untitled" : record.title) +
+      row("Medium", record.medium) +
+      row("Dimensions", record.dimensions) +
+      (record.focus && record.focus !== "none" ? row("Focus", record.focus) : "") +
+      (record.series && record.series !== "none" ? row("Series", record.series) : "") +
+      row("Created", created) + row("Archived", archived) + '</div>';
+
+    h += '<div class="panel"><div class="ptitle">AVAILABILITY</div>' +
+      '<span class="status ' + st + '">' + st.toUpperCase() + '</span>';
+    if (listing.store_url)
+      h += '<a class="btn" href="' + listing.store_url + '" target="_blank" rel="noopener">' +
+           (st === "available" ? "VIEW IN STUDIO STORE" : "VIEW WORK PAGE") + '</a>';
+    h += '<a class="btn" href="mailto:hello@pogostudios.xyz'
+       + '?subject=' + encodeURIComponent("Enquiry \u2014 " + id)
+       + '&body=' + encodeURIComponent(
+           "I'd like to enquire about " + id + ".\n\n"
+           + (record.title && record.title !== "untitled" ? record.title + "\n" : "")
+           + [record.medium, record.dimensions].filter(Boolean).join(" \u00B7 ") + "\n"
+           + "Archive record: " + w.recordUrl + "\n\n"
+         )
+       + '">ENQUIRE ABOUT THIS WORK</a></div>';
+
+    h += '<div class="panel"><div class="ptitle">VERIFICATION</div>' +
+      '<div class="vstep" id="v1"><span class="vmark">\u25CB</span><div><div>Record retrieved</div>' +
+      '<div class="vdesc">The permanent record for this work, read from the public repository.</div></div></div>' +
+      '<div class="vstep" id="v2"><span class="vmark">\u25CB</span><div><div>Media file located</div>' +
+      '<div class="vdesc">The canonical image held in the media repository.</div></div></div>' +
+      '<div class="vstep" id="v3"><span class="vmark">\u25CB</span><div><div>Fingerprint match</div>' +
+      '<div class="vdesc">The image is hashed in your browser and compared to the recorded fingerprint.</div></div></div>' +
+      '<button class="btn" id="verifyBtn">RUN VERIFICATION</button>' +
+      '<div class="note" id="vnote"></div></div>';
+
+    h += '<div class="panel"><div class="ptitle">ARCHIVE DATA</div>' +
+      row("Schema", record.schema_version) + row("Year", record.year) +
+      row("Type", record.type_code) + row("Sequence", record.sequence);
+    if (src && src.sha256)
+      h += '<div class="lbl" style="margin-top:12px">SOURCE IMAGE SHA-256</div><div class="hash">' + esc(src.sha256) + '</div>';
+    if (web && web.sha256)
+      h += '<div class="lbl" style="margin-top:12px">WEB IMAGE SHA-256</div><div class="hash">' + esc(web.sha256) + '</div>';
+    h += '<a class="btn" href="' + w.recordUrl + '" target="_blank" rel="noopener">VIEW RAW RECORD</a></div>';
+
+    h += '<div class="panel"><div class="ptitle">PROVENANCE</div>' +
+      '<div class="vstep"><span class="vmark">\u25AA</span><div><div>Physical</div>' +
+      '<div class="vdesc">Studio seal and ID stamped on the work in archival ink; printed certificate paired at collection.</div></div></div>' +
+      '<div class="vstep"><span class="vmark">\u25AA</span><div><div>Digital</div>' +
+      '<div class="vdesc">This record, publicly held and version-controlled since ' + esc(archived || record.year) + '.</div></div></div>' +
+      '<div class="vstep"><span class="vmark">\u25AA</span><div><div>Cryptographic</div>' +
+      '<div class="vdesc">' + (record.year === "2026"
+        ? 'Timestamped on Bitcoin via OpenTimestamps, and anchored in the yearly index at close.'
+        : 'Attested by the ' + esc(record.year) + ' yearly Bitcoin anchor.') + '</div></div></div>' +
+      '</div>';
+
+    if (isLegacy) {
+      h += '<div class="panel"><div class="ptitle">LEGACY RECORD</div>' +
+        '<div class="note">This work was first documented in 2024 under the studio\'s earlier archival system, ' +
+        'which distributed verification across Solana, Arweave, IPFS and Bitcoin. It was migrated into the ' +
+        'current canonical structure at the start of 2026. Earlier references remain historically valid, ' +
+        'but this record governs.</div>' +
+        '<a class="btn" href="' + LEGACY + '" target="_blank" rel="noopener">READ LEGACY.MD</a></div>';
+    }
+
+    h += '<div class="panel"><div class="ptitle">EXPLORE</div>' +
+      '<a class="btn" href="text-renderer.html">OPEN THE FULL TEXT EDITOR</a>' +
+      '<a class="btn" href="art-to-text-live-sequence.html">VIEW THE LIVE SEQUENCE</a>' +
+      '<a class="btn" href="index.html">RETURN HOME</a></div>';
+
+    $("record").innerHTML = h;
+    $("verifyBtn").addEventListener("click", verify);
+  }
+
+  function mark(el, state, label) {
+    var n = $(el);
+    n.className = "vstep " + state;
+    n.querySelector(".vmark").textContent = state === "pass" ? "\u2713" : state === "fail" ? "\u2715" : "\u25CB";
+    if (label) n.querySelector(".vdesc").textContent = label;
+  }
+
+  function verify() {
+    var w = works[selected], src = fileOf("reference_image_source");
+    $("vnote").textContent = "";
+    mark("v1", "pass");
+    if (!w.mediaUrl) { mark("v2", "fail", "No media file found for this ID."); return; }
+    mark("v2", "pass");
+    mark("v3", "", "Hashing image\u2026");
+
+    fetch(w.mediaUrl).then(function (r) { return r.arrayBuffer(); })
+      .then(function (buf) { return crypto.subtle.digest("SHA-256", buf); })
+      .then(function (hash) {
+        var hex = Array.prototype.map.call(new Uint8Array(hash), function (b) {
+          return b.toString(16).padStart(2, "0");
+        }).join("");
+        var expect = (src && src.sha256 ? src.sha256 : "").toLowerCase();
+        if (!expect) {
+          mark("v3", "", "Computed " + hex.slice(0,16) + "\u2026 \u2014 no recorded fingerprint to compare against.");
+          $("vnote").textContent = "This record does not carry a source fingerprint.";
+        } else if (hex === expect) {
+          mark("v3", "pass", "Computed fingerprint matches the record exactly.");
+          $("vnote").textContent = "This image is byte-for-byte identical to the file recorded at the time of archiving.";
+        } else {
+          mark("v3", "fail", "Computed " + hex.slice(0,16) + "\u2026 does not match the recorded fingerprint.");
+          $("vnote").textContent = "The file served differs from the one recorded. This may indicate the media file was replaced or re-encoded.";
+        }
+      })
+      .catch(function () { mark("v3", "fail", "Could not read the media file to hash it."); });
+  }
+
+  // ---------- mobile panes ----------
+  function setPane(p) {
+    document.body.className = "pane-" + p;
+    Array.prototype.forEach.call(document.querySelectorAll(".tabbar button"), function (b) {
+      b.classList.toggle("on", b.getAttribute("data-p") === p);
+    });
+    if (p === "work" && view !== "photo") setTimeout(paint, 60);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".tabbar button"), function (b) {
+    b.addEventListener("click", function () { setPane(b.getAttribute("data-p")); });
+  });
+  if (isMobile()) setPane("index");
+  window.addEventListener("resize", function () {
+    if (!isMobile()) document.body.className = "";
+    else if (!document.body.className) setPane("index");
+  });
+
+  boot();
+})();
+</script>
+</body>
+</html>

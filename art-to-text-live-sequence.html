@@ -7,78 +7,126 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    background: #171512;
-    color: #EFEDE6;
+    background: #171512; color: #EFEDE6;
     font-family: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Menlo, monospace;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    min-height: 100vh; display: flex; flex-direction: column;
   }
+  nav {
+    border-bottom: 2px solid #EFEDE6; padding: 14px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .mark {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
+    color: #EFEDE6; text-decoration: none; opacity: 1;
+  }
+  .mark img { height: 26px; width: auto; display: block; filter: invert(1); }
+  .mark:hover { opacity: 0.6; }
+  @media (max-width: 600px) {
+    .mark span { display: none; }
+    .mark img { height: 24px; }
+  }
+  .navlinks { display: flex; gap: 18px; flex-wrap: wrap; }
+  .navlinks a {
+    color: #EFEDE6; text-decoration: none; font-size: 10px;
+    letter-spacing: 0.14em; opacity: 0.6; padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .navlinks a:hover { opacity: 1; }
+  .navlinks a.here { opacity: 1; border-bottom-color: #EFEDE6; }
+
   header {
-    border-bottom: 2px solid #EFEDE6;
-    padding: 16px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 8px;
+    border-bottom: 2px solid #EFEDE6; padding: 14px 24px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 8px;
   }
   .eyebrow { font-size: 10px; letter-spacing: 0.18em; opacity: 0.5; }
   h1 { font-size: 18px; font-weight: 700; margin-top: 3px; letter-spacing: -0.01em; }
   .status { font-size: 10px; letter-spacing: 0.1em; opacity: 0.5; }
+
   .stage {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    min-height: 300px;
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 20px; min-height: 300px;
   }
-  canvas { max-width: 100%; max-height: 78vh; display: block; }
+  canvas { max-width: 100%; max-height: 100%; display: block; }
+
   .panel {
-    border-top: 2px solid #EFEDE6;
-    padding: 16px 24px;
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    border-top: 2px solid #EFEDE6; padding: 14px 24px;
+    display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end;
   }
   .ctl { display: flex; flex-direction: column; gap: 5px; }
   .label { font-size: 10px; letter-spacing: 0.12em; opacity: 0.6; }
   select, button {
     font-family: inherit; font-size: 11px; font-weight: 700;
     letter-spacing: 0.06em; padding: 7px 12px;
-    border: 2px solid #EFEDE6; background: #171512; color: #EFEDE6;
-    cursor: pointer;
+    border: 2px solid #EFEDE6; background: #171512; color: #EFEDE6; cursor: pointer;
   }
   button.on { background: #EFEDE6; color: #171512; }
   button.rec { border-color: #C4452F; color: #C4452F; }
   button.rec.on { background: #C4452F; color: #EFEDE6; }
   .idtag {
-    position: fixed; bottom: 92px; left: 24px;
-    font-size: 10px; letter-spacing: 0.16em; opacity: 0.35;
-    pointer-events: none; transition: opacity 0.6s;
+    position: fixed; bottom: 84px; left: 24px; z-index: 5;
+    font-size: 10px; letter-spacing: 0.16em; opacity: 0.35; pointer-events: none;
   }
-  body.embed header, body.embed .panel, body.embed .idtag { display: none; }
+
+  /* Clean view — chrome hidden, page stays */
+  body.clean nav, body.clean header, body.clean .panel, body.clean .idtag { display: none; }
+  body.clean .stage { padding: 0; }
+  #exitClean {
+    display: none; position: fixed; top: 16px; right: 16px; z-index: 20;
+    opacity: 0.35;
+  }
+  #exitClean:hover { opacity: 1; }
+  body.clean #exitClean { display: block; }
+
+  /* Embed mode — for iframes */
+  body.embed nav, body.embed header, body.embed .panel,
+  body.embed .idtag, body.embed #exitClean { display: none; }
   body.embed .stage { padding: 0; }
-  body.embed canvas { max-height: 100vh; }
+
+  @media (max-width: 900px) {
+    nav { padding: 11px 14px; }
+    .navlinks {
+      flex-wrap: nowrap; overflow-x: auto; gap: 14px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none; max-width: 100%;
+    }
+    .navlinks::-webkit-scrollbar { display: none; }
+    .navlinks a { white-space: nowrap; font-size: 9.5px; }
+    header { padding: 12px 16px; }
+    .stage { padding: 12px; min-height: 220px; }
+    .panel { padding: 12px 16px; gap: 12px; }
+    .ctl { flex: 1 1 45%; }
+    select, button { width: 100%; min-height: 38px; }
+    .idtag { bottom: auto; top: 8px; left: 16px; }
+  }
 </style>
 </head>
 <body>
 
+<nav>
+  <a class="mark" href="index.html"><img src="pogo-seal.png" alt=""><span>POGO-XYZ</span></a>
+  <div class="navlinks">
+    <a href="index.html">HOME</a>
+    <a href="archive.html">ARCHIVE</a>
+    <a href="text-renderer.html">TEXT RENDERER</a>
+    <a href="art-to-text-live-sequence.html" class="here">LIVE SEQUENCE</a>
+    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">REPOSITORIES</a>
+    <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO</a>
+  </div>
+</nav>
+
 <header>
   <div>
-    <div class="eyebrow">POGO STUDIOS — TOOL 002</div>
+    <div class="eyebrow">TOOL 002</div>
     <h1>LIVE SEQUENCE</h1>
   </div>
   <div class="status" id="status">LOADING ARCHIVE…</div>
 </header>
 
-<div class="stage">
-  <canvas id="stage"></canvas>
-</div>
-
+<div class="stage"><canvas id="stage"></canvas></div>
 <div class="idtag" id="idtag"></div>
+<button id="exitClean">EXIT CLEAN VIEW</button>
 
 <div class="panel">
   <div class="ctl">
@@ -100,14 +148,24 @@
   <div class="ctl">
     <span class="label">DETAIL</span>
     <select id="detailSel">
+      <option value="auto" selected>Auto — match device</option>
       <option value="110">Coarse</option>
-      <option value="150" selected>Standard</option>
-      <option value="190">Fine</option>
+      <option value="150">Standard</option>
+      <option value="200">Fine</option>
+      <option value="max">Max — fill screen</option>
     </select>
   </div>
   <div class="ctl">
     <span class="label">DISPLAY</span>
     <button id="pauseBtn">PAUSE</button>
+  </div>
+  <div class="ctl">
+    <span class="label">VIEW</span>
+    <button id="cleanBtn">CLEAN</button>
+  </div>
+  <div class="ctl">
+    <span class="label">SCREEN</span>
+    <button id="fsBtn">FULLSCREEN</button>
   </div>
   <div class="ctl">
     <span class="label">EXPORT</span>
@@ -123,24 +181,18 @@
   var REPO = "POGO-ARCHIVE-MEDIA";
   var API = "https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/";
 
-  var RAMP = "@%#*+=-:. ";          // dark → light
-  var BG = "#171512";
+  var Q = location.search;
+  var PAPER = /[?&]paper/.test(Q);
+  var RAMP = /[?&]pogo/.test(Q) ? "POGO#*+=-:. " : "@%#*+=-:. ";
+  var BG = PAPER ? "#EFEDE6" : "#171512";
   var CELL_W = 8, CELL_H = 14;
+  var MIN_CELL = 5, MAX_CELL = 15;      // detail ceiling / floor
+  var autoQuality = true;
+  var frameTimes = [], lastCheck = 0, settleUntil = 0;
   var ASPECT = 9 / 16;
 
-  // Ordered dither matrix — cheap enough to run every frame
-  var BAYER = [
-    [0, 8, 2, 10],
-    [12, 4, 14, 6],
-    [3, 11, 1, 9],
-    [15, 7, 13, 5]
-  ];
-  var BRAILLE_BITS = [
-    [0x01, 0x08],
-    [0x02, 0x10],
-    [0x04, 0x20],
-    [0x40, 0x80]
-  ];
+  var BAYER = [[0,8,2,10],[12,4,14,6],[3,11,1,9],[15,7,13,5]];
+  var BRAILLE_BITS = [[0x01,0x08],[0x02,0x10],[0x04,0x20],[0x40,0x80]];
 
   var PACE = {
     slow: { hold: 3800, trans: 3400 },
@@ -148,8 +200,8 @@
     fast: { hold: 1200, trans: 1300 }
   };
 
-  var cols = 150, rows = 48;
-  var subW = cols * 2, subH = rows * 4;
+  var detailSetting = "auto";
+  var cols = 150, rows = 48, subW = 300, subH = 192;
 
   var canvas = document.getElementById("stage");
   var ctx = canvas.getContext("2d");
@@ -159,26 +211,38 @@
   tiny.width = 24; tiny.height = 24;
   var tctx = tiny.getContext("2d", { willReadFrequently: true });
 
-  var playlist = [];
-  var analyzed = [];        // entries with signatures, ready to sequence
-  var played = {};
-  var current = null, nextEntry = null;
-  var frameA = null, frameB = null;    // { tones: Float32Array, colors: Float32Array }
+  var playlist = [], analyzed = [], played = {};
+  var current = null;
+  var frameA = null, frameB = null;
   var modeA = "ascii", modeB = "ascii";
   var mixTones = null, mixColors = null;
   var phase = "hold", phaseStart = 0;
-  var paused = false;
-  var styleMode = "mixed";
-  var pace = PACE.mid;
-  var imgCache = {};
-  var recorder = null;
-  var loadingMore = false;
+  var paused = false, styleMode = "mixed", pace = PACE.mid;
+  var imgCache = {}, recorder = null, loadingMore = false, started = false;
 
   function setStatus(t) { document.getElementById("status").textContent = t; }
 
+  function computeCols() {
+    if (detailSetting !== "max" && detailSetting !== "auto") return +detailSetting;
+    var stage = document.querySelector(".stage");
+    var avail = stage.clientWidth || window.innerWidth;
+    // account for stage padding
+    var c = Math.floor((avail - 4) / CELL_W);
+    return Math.max(80, Math.min(420, c));
+  }
+
   function sizeGrid() {
+    cols = computeCols();
     var frameW = cols * CELL_W;
     rows = Math.max(10, Math.round((frameW * ASPECT) / CELL_H));
+    // don't exceed available height
+    var stage = document.querySelector(".stage");
+    var maxRows = Math.floor((stage.clientHeight - 4) / CELL_H);
+    if (maxRows > 8 && rows > maxRows) {
+      rows = maxRows;
+      cols = Math.max(80, Math.round((rows * CELL_H / ASPECT) / CELL_W));
+      if (detailSetting !== "max" && detailSetting !== "auto") cols = +detailSetting;
+    }
     subW = cols * 2; subH = rows * 4;
     canvas.width = cols * CELL_W;
     canvas.height = rows * CELL_H;
@@ -187,8 +251,6 @@
     mixTones = new Float32Array(subW * subH);
     mixColors = new Float32Array(cols * rows * 3);
   }
-
-  // ---------- archive ----------
 
   function loadArchive() {
     fetch(API)
@@ -238,31 +300,28 @@
     });
   }
 
-  // Tonal signature: mean colour, mean luminance, contrast
   function signature(img) {
     tctx.drawImage(img, 0, 0, 24, 24);
     var d = tctx.getImageData(0, 0, 24, 24).data;
-    var r = 0, g = 0, b = 0, l = 0, n = 24 * 24, lums = new Float32Array(n);
+    var r = 0, g = 0, b = 0, l = 0, n = 576, lums = new Float32Array(n);
     for (var i = 0; i < n; i++) {
       var k = i * 4;
-      r += d[k]; g += d[k + 1]; b += d[k + 2];
-      var lum = 0.2126 * d[k] + 0.7152 * d[k + 1] + 0.0722 * d[k + 2];
+      r += d[k]; g += d[k+1]; b += d[k+2];
+      var lum = 0.2126*d[k] + 0.7152*d[k+1] + 0.0722*d[k+2];
       lums[i] = lum; l += lum;
     }
-    r /= n; g /= n; b /= n; l /= n;
+    r/=n; g/=n; b/=n; l/=n;
     var v = 0;
-    for (var j = 0; j < n; j++) { var dd = lums[j] - l; v += dd * dd; }
-    return { r: r, g: g, b: b, l: l, c: Math.sqrt(v / n) };
+    for (var j = 0; j < n; j++) { var dd = lums[j]-l; v += dd*dd; }
+    return { r:r, g:g, b:b, l:l, c:Math.sqrt(v/n) };
   }
 
   function distance(a, b) {
-    var dl = (a.l - b.l) / 255, dc = (a.c - b.c) / 128;
-    var dr = (a.r - b.r) / 255, dg = (a.g - b.g) / 255, db = (a.b - b.b) / 255;
-    // luminance and contrast weighted heaviest — they drive perceived jump
-    return Math.sqrt(dl * dl * 3 + dc * dc * 1.5 + dr * dr + dg * dg + db * db);
+    var dl=(a.l-b.l)/255, dc=(a.c-b.c)/128;
+    var dr=(a.r-b.r)/255, dg=(a.g-b.g)/255, db=(a.b-b.b)/255;
+    return Math.sqrt(dl*dl*3 + dc*dc*1.5 + dr*dr + dg*dg + db*db);
   }
 
-  // Pull the next N unanalysed works into the pool
   function fillPool(n) {
     if (loadingMore) return Promise.resolve();
     loadingMore = true;
@@ -279,11 +338,10 @@
     })).then(function () { loadingMore = false; });
   }
 
-  // Nearest tonal neighbour among unplayed, analysed works
   function chooseNext(from) {
     var pool = analyzed.filter(function (e) { return !played[e.url]; });
     if (!pool.length) { played = {}; pool = analyzed.slice(); }
-    if (!from) return pool[Math.floor(Math.random() * pool.length)];
+    if (!from) return pool[Math.floor(Math.random()*pool.length)];
     var best = null, bestD = Infinity;
     pool.forEach(function (e) {
       var d = distance(from.sig, e.sig);
@@ -292,110 +350,91 @@
     return best || pool[0];
   }
 
-  // ---------- frame building ----------
-
   function buildFrame(img) {
     work.width = subW; work.height = subH;
     wctx.fillStyle = BG;
     wctx.fillRect(0, 0, subW, subH);
-
-    // fit within frame, preserving aspect (cells are 2x4 sub-pixels)
-    var frameAspect = (subW / 2 * CELL_W) / (subH / 4 * CELL_H);
+    var frameAspect = (subW/2*CELL_W) / (subH/4*CELL_H);
     var ia = img.width / img.height;
     var w, h;
-    if (ia > frameAspect) { w = subW; h = subW / ia * (CELL_W / CELL_H) * 2; }
-    else { h = subH; w = subH * ia / (CELL_W / CELL_H) / 2; }
+    if (ia > frameAspect) { w = subW; h = subW/ia*(CELL_W/CELL_H)*2; }
+    else { h = subH; w = subH*ia/(CELL_W/CELL_H)/2; }
     w = Math.round(w); h = Math.round(h);
-    wctx.drawImage(img, Math.floor((subW - w) / 2), Math.floor((subH - h) / 2), w, h);
+    var _cx = img.width * 0.006, _cy = img.height * 0.006;
+    wctx.drawImage(img, _cx, _cy, img.width - _cx*2, img.height - _cy*2,
+                   Math.floor((subW-w)/2), Math.floor((subH-h)/2), w, h);
 
     var d = wctx.getImageData(0, 0, subW, subH).data;
-    var tones = new Float32Array(subW * subH);
-    for (var p = 0; p < subW * subH; p++) {
-      var k = p * 4;
-      tones[p] = 0.2126 * d[k] + 0.7152 * d[k + 1] + 0.0722 * d[k + 2];
+    var tones = new Float32Array(subW*subH);
+    for (var p = 0; p < subW*subH; p++) {
+      var k = p*4;
+      tones[p] = 0.2126*d[k] + 0.7152*d[k+1] + 0.0722*d[k+2];
     }
-
-    // per-cell average colour
-    var colors = new Float32Array(cols * rows * 3);
+    var colors = new Float32Array(cols*rows*3);
     for (var cy = 0; cy < rows; cy++) {
       for (var cx = 0; cx < cols; cx++) {
-        var r = 0, g = 0, b = 0;
+        var r=0,g=0,b=0;
         for (var dy = 0; dy < 4; dy++) {
           for (var dx = 0; dx < 2; dx++) {
-            var kk = ((cy * 4 + dy) * subW + (cx * 2 + dx)) * 4;
-            r += d[kk]; g += d[kk + 1]; b += d[kk + 2];
+            var kk = ((cy*4+dy)*subW + (cx*2+dx))*4;
+            r += d[kk]; g += d[kk+1]; b += d[kk+2];
           }
         }
-        var ci = (cy * cols + cx) * 3;
-        colors[ci] = r / 8; colors[ci + 1] = g / 8; colors[ci + 2] = b / 8;
+        var ci = (cy*cols+cx)*3;
+        colors[ci]=r/8; colors[ci+1]=g/8; colors[ci+2]=b/8;
       }
     }
     return { tones: tones, colors: colors };
   }
 
-  // ---------- painting ----------
-
   function paint(p) {
     ctx.fillStyle = BG;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     if (!frameB) return;
-
     var A = frameA, B = frameB;
     var blending = A && p < 1;
-    // ease in-out so the middle of a blend moves fastest
-    var e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+    var e = p < 0.5 ? 2*p*p : 1 - Math.pow(-2*p+2, 2)/2;
     var mode = (!blending || e >= 0.5) ? modeB : modeA;
-
     var i, n;
     if (blending) {
-      n = subW * subH;
-      for (i = 0; i < n; i++) mixTones[i] = A.tones[i] + (B.tones[i] - A.tones[i]) * e;
-      n = cols * rows * 3;
-      for (i = 0; i < n; i++) mixColors[i] = A.colors[i] + (B.colors[i] - A.colors[i]) * e;
+      n = subW*subH;
+      for (i = 0; i < n; i++) mixTones[i] = A.tones[i] + (B.tones[i]-A.tones[i])*e;
+      n = cols*rows*3;
+      for (i = 0; i < n; i++) mixColors[i] = A.colors[i] + (B.colors[i]-A.colors[i])*e;
     } else {
-      mixTones.set(B.tones);
-      mixColors.set(B.colors);
+      mixTones.set(B.tones); mixColors.set(B.colors);
     }
-
     for (var cy = 0; cy < rows; cy++) {
       for (var cx = 0; cx < cols; cx++) {
         var ch, cellTone = 0;
-
         if (mode === "braille") {
           var code = 0;
           for (var dy = 0; dy < 4; dy++) {
             for (var dx = 0; dx < 2; dx++) {
-              var sx = cx * 2 + dx, sy = cy * 4 + dy;
-              var t = mixTones[sy * subW + sx];
+              var sx = cx*2+dx, sy = cy*4+dy;
+              var t = mixTones[sy*subW+sx];
               cellTone += t;
-              var thr = (BAYER[sy & 3][sx & 3] + 0.5) / 16 * 255;
-              if (t < thr) code |= BRAILLE_BITS[dy][dx];
+              if (t < (BAYER[sy&3][sx&3]+0.5)/16*255) code |= BRAILLE_BITS[dy][dx];
             }
           }
-          cellTone /= 8;
           ch = String.fromCharCode(0x2800 + code);
           if (code === 0) continue;
         } else {
-          for (var ay = 0; ay < 4; ay++) {
-            for (var ax = 0; ax < 2; ax++) {
-              cellTone += mixTones[(cy * 4 + ay) * subW + (cx * 2 + ax)];
-            }
-          }
+          for (var ay = 0; ay < 4; ay++)
+            for (var ax = 0; ax < 2; ax++)
+              cellTone += mixTones[(cy*4+ay)*subW + (cx*2+ax)];
           cellTone /= 8;
-          var idx = Math.min(RAMP.length - 1, Math.floor(cellTone / 255 * RAMP.length));
+          var idx = Math.min(RAMP.length-1, Math.floor(cellTone/255*RAMP.length));
           ch = RAMP[idx];
           if (ch === " ") continue;
         }
-
-        var ci = (cy * cols + cx) * 3;
-        ctx.fillStyle = "rgb(" + (mixColors[ci] | 0) + "," +
-                        (mixColors[ci + 1] | 0) + "," + (mixColors[ci + 2] | 0) + ")";
-        ctx.fillText(ch, cx * CELL_W, cy * CELL_H);
+        var ci = (cy*cols+cx)*3;
+        ctx.fillStyle = "rgb(" + (mixColors[ci]|0) + "," +
+                        (mixColors[ci+1]|0) + "," + (mixColors[ci+2]|0) + ")";
+        ctx.fillText(ch, cx*CELL_W, cy*CELL_H);
       }
     }
   }
-
-  // ---------- sequencing ----------
 
   function pickStyle() {
     if (styleMode !== "mixed") return styleMode;
@@ -407,10 +446,8 @@
     if (!entry) return Promise.resolve();
     played[entry.url] = true;
     return getImage(entry).then(function (img) {
-      frameA = frameB;
-      modeA = modeB;
-      frameB = buildFrame(img);
-      modeB = pickStyle();
+      frameA = frameB; modeA = modeB;
+      frameB = buildFrame(img); modeB = pickStyle();
       current = entry;
       document.getElementById("idtag").textContent = entry.name;
       phase = frameA ? "trans" : "hold";
@@ -422,6 +459,7 @@
   function loop(now) {
     requestAnimationFrame(loop);
     if (paused || !frameB) return;
+    sampleQuality(now);
     var el = now - phaseStart;
     if (phase === "trans") {
       var p = Math.min(1, el / pace.trans);
@@ -434,11 +472,59 @@
   }
 
   function start() {
+    if (started) return;
+    started = true;
     sizeGrid();
     advance().then(function () { requestAnimationFrame(loop); });
   }
 
-  // ---------- recording ----------
+  function rebuild() {
+    sizeGrid();
+    frameA = null; frameB = null;
+    advance();
+  }
+
+  // Re-render the work already on screen at the new grid size.
+  function resizeKeep() {
+    sizeGrid();
+    frameA = null;
+    if (current && imgCache[current.url]) {
+      frameB = buildFrame(imgCache[current.url]);
+      phase = "hold";
+      phaseStart = performance.now();
+    } else {
+      advance();
+    }
+  }
+
+  // ---------- adaptive quality ----------
+  // Measures real frame rate and trades character density for smoothness.
+  function sampleQuality(now) {
+    if (!autoQuality || detailSetting !== "auto") return;
+    frameTimes.push(now);
+    if (frameTimes.length > 90) frameTimes.shift();
+    if (now < settleUntil || now - lastCheck < 2000 || frameTimes.length < 40) return;
+    lastCheck = now;
+
+    var span = frameTimes[frameTimes.length - 1] - frameTimes[0];
+    var fps = (frameTimes.length - 1) / (span / 1000);
+    var changed = false;
+
+    if (fps < 26 && CELL_W < MAX_CELL) {          // struggling — coarsen
+      CELL_W += 1; CELL_H = Math.round(CELL_W * 1.75); changed = true;
+    } else if (fps > 55 && CELL_W > MIN_CELL) {   // headroom — refine
+      CELL_W -= 1; CELL_H = Math.round(CELL_W * 1.75); changed = true;
+    }
+
+    if (changed) {
+      frameTimes = [];
+      settleUntil = now + 2500;                   // let it stabilise before judging again
+      resizeKeep();
+      var st = document.getElementById("status");
+      if (st) st.textContent = playlist.length + " WORKS \u00B7 " +
+        (CELL_W <= 6 ? "HIGH" : CELL_W <= 9 ? "STANDARD" : "LIGHT") + " DETAIL";
+    }
+  }
 
   function record() {
     if (recorder) return;
@@ -447,7 +533,7 @@
     var mime = MediaRecorder.isTypeSupported("video/webm;codecs=vp9")
       ? "video/webm;codecs=vp9" : "video/webm";
     var chunks = [];
-    recorder = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000 });
+    recorder = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 12000000 });
     recorder.ondataavailable = function (e) { if (e.data.size) chunks.push(e.data); };
     recorder.onstop = function () {
       var blob = new Blob(chunks, { type: "video/webm" });
@@ -456,8 +542,7 @@
       a.download = "pogo-sequence-" + Date.now() + ".webm";
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
       recorder = null;
-      btn.classList.remove("on");
-      btn.textContent = "RECORD 30s";
+      btn.classList.remove("on"); btn.textContent = "RECORD 30s";
     };
     recorder.start();
     btn.classList.add("on");
@@ -470,15 +555,15 @@
     }, 1000);
   }
 
-  // ---------- wiring ----------
-
   document.getElementById("modeSel").addEventListener("change", function () { styleMode = this.value; });
   document.getElementById("paceSel").addEventListener("change", function () { pace = PACE[this.value]; });
   document.getElementById("detailSel").addEventListener("change", function () {
-    cols = +this.value;
-    sizeGrid();
-    frameA = null; frameB = null;
-    advance();
+    detailSetting = this.value;
+    if (detailSetting === "auto") {
+      CELL_W = 8; CELL_H = 14;
+      frameTimes = []; settleUntil = performance.now() + 2500;
+    }
+    rebuild();
   });
   document.getElementById("pauseBtn").addEventListener("click", function () {
     paused = !paused;
@@ -486,9 +571,48 @@
     this.textContent = paused ? "RESUME" : "PAUSE";
     if (!paused) phaseStart = performance.now();
   });
-  document.getElementById("recBtn").addEventListener("click", record);
 
-  if (/[?&]embed/.test(location.search)) document.body.classList.add("embed");
+  function toggleClean(on) {
+    document.body.classList.toggle("clean", on);
+    document.getElementById("cleanBtn").classList.toggle("on", on);
+    setTimeout(rebuild, 60);
+  }
+  document.getElementById("cleanBtn").addEventListener("click", function () {
+    toggleClean(!document.body.classList.contains("clean"));
+  });
+  document.getElementById("exitClean").addEventListener("click", function () { toggleClean(false); });
+
+  document.getElementById("fsBtn").addEventListener("click", function () {
+    if (!document.fullscreenElement) {
+      (document.documentElement.requestFullscreen || function(){})
+        .call(document.documentElement);
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  });
+  document.addEventListener("fullscreenchange", function () {
+    var on = !!document.fullscreenElement;
+    document.getElementById("fsBtn").classList.toggle("on", on);
+    document.getElementById("fsBtn").textContent = on ? "EXIT FULLSCREEN" : "FULLSCREEN";
+    setTimeout(rebuild, 120);
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && document.body.classList.contains("clean")) toggleClean(false);
+  });
+
+  var rt;
+  window.addEventListener("resize", function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { if (started) rebuild(); }, 250);
+  });
+
+  if (/[?&]embed/.test(Q)) document.body.classList.add("embed");
+  if (PAPER) {
+    var st = document.querySelector(".stage");
+    if (st) st.style.background = BG;
+    document.body.style.background = BG;
+  }
 
   sizeGrid();
   loadArchive();

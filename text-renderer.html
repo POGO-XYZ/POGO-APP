@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POGO Studios — Text Renderer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #EFEDE6;
+    color: #171512;
+    font-family: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Menlo, monospace;
+    min-height: 100vh;
+  }
+  nav {
+    border-bottom: 2px solid #171512; padding: 14px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .mark {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
+    color: #171512; text-decoration: none; opacity: 1;
+  }
+  .mark img { height: 26px; width: auto; display: block;  }
+  .mark:hover { opacity: 0.6; }
+  @media (max-width: 600px) {
+    .mark span { display: none; }
+    .mark img { height: 24px; }
+  }
+  .navlinks { display: flex; gap: 18px; flex-wrap: wrap; }
+  .navlinks a {
+    color: #171512; text-decoration: none; font-size: 10px;
+    letter-spacing: 0.14em; opacity: 0.55; padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .navlinks a:hover { opacity: 1; }
+  .navlinks a.here { opacity: 1; border-bottom-color: #171512; }
+  header {
+    border-bottom: 2px solid #171512;
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .eyebrow { font-size: 11px; letter-spacing: 0.18em; opacity: 0.55; }
+  h1 { font-size: 22px; font-weight: 700; margin-top: 4px; letter-spacing: -0.01em; }
+  .tagline { font-size: 11px; opacity: 0.55; letter-spacing: 0.08em; }
+  .layout { display: flex; flex-wrap: wrap; }
+  .controls {
+    width: 280px; min-width: 240px; flex-grow: 1; max-width: 340px;
+    padding: 24px 28px; border-right: 2px solid #171512;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .label { font-size: 11px; letter-spacing: 0.12em; margin-bottom: 6px; }
+  .hint { font-size: 10px; opacity: 0.5; margin-top: 4px; }
+  select, input[type=range] { width: 100%; }
+  select {
+    padding: 8px; font-family: inherit; font-size: 12px;
+    border: 2px solid #171512; background: #EFEDE6; color: #171512;
+  }
+  input[type=range] { accent-color: #171512; }
+  button {
+    padding: 9px 6px; font-family: inherit; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.06em; cursor: pointer; border: 2px solid #171512;
+    background: #EFEDE6; color: #171512; flex: 1;
+  }
+  button.active { background: #171512; color: #EFEDE6; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .preview {
+    width: 100%; border: 2px solid #171512; display: none;
+  }
+  .output {
+    flex: 3; min-width: 300px; padding: 24px 28px;
+    background: #171512; min-height: 70vh; overflow: auto;
+    transition: background 0.2s;
+  }
+  .placeholder {
+    opacity: 0.35; font-size: 13px; letter-spacing: 0.1em;
+    margin-top: 40px; text-align: center; color: #EFEDE6;
+  }
+  pre { margin: 0; font-family: inherit; letter-spacing: 0; }
+  .workinfo { font-size: 11px; opacity: 0.6; word-break: break-all; }
+  footer {
+    border-top: 2px solid #171512; padding: 14px 28px;
+    font-size: 10px; letter-spacing: 0.08em; opacity: 0.55;
+  }
+  footer a { color: inherit; }
+
+  @media (max-width: 900px) {
+    nav { padding: 11px 14px; }
+    .navlinks {
+      flex-wrap: nowrap; overflow-x: auto; gap: 14px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none; max-width: 100%;
+    }
+    .navlinks::-webkit-scrollbar { display: none; }
+    .navlinks a { white-space: nowrap; font-size: 9.5px; }
+    header { padding: 14px 18px; }
+    .controls, div[style*="border-right"] { max-width: 100% !important; width: 100% !important; border-right: none !important; }
+    select, button { min-height: 40px; }
+    input[type=range] { height: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="mark" href="index.html"><img src="pogo-seal.png" alt=""><span>POGO-XYZ</span></a>
+  <div class="navlinks">
+    <a href="index.html">HOME</a>
+    <a href="archive.html">ARCHIVE</a>
+    <a href="text-renderer.html" class="here">TEXT RENDERER</a>
+    <a href="art-to-text-live-sequence.html">LIVE SEQUENCE</a>
+    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">REPOSITORIES</a>
+    <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO</a>
+  </div>
+</nav>
+
+<header>
+  <div>
+    <div class="eyebrow">TOOL 001</div>
+    <h1>TEXT RENDERER</h1>
+  </div>
+  <div class="tagline">ARCHIVED WORKS → CHARACTERS · RUNS ENTIRELY IN-BROWSER</div>
+</header>
+
+<div class="layout">
+  <div class="controls">
+
+    <div>
+      <div class="label">ARCHIVE YEAR</div>
+      <select id="yearSel"><option>Loading…</option></select>
+    </div>
+
+    <div>
+      <div class="label">WORK</div>
+      <select id="workSel" disabled><option>Select a year first</option></select>
+      <div class="hint">Pulled live from POGO-ARCHIVE-MEDIA</div>
+    </div>
+
+    <div class="workinfo" id="workInfo"></div>
+    <img class="preview" id="preview" alt="source work">
+
+    <div>
+      <div class="label">MODE</div>
+      <div class="row">
+        <button id="modeAscii" class="active">ASCII</button>
+        <button id="modeBraille">BRAILLE</button>
+      </div>
+    </div>
+
+    <div id="asciiControls">
+      <div>
+        <div class="label">DETAIL — <span id="widthVal">100</span> CHARS WIDE</div>
+        <input type="range" id="widthSl" min="40" max="220" value="100">
+      </div>
+      <div style="margin-top:14px">
+        <div class="label">CHARACTER SET</div>
+        <select id="rampSel">
+          <option value="standard">Standard (@%#*+=-:.)</option>
+          <option value="detailed">Detailed (70 levels)</option>
+          <option value="blocks">Blocks (█▓▒░)</option>
+          <option value="shades">Shades (█▉▊▋▌▍▎▏)</option>
+          <option value="minimal">Minimal (#+-.)</option>
+          <option value="pogo">POGO (POGO#*+=-:.)</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="brailleControls" style="display:none">
+      <div>
+        <div class="label">DETAIL — <span id="bwVal">120</span> CELLS WIDE</div>
+        <input type="range" id="bwSl" min="30" max="220" value="120">
+        <div class="hint">Each cell = 2×4 dots</div>
+      </div>
+      <div style="margin-top:14px">
+        <div class="label">THRESHOLD — <span id="thVal">128</span></div>
+        <input type="range" id="thSl" min="20" max="235" value="128">
+      </div>
+      <div class="row" style="margin-top:14px">
+        <button id="ditherBtn" class="active">DITHER ON</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="label">ZOOM — <span id="zoomVal">8</span>PX</div>
+      <input type="range" id="zoomSl" min="3" max="24" value="8">
+    </div>
+
+    <div>
+      <div class="label">BACKGROUND</div>
+      <div class="row">
+        <button id="themeDark" class="active">DARK</button>
+        <button id="themePaper">PAPER</button>
+        <button id="themeWhite">WHITE</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <button id="invertBtn">INVERT OFF</button>
+      <button id="colorBtn">COLOR OFF</button>
+    </div>
+
+    <div class="row" id="exportRow" style="display:none; margin-top:auto">
+      <button id="copyBtn">COPY</button>
+      <button id="txtBtn">.TXT</button>
+      <button id="pngBtn">.PNG</button>
+    </div>
+
+  </div>
+
+  <div class="output" id="outputPane">
+    <div class="placeholder" id="placeholder">SELECT AN ARCHIVED WORK TO BEGIN</div>
+    <pre id="outputPre" style="display:none"></pre>
+  </div>
+</div>
+
+<footer>
+  A TOOL OF THE <a href="https://github.com/POGO-XYZ/POGO-ARCHIVE" target="_blank" rel="noopener">POGO STUDIOS ARCHIVE</a> · IMAGES SOURCED FROM <a href="https://github.com/POGO-XYZ/POGO-ARCHIVE-MEDIA" target="_blank" rel="noopener">POGO-ARCHIVE-MEDIA</a>
+</footer>
+
+<canvas id="workCanvas" style="display:none"></canvas>
+
+<script>
+(function () {
+  "use strict";
+
+  var MEDIA_OWNER = "POGO-XYZ";
+  var MEDIA_REPO = "POGO-ARCHIVE-MEDIA";
+  var API_BASE = "https://api.github.com/repos/" + MEDIA_OWNER + "/" + MEDIA_REPO + "/contents/";
+
+  var RAMPS = {
+    standard: "@%#*+=-:. ",
+    detailed: "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ",
+    blocks: "\u2588\u2593\u2592\u2591 ",
+    shades: "\u2588\u2589\u258A\u258B\u258C\u258D\u258E\u258F ",
+    minimal: "#+-. ",
+    pogo: "POGO#*+=-:. "
+  };
+
+  var THEMES = {
+    dark: { bg: "#171512", fg: "#EFEDE6" },
+    paper: { bg: "#EFEDE6", fg: "#171512" },
+    white: { bg: "#FFFFFF", fg: "#171512" }
+  };
+
+  var BRAILLE_MAP = [
+    [0x01, 0x08],
+    [0x02, 0x10],
+    [0x04, 0x20],
+    [0x40, 0x80]
+  ];
+
+  var state = {
+    mode: "ascii",
+    width: 100,
+    brailleWidth: 120,
+    threshold: 128,
+    dither: true,
+    ramp: "standard",
+    inverted: false,
+    color: false,
+    theme: "dark",
+    zoom: 8,
+    img: null,
+    workName: "",
+    output: "",
+    colorGrid: null
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var canvas = $("workCanvas");
+
+  // ---------- Archive browsing ----------
+
+  function loadYears() {
+    fetch(API_BASE)
+      .then(function (r) { return r.json(); })
+      .then(function (items) {
+        var years = items
+          .filter(function (i) { return i.type === "dir" && /^\d{4}$/.test(i.name); })
+          .map(function (i) { return i.name; })
+          .sort()
+          .reverse();
+        var sel = $("yearSel");
+        sel.innerHTML = "";
+        var opt0 = document.createElement("option");
+        opt0.textContent = "Select year";
+        opt0.value = "";
+        sel.appendChild(opt0);
+        years.forEach(function (y) {
+          var o = document.createElement("option");
+          o.value = y;
+          o.textContent = y;
+          sel.appendChild(o);
+        });
+      })
+      .catch(function () {
+        $("yearSel").innerHTML = "<option>Archive unavailable</option>";
+      });
+  }
+
+  function loadWorks(year) {
+    var sel = $("workSel");
+    sel.disabled = true;
+    sel.innerHTML = "<option>Loading…</option>";
+    fetch(API_BASE + year)
+      .then(function (r) { return r.json(); })
+      .then(function (items) {
+        var files = items.filter(function (i) {
+          return i.type === "file" && /\.(jpe?g|png|webp|gif)$/i.test(i.name);
+        });
+        sel.innerHTML = "";
+        var opt0 = document.createElement("option");
+        opt0.textContent = "Select work";
+        opt0.value = "";
+        sel.appendChild(opt0);
+        files.forEach(function (f) {
+          var o = document.createElement("option");
+          o.value = f.download_url;
+          o.textContent = f.name.replace(/\.[^.]+$/, "");
+          sel.appendChild(o);
+        });
+        sel.disabled = false;
+      })
+      .catch(function () {
+        sel.innerHTML = "<option>Failed to load works</option>";
+      });
+  }
+
+  function loadImage(url, name) {
+    var img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = function () {
+      state.img = img;
+      state.workName = name;
+      $("preview").src = url;
+      $("preview").style.display = "block";
+      $("workInfo").textContent = name;
+      render();
+    };
+    img.onerror = function () {
+      $("workInfo").textContent = "Failed to load image.";
+    };
+    img.src = url;
+  }
+
+  // ---------- Rendering ----------
+
+  function render() {
+    if (!state.img) return;
+    if (state.mode === "braille") renderBraille();
+    else renderAscii();
+    display();
+  }
+
+  function renderAscii() {
+    var chars = state.inverted
+      ? RAMPS[state.ramp].split("").reverse().join("")
+      : RAMPS[state.ramp];
+    var img = state.img;
+    var w = state.width;
+    var aspect = img.height / img.width;
+    var h = Math.max(1, Math.round(w * aspect * 0.5));
+
+    canvas.width = w; canvas.height = h;
+    var ctx = canvas.getContext("2d");
+    var _cw = img.width * 0.006, _ch = img.height * 0.006;
+    ctx.drawImage(img, _cw, _ch, img.width - _cw*2, img.height - _ch*2, 0, 0, w, h);
+    var data = ctx.getImageData(0, 0, w, h).data;
+
+    var out = "";
+    var grid = state.color ? [] : null;
+
+    for (var y = 0; y < h; y++) {
+      var row = state.color ? [] : null;
+      for (var x = 0; x < w; x++) {
+        var i = (y * w + x) * 4;
+        var r = data[i], g = data[i + 1], b = data[i + 2];
+        var lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        var idx = Math.min(chars.length - 1, Math.floor((lum / 255) * chars.length));
+        var ch = chars[idx];
+        out += ch;
+        if (state.color) row.push({ ch: ch, c: "rgb(" + r + "," + g + "," + b + ")" });
+      }
+      out += "\n";
+      if (state.color) grid.push(row);
+    }
+    state.output = out;
+    state.colorGrid = grid;
+  }
+
+  function renderBraille() {
+    var img = state.img;
+    var cellsWide = state.brailleWidth;
+    var pxW = cellsWide * 2;
+    var aspect = img.height / img.width;
+    var pxH = Math.max(4, Math.round(pxW * aspect));
+    var cellsHigh = Math.max(1, Math.round(pxH / 4));
+    var finalH = cellsHigh * 4;
+
+    canvas.width = pxW; canvas.height = finalH;
+    var ctx = canvas.getContext("2d");
+    var _cw2 = img.width * 0.006, _ch2 = img.height * 0.006;
+    ctx.drawImage(img, _cw2, _ch2, img.width - _cw2*2, img.height - _ch2*2, 0, 0, pxW, finalH);
+    var data = ctx.getImageData(0, 0, pxW, finalH).data;
+
+    var total = pxW * finalH;
+    var lum = new Float32Array(total);
+    for (var p = 0; p < total; p++) {
+      var i4 = p * 4;
+      lum[p] = 0.2126 * data[i4] + 0.7152 * data[i4 + 1] + 0.0722 * data[i4 + 2];
+    }
+
+    var dots = new Uint8Array(total);
+    var thresh = state.threshold;
+
+    if (state.dither) {
+      var buf = Float32Array.from(lum);
+      for (var y = 0; y < finalH; y++) {
+        for (var x = 0; x < pxW; x++) {
+          var p2 = y * pxW + x;
+          var old = buf[p2];
+          var nv = old < thresh ? 0 : 255;
+          var err = old - nv;
+          buf[p2] = nv;
+          if (x + 1 < pxW) buf[p2 + 1] += err * 7 / 16;
+          if (y + 1 < finalH) {
+            if (x > 0) buf[p2 + pxW - 1] += err * 3 / 16;
+            buf[p2 + pxW] += err * 5 / 16;
+            if (x + 1 < pxW) buf[p2 + pxW + 1] += err * 1 / 16;
+          }
+        }
+      }
+      for (var p3 = 0; p3 < total; p3++) {
+        var dark = buf[p3] === 0;
+        dots[p3] = state.inverted ? (dark ? 0 : 1) : (dark ? 1 : 0);
+      }
+    } else {
+      for (var p4 = 0; p4 < total; p4++) {
+        var dk = lum[p4] < thresh;
+        dots[p4] = state.inverted ? (dk ? 0 : 1) : (dk ? 1 : 0);
+      }
+    }
+
+    var out = "";
+    var grid = state.color ? [] : null;
+    for (var cy = 0; cy < cellsHigh; cy++) {
+      var row = state.color ? [] : null;
+      for (var cx = 0; cx < cellsWide; cx++) {
+        var code = 0, rS = 0, gS = 0, bS = 0, dc = 0;
+        for (var dy = 0; dy < 4; dy++) {
+          for (var dx = 0; dx < 2; dx++) {
+            var px = cx * 2 + dx, py = cy * 4 + dy;
+            var pp = py * pxW + px;
+            if (dots[pp]) {
+              code |= BRAILLE_MAP[dy][dx];
+              var ii = pp * 4;
+              rS += data[ii]; gS += data[ii + 1]; bS += data[ii + 2];
+              dc++;
+            }
+          }
+        }
+        var ch = String.fromCharCode(0x2800 + code);
+        out += ch;
+        if (state.color) {
+          row.push({
+            ch: ch,
+            c: dc ? "rgb(" + Math.round(rS / dc) + "," + Math.round(gS / dc) + "," + Math.round(bS / dc) + ")" : null
+          });
+        }
+      }
+      out += "\n";
+      if (state.color) grid.push(row);
+    }
+    state.output = out;
+    state.colorGrid = grid;
+  }
+
+  function display() {
+    var t = THEMES[state.theme];
+    $("outputPane").style.background = t.bg;
+    $("placeholder").style.display = "none";
+    var pre = $("outputPre");
+    pre.style.display = "block";
+    pre.style.fontSize = state.zoom + "px";
+    pre.style.lineHeight = state.zoom + "px";
+
+    if (state.colorGrid) {
+      var html = "";
+      for (var y = 0; y < state.colorGrid.length; y++) {
+        var row = state.colorGrid[y];
+        html += "<div>";
+        for (var x = 0; x < row.length; x++) {
+          var cell = row[x];
+          var color = cell.c || t.fg;
+          html += '<span style="color:' + color + '">' + escapeHtml(cell.ch) + "</span>";
+        }
+        html += "</div>";
+      }
+      pre.innerHTML = html;
+    } else {
+      pre.style.color = t.fg;
+      pre.textContent = state.output;
+    }
+    $("exportRow").style.display = "flex";
+  }
+
+  function escapeHtml(s) {
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  // ---------- Exports ----------
+
+  function copyText() {
+    var done = function (ok) {
+      if (ok) {
+        $("copyBtn").textContent = "COPIED \u2713";
+        $("copyBtn").classList.add("active");
+        setTimeout(function () {
+          $("copyBtn").textContent = "COPY";
+          $("copyBtn").classList.remove("active");
+        }, 1500);
+      }
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(state.output).then(function () { done(true); }, function () { fallbackCopy(done); });
+    } else {
+      fallbackCopy(done);
+    }
+  }
+
+  function fallbackCopy(done) {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = state.output;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      done(ok);
+    } catch (e) { done(false); }
+  }
+
+  function baseName() {
+    return (state.workName || "render");
+  }
+
+  function triggerDownload(blob, name) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }
+
+  function downloadTxt() {
+    if (!state.output) return;
+    var blob = new Blob([state.output], { type: "text/plain;charset=utf-8" });
+    triggerDownload(blob, baseName() + (state.mode === "braille" ? "-braille.txt" : "-ascii.txt"));
+  }
+
+  function downloadPng() {
+    if (!state.output) return;
+    var t = THEMES[state.theme];
+    var lines = state.output.split("\n").filter(function (l) { return l.length > 0; });
+    if (!lines.length) return;
+
+    var cellW = 12, cellH = 12, scale = 2, pad = 40;
+    var cols = 0;
+    lines.forEach(function (l) { if (l.length > cols) cols = l.length; });
+    var rows = lines.length;
+
+    var exp = document.createElement("canvas");
+    exp.width = (cols * cellW + pad * 2) * scale;
+    exp.height = (rows * cellH + pad * 2) * scale;
+    var ctx = exp.getContext("2d");
+    ctx.scale(scale, scale);
+    ctx.fillStyle = t.bg;
+    ctx.fillRect(0, 0, exp.width / scale, exp.height / scale);
+    ctx.font = cellH + 'px ui-monospace, "Cascadia Code", Menlo, monospace';
+    ctx.textBaseline = "top";
+
+    if (state.colorGrid) {
+      for (var y = 0; y < state.colorGrid.length; y++) {
+        var row = state.colorGrid[y];
+        for (var x = 0; x < row.length; x++) {
+          ctx.fillStyle = row[x].c || t.fg;
+          ctx.fillText(row[x].ch, pad + x * cellW, pad + y * cellH);
+        }
+      }
+    } else {
+      ctx.fillStyle = t.fg;
+      for (var y2 = 0; y2 < lines.length; y2++) {
+        for (var x2 = 0; x2 < lines[y2].length; x2++) {
+          ctx.fillText(lines[y2][x2], pad + x2 * cellW, pad + y2 * cellH);
+        }
+      }
+    }
+
+    var name = baseName() + (state.mode === "braille" ? "-braille.png" : "-ascii.png");
+    if (exp.toBlob) {
+      exp.toBlob(function (blob) {
+        if (blob) triggerDownload(blob, name);
+        else dataUrlFallback(exp, name);
+      }, "image/png");
+    } else {
+      dataUrlFallback(exp, name);
+    }
+  }
+
+  function dataUrlFallback(cnv, name) {
+    var a = document.createElement("a");
+    a.href = cnv.toDataURL("image/png");
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  // ---------- Wiring ----------
+
+  $("yearSel").addEventListener("change", function () {
+    if (this.value) loadWorks(this.value);
+  });
+  $("workSel").addEventListener("change", function () {
+    if (this.value) {
+      var name = this.options[this.selectedIndex].textContent;
+      loadImage(this.value, name);
+    }
+  });
+
+  function setMode(m) {
+    state.mode = m;
+    $("modeAscii").classList.toggle("active", m === "ascii");
+    $("modeBraille").classList.toggle("active", m === "braille");
+    $("asciiControls").style.display = m === "ascii" ? "block" : "none";
+    $("brailleControls").style.display = m === "braille" ? "block" : "none";
+    render();
+  }
+  $("modeAscii").addEventListener("click", function () { setMode("ascii"); });
+  $("modeBraille").addEventListener("click", function () { setMode("braille"); });
+
+  $("widthSl").addEventListener("input", function () {
+    state.width = +this.value;
+    $("widthVal").textContent = this.value;
+    render();
+  });
+  $("bwSl").addEventListener("input", function () {
+    state.brailleWidth = +this.value;
+    $("bwVal").textContent = this.value;
+    render();
+  });
+  $("thSl").addEventListener("input", function () {
+    state.threshold = +this.value;
+    $("thVal").textContent = this.value;
+    render();
+  });
+  $("zoomSl").addEventListener("input", function () {
+    state.zoom = +this.value;
+    $("zoomVal").textContent = this.value;
+    if (state.output) display();
+  });
+  $("rampSel").addEventListener("change", function () {
+    state.ramp = this.value;
+    render();
+  });
+  $("ditherBtn").addEventListener("click", function () {
+    state.dither = !state.dither;
+    this.textContent = "DITHER " + (state.dither ? "ON" : "OFF");
+    this.classList.toggle("active", state.dither);
+    render();
+  });
+  $("invertBtn").addEventListener("click", function () {
+    state.inverted = !state.inverted;
+    this.textContent = "INVERT " + (state.inverted ? "ON" : "OFF");
+    this.classList.toggle("active", state.inverted);
+    render();
+  });
+  $("colorBtn").addEventListener("click", function () {
+    state.color = !state.color;
+    this.textContent = "COLOR " + (state.color ? "ON" : "OFF");
+    this.classList.toggle("active", state.color);
+    render();
+  });
+
+  function setTheme(name) {
+    state.theme = name;
+    ["Dark", "Paper", "White"].forEach(function (n) {
+      $("theme" + n).classList.toggle("active", n.toLowerCase() === name);
+    });
+    var shouldInvert = name !== "dark";
+    if (shouldInvert !== state.inverted) {
+      state.inverted = shouldInvert;
+      $("invertBtn").textContent = "INVERT " + (shouldInvert ? "ON" : "OFF");
+      $("invertBtn").classList.toggle("active", shouldInvert);
+    }
+    render();
+  }
+  $("themeDark").addEventListener("click", function () { setTheme("dark"); });
+  $("themePaper").addEventListener("click", function () { setTheme("paper"); });
+  $("themeWhite").addEventListener("click", function () { setTheme("white"); });
+
+  $("copyBtn").addEventListener("click", copyText);
+  $("txtBtn").addEventListener("click", downloadTxt);
+  $("pngBtn").addEventListener("click", downloadPng);
+
+  loadYears();
+})();
+</script>
+</body>
+</html>
