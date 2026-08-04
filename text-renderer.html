@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>POGO Studios — Text Renderer</title>
+<link rel="icon" href="pogo-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -22,11 +24,11 @@
     font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
     color: #171512; text-decoration: none; opacity: 1;
   }
-  .mark img { height: 26px; width: auto; display: block;  }
+  .mark img { height: 40px; width: auto; display: block; }
   .mark:hover { opacity: 0.6; }
   @media (max-width: 600px) {
     .mark span { display: none; }
-    .mark img { height: 24px; }
+    .mark img { height: 34px; }
   }
   .navlinks { display: flex; gap: 18px; flex-wrap: wrap; }
   .navlinks a {
@@ -46,7 +48,7 @@
     gap: 8px;
   }
   .eyebrow { font-size: 11px; letter-spacing: 0.18em; opacity: 0.55; }
-  h1 { font-size: 22px; font-weight: 700; margin-top: 4px; letter-spacing: -0.01em; }
+  h1 { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-top: 5px; letter-spacing: -0.01em; }
   .tagline { font-size: 11px; opacity: 0.55; letter-spacing: 0.08em; }
   .layout { display: flex; flex-wrap: wrap; }
   .controls {
@@ -107,13 +109,14 @@
 <body>
 
 <nav>
-  <a class="mark" href="index.html"><img src="pogo-seal.png" alt=""><span>POGO-XYZ</span></a>
+  <a class="mark" href="index.html"><img src="pogo-mark.svg" alt="POGO Studios"></a>
   <div class="navlinks">
     <a href="index.html">HOME</a>
     <a href="archive.html">ARCHIVE</a>
     <a href="text-renderer.html" class="here">TEXT RENDERER</a>
     <a href="art-to-text-live-sequence.html">LIVE SEQUENCE</a>
-    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">REPOSITORIES</a>
+    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">SOURCE &amp; DATA</a>
+    <a href="https://www.pogostudios.xyz/process" target="_blank" rel="noopener">PROCESS</a>
     <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO</a>
   </div>
 </nav>

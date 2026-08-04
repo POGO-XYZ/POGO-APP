@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>POGO Studios — Archive</title>
+<link rel="icon" href="pogo-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -28,11 +30,11 @@
     font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
     color: #171512; text-decoration: none; opacity: 1;
   }
-  .mark img { height: 26px; width: auto; display: block;  }
+  .mark img { height: 40px; width: auto; display: block; }
   .mark:hover { opacity: 0.6; }
   @media (max-width: 600px) {
     .mark span { display: none; }
-    .mark img { height: 24px; }
+    .mark img { height: 34px; }
   }
   .navlinks { display: flex; gap: 16px; flex-wrap: wrap; }
   .navlinks a {
@@ -78,7 +80,7 @@
   .stagehead { padding: 12px 20px; border-bottom: 1px solid var(--faint);
     display: flex; justify-content: space-between; align-items: center;
     flex-wrap: wrap; gap: 10px; flex: none; }
-  .wid { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+  .wid { font-family: var(--font-mono); font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
   .wsub { font-size: 10px; opacity: 0.55; letter-spacing: 0.1em; margin-top: 2px; }
   .views { display: flex; }
   .views button {
@@ -114,8 +116,14 @@
   .vmark { flex: none; width: 13px; opacity: 0.4; }
   .vstep.pass .vmark { color: var(--ok); opacity: 1; }
   .vstep.fail .vmark { color: var(--bad); opacity: 1; }
-  .vdesc { opacity: 0.6; font-size: 9.5px; margin-top: 2px; line-height: 1.5; }
-  .note { font-size: 9.5px; line-height: 1.6; opacity: 0.55; margin-top: 8px; }
+  .vdesc { font-family: var(--font-body); opacity: 0.7; font-size: 15px; margin-top: 4px; line-height: 1.22; }
+  .cin {
+    width: 100%; font-family: inherit; font-size: 11px; padding: 7px 8px;
+    border: 1px solid var(--ink); background: var(--paper); color: var(--ink);
+    margin-top: 2px;
+  }
+  textarea.cin { resize: vertical; }
+  .note { font-family: var(--font-body); font-size: 15px; line-height: 1.22; opacity: 0.7; margin-top: 8px; }
 
   /* ---------- mobile ---------- */
   .tabbar { display: none; }
@@ -169,13 +177,14 @@
 <body>
 
 <nav>
-  <a class="mark" href="index.html"><img src="pogo-seal.png" alt=""><span>POGO-XYZ</span></a>
+  <a class="mark" href="index.html"><img src="pogo-mark.svg" alt="POGO Studios"></a>
   <div class="navlinks">
     <a href="index.html">HOME</a>
     <a href="archive.html" class="here">ARCHIVE</a>
     <a href="text-renderer.html">TEXT RENDERER</a>
     <a href="art-to-text-live-sequence.html">LIVE SEQUENCE</a>
-    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">REPOSITORIES</a>
+    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">SOURCE &amp; DATA</a>
+    <a href="https://www.pogostudios.xyz/process" target="_blank" rel="noopener">PROCESS</a>
     <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO</a>
   </div>
 </nav>
@@ -220,6 +229,9 @@
       <div class="note">
         The archive holds a permanent record for every physical work POGO Studios has
         documented. Choose a work to view its details, media, and verification state.
+        <br><br>
+        This app is read-only. It reads public files, runs entirely in your browser,
+        and collects nothing \u2014 no accounts, no tracking, no uploads.
       </div>
     </div>
   </div>
@@ -264,22 +276,46 @@
 
   function boot() {
     Promise.all([
-      fetch(RAW + "LINKS/LISTINGS.JSON").then(function (r) { return r.json(); })
-        .catch(function () { return { listings: {} }; }),
-      fetch(API + ARCHIVE + "/contents/").then(function (r) { return r.json(); })
+      fetch("manifest.json", { cache: "no-cache" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; }),
+      fetch(RAW + "LINKS/LISTINGS.JSON", { cache: "no-cache" })
+        .then(function (r) { return r.json(); })
+        .catch(function () { return { listings: {} }; })
     ]).then(function (res) {
-      listings = (res[0] && res[0].listings) || {};
-      var years = res[1].filter(function (i) {
-        return i.type === "dir" && /^\d{4}$/.test(i.name);
-      }).map(function (i) { return i.name; }).sort().reverse();
-      return Promise.all(years.map(loadYear));
+      listings = (res[1] && res[1].listings) || {};
+      if (res[0] && res[0].works) { useManifest(res[0]); return null; }
+      return legacyLoad();          // fallback if manifest.json isn't published yet
     }).then(function () {
-      order.sort(function (a, b) { return a > b ? -1 : a < b ? 1 : 0; });
       renderIndex();
       $("idxfoot").textContent = order.length + " WORKS ARCHIVED";
+      openFromUrl();
     }).catch(function () {
       $("idxlist").innerHTML = '<div class="yearhead">ARCHIVE UNAVAILABLE</div>';
     });
+  }
+
+  function useManifest(m) {
+    m.works.forEach(function (w) {
+      works[w.id] = w;
+      order.push(w.id);
+    });
+    order.sort(function (a, b) { return a > b ? -1 : a < b ? 1 : 0; });
+  }
+
+  // Fallback: query the GitHub API directly. Slower and rate-limited,
+  // but keeps the app working before a manifest is generated.
+  function legacyLoad() {
+    return fetch(API + ARCHIVE + "/contents/")
+      .then(function (r) { return r.json(); })
+      .then(function (items) {
+        var years = items.filter(function (i) {
+          return i.type === "dir" && /^\d{4}$/.test(i.name);
+        }).map(function (i) { return i.name; }).sort().reverse();
+        return Promise.all(years.map(loadYear));
+      }).then(function () {
+        order.sort(function (a, b) { return a > b ? -1 : a < b ? 1 : 0; });
+      });
   }
 
   function loadYear(year) {
@@ -297,11 +333,24 @@
       res[0].forEach(function (f) {
         if (f.type !== "file" || !/\.json$/i.test(f.name)) return;
         var id = f.name.replace(/\.[^.]+$/, "").toUpperCase();
-        works[id] = { id: id, year: year, recordUrl: f.download_url, mediaUrl: media[id] || null };
+        works[id] = { id: id, year: year, record_url: f.download_url, media_url: media[id] || null };
         order.push(id);
       });
     });
   }
+
+  // ---------- deep linking ----------
+  function openFromUrl() {
+    var m = /[?&]id=([^&]+)/.exec(location.search);
+    var id = m ? decodeURIComponent(m[1]).toUpperCase() : null;
+    if (id && works[id]) select(id, true);
+  }
+  window.addEventListener("popstate", function () {
+    var m = /[?&]id=([^&]+)/.exec(location.search);
+    if (m && works[decodeURIComponent(m[1]).toUpperCase()]) {
+      select(decodeURIComponent(m[1]).toUpperCase(), true);
+    }
+  });
 
   function statusOf(id) {
     var l = listings[id];
@@ -350,27 +399,55 @@
     });
   });
 
-  function select(id) {
-    selected = id; record = null; imgEl = null;
+  function select(id, fromUrl) {
+    selected = id; imgEl = null;
+    var w = works[id];
     renderIndex();
     if (isMobile()) setPane("work");
-    var w = works[id];
-    $("wid").textContent = id;
-    $("wsub").textContent = "Loading record…";
-    $("canvasWrap").innerHTML = '<div class="empty">LOADING…</div>';
 
-    fetch(w.recordUrl).then(function (r) { return r.json(); }).then(function (rec) {
-      record = rec;
-      $("wsub").textContent = [rec.medium, rec.dimensions].filter(Boolean).join(" \u00B7 ");
+    // deep link: give every work its own address
+    if (!fromUrl) {
+      history.pushState({ id: id }, "", "?id=" + encodeURIComponent(id));
+    }
+    document.title = id + " — POGO Studios Archive";
+
+    $("wid").textContent = id;
+    $("wsub").textContent = [w.medium, w.dimensions].filter(Boolean).join(" \u00B7 ") || "Loading\u2026";
+    $("canvasWrap").innerHTML = '<div class="empty">LOADING\u2026</div>';
+
+    var ready = w.medium
+      ? Promise.resolve(w)                       // manifest already has the details
+      : fetch(w.record_url).then(function (r) { return r.json(); })
+          .then(function (rec) {
+            var src = (rec.files || []).filter(function (x) { return x.role === "reference_image_source"; })[0] || {};
+            var web = (rec.files || []).filter(function (x) { return x.role === "reference_image_web"; })[0] || {};
+            var ev = function (t) {
+              var e = (rec.events || []).filter(function (x) { return x.type === t; })[0];
+              return e ? e.date : "";
+            };
+            Object.assign(w, {
+              title: rec.title, medium: rec.medium, dimensions: rec.dimensions,
+              focus: rec.focus, series: rec.series, type_code: rec.type_code,
+              sequence: rec.sequence, schema_version: rec.schema_version,
+              created: ev("creation"), archived: ev("archival"),
+              source_sha256: (src.sha256 || "").toLowerCase(),
+              web_sha256: (web.sha256 || "").toLowerCase()
+            });
+            return w;
+          });
+
+    ready.then(function (wk) {
+      record = wk;
+      $("wsub").textContent = [wk.medium, wk.dimensions].filter(Boolean).join(" \u00B7 ");
       renderRecord();
-      if (w.mediaUrl) {
+      if (wk.media_url) {
         var img = new Image();
         img.crossOrigin = "anonymous";
         img.onload = function () { imgEl = img; paint(); };
         img.onerror = function () {
           $("canvasWrap").innerHTML = '<div class="empty">MEDIA UNAVAILABLE</div>';
         };
-        img.src = w.mediaUrl;
+        img.src = wk.media_url;
       } else {
         $("canvasWrap").innerHTML = '<div class="empty">NO MEDIA FILE FOUND</div>';
       }
@@ -385,6 +462,8 @@
     if (view === "photo") {
       var i = new Image();
       i.src = imgEl.src;
+      i.alt = "Photograph of " + selected +
+        (works[selected] && works[selected].medium ? " \u2014 " + works[selected].medium : "");
       wrap.appendChild(i);
       return;
     }
@@ -472,6 +551,9 @@
         }
       }
     }
+    out.setAttribute("role", "img");
+    out.setAttribute("aria-label",
+      selected + " rendered as " + (braille ? "Unicode Braille" : "ASCII") + " characters");
     wrap.appendChild(out);
   }
 
@@ -481,13 +563,6 @@
     rt = setTimeout(function () { if (view !== "photo") paint(); }, 200);
   });
 
-  function fileOf(role) {
-    if (!record || !record.files) return null;
-    for (var i = 0; i < record.files.length; i++)
-      if (record.files[i].role === role) return record.files[i];
-    return null;
-  }
-
   function row(k, v) {
     if (v == null || v === "" || v === "none") return "";
     return '<div class="row"><span class="k">' + esc(k) + '</span><span class="v">' + esc(v) + '</span></div>';
@@ -496,39 +571,28 @@
   function renderRecord() {
     var id = selected, w = works[id], st = statusOf(id);
     var listing = listings[id] || {};
-    var src = fileOf("reference_image_source"), web = fileOf("reference_image_web");
-    var created = "", archived = "";
-    (record.events || []).forEach(function (e) {
-      if (e.type === "creation") created = e.date;
-      if (e.type === "archival") archived = e.date;
-    });
-    var isLegacy = record.year === "2024";
+    var isLegacy = String(w.year) === "2024";
+    var shareUrl = location.origin + location.pathname + "?id=" + encodeURIComponent(id);
 
     var h = "";
 
     h += '<div class="panel"><div class="ptitle">DETAILS</div>' +
       row("ID", id) +
-      row("Title", record.title === "untitled" ? "Untitled" : record.title) +
-      row("Medium", record.medium) +
-      row("Dimensions", record.dimensions) +
-      (record.focus && record.focus !== "none" ? row("Focus", record.focus) : "") +
-      (record.series && record.series !== "none" ? row("Series", record.series) : "") +
-      row("Created", created) + row("Archived", archived) + '</div>';
+      row("Title", (!w.title || w.title === "untitled") ? "Untitled" : w.title) +
+      row("Medium", w.medium) + row("Dimensions", w.dimensions) +
+      (w.focus && w.focus !== "none" ? row("Focus", w.focus) : "") +
+      (w.series && w.series !== "none" ? row("Series", w.series) : "") +
+      row("Created", w.created) + row("Archived", w.archived) + '</div>';
 
     h += '<div class="panel"><div class="ptitle">AVAILABILITY</div>' +
       '<span class="status ' + st + '">' + st.toUpperCase() + '</span>';
     if (listing.store_url)
       h += '<a class="btn" href="' + listing.store_url + '" target="_blank" rel="noopener">' +
            (st === "available" ? "VIEW IN STUDIO STORE" : "VIEW WORK PAGE") + '</a>';
-    h += '<a class="btn" href="mailto:hello@pogostudios.xyz'
-       + '?subject=' + encodeURIComponent("Enquiry \u2014 " + id)
-       + '&body=' + encodeURIComponent(
-           "I'd like to enquire about " + id + ".\n\n"
-           + (record.title && record.title !== "untitled" ? record.title + "\n" : "")
-           + [record.medium, record.dimensions].filter(Boolean).join(" \u00B7 ") + "\n"
-           + "Archive record: " + w.recordUrl + "\n\n"
-         )
-       + '">ENQUIRE ABOUT THIS WORK</a></div>';
+    h += '<div class="note" style="margin-top:12px">Enquiries \u2014 quote this ID:<br>' +
+         '<strong>hello@pogostudios.xyz</strong></div>' +
+         '<button class="btn" id="copyMail">COPY EMAIL ADDRESS</button>' +
+         '<button class="btn" id="copyLink">COPY LINK TO THIS WORK</button></div>';
 
     h += '<div class="panel"><div class="ptitle">VERIFICATION</div>' +
       '<div class="vstep" id="v1"><span class="vmark">\u25CB</span><div><div>Record retrieved</div>' +
@@ -541,24 +605,23 @@
       '<div class="note" id="vnote"></div></div>';
 
     h += '<div class="panel"><div class="ptitle">ARCHIVE DATA</div>' +
-      row("Schema", record.schema_version) + row("Year", record.year) +
-      row("Type", record.type_code) + row("Sequence", record.sequence);
-    if (src && src.sha256)
-      h += '<div class="lbl" style="margin-top:12px">SOURCE IMAGE SHA-256</div><div class="hash">' + esc(src.sha256) + '</div>';
-    if (web && web.sha256)
-      h += '<div class="lbl" style="margin-top:12px">WEB IMAGE SHA-256</div><div class="hash">' + esc(web.sha256) + '</div>';
-    h += '<a class="btn" href="' + w.recordUrl + '" target="_blank" rel="noopener">VIEW RAW RECORD</a></div>';
+      row("Schema", w.schema_version) + row("Year", w.year) +
+      row("Type", w.type_code) + row("Sequence", w.sequence);
+    if (w.source_sha256)
+      h += '<div class="lbl" style="margin-top:12px">SOURCE IMAGE SHA-256</div><div class="hash">' + esc(w.source_sha256) + '</div>';
+    if (w.web_sha256)
+      h += '<div class="lbl" style="margin-top:12px">WEB IMAGE SHA-256</div><div class="hash">' + esc(w.web_sha256) + '</div>';
+    h += '<a class="btn" href="' + w.record_url + '" target="_blank" rel="noopener">VIEW RAW RECORD</a></div>';
 
     h += '<div class="panel"><div class="ptitle">PROVENANCE</div>' +
       '<div class="vstep"><span class="vmark">\u25AA</span><div><div>Physical</div>' +
       '<div class="vdesc">Studio seal and ID stamped on the work in archival ink; printed certificate paired at collection.</div></div></div>' +
       '<div class="vstep"><span class="vmark">\u25AA</span><div><div>Digital</div>' +
-      '<div class="vdesc">This record, publicly held and version-controlled since ' + esc(archived || record.year) + '.</div></div></div>' +
+      '<div class="vdesc">This record, publicly held and version-controlled since ' + esc(w.archived || w.year) + '.</div></div></div>' +
       '<div class="vstep"><span class="vmark">\u25AA</span><div><div>Cryptographic</div>' +
-      '<div class="vdesc">' + (record.year === "2026"
+      '<div class="vdesc">' + (String(w.year) === "2026"
         ? 'Timestamped on Bitcoin via OpenTimestamps, and anchored in the yearly index at close.'
-        : 'Attested by the ' + esc(record.year) + ' yearly Bitcoin anchor.') + '</div></div></div>' +
-      '</div>';
+        : 'Attested by the ' + esc(w.year) + ' yearly Bitcoin anchor.') + '</div></div></div></div>';
 
     if (isLegacy) {
       h += '<div class="panel"><div class="ptitle">LEGACY RECORD</div>' +
@@ -576,6 +639,81 @@
 
     $("record").innerHTML = h;
     $("verifyBtn").addEventListener("click", verify);
+    $("openCompose").addEventListener("click", function () {
+      var box = $("composer");
+      var open = box.style.display !== "none";
+      box.style.display = open ? "none" : "block";
+      this.textContent = open ? "COMPOSE AN INQUIRY" : "CLOSE";
+      if (!open && !box.innerHTML) buildComposer(box, w, id, st, shareUrl);
+    });
+    $("copyLink").addEventListener("click", function () {
+      copy(shareUrl, this, "LINK COPIED");
+    });
+  }
+
+  function buildComposer(box, w, id, st, shareUrl) {
+    box.innerHTML =
+      '<div class="lbl" style="margin-top:14px">YOUR NAME</div>' +
+      '<input class="cin" id="cName" type="text" autocomplete="name">' +
+      '<div class="lbl" style="margin-top:10px">EMAIL OR PHONE</div>' +
+      '<input class="cin" id="cContact" type="text" autocomplete="email">' +
+      '<div class="lbl" style="margin-top:10px">LOCATION (FOR SHIPPING)</div>' +
+      '<input class="cin" id="cLoc" type="text" autocomplete="address-level2">' +
+      '<div class="lbl" style="margin-top:10px">I\'M INTERESTED IN</div>' +
+      '<select class="cin" id="cIntent">' +
+        '<option>Purchasing this work</option>' +
+        '<option>Reserving this work</option>' +
+        '<option>Commissioning something similar</option>' +
+        '<option>Exhibiting or press</option>' +
+        '<option>Something else</option>' +
+      '</select>' +
+      '<div class="lbl" style="margin-top:10px">MESSAGE (OPTIONAL)</div>' +
+      '<textarea class="cin" id="cMsg" rows="3"></textarea>' +
+      '<button class="btn" id="cCopy">COPY INQUIRY</button>' +
+      '<div class="note" id="cNote">Copy this, then paste it into an email to hello@pogostudios.xyz.</div>';
+
+    $("cCopy").addEventListener("click", function () {
+      var val = function (i) { var e = $(i); return e && e.value ? e.value.trim() : ""; };
+      var lines = [
+        "Inquiry regarding " + id,
+        "",
+        "Work:      " + id,
+        "Title:     " + ((!w.title || w.title === "untitled") ? "Untitled" : w.title),
+        "Medium:    " + (w.medium || "—"),
+        "Size:      " + (w.dimensions || "—"),
+        "Status:    " + st,
+        "Record:    " + shareUrl,
+        "",
+        "Interest:  " + val("cIntent"),
+        "Name:      " + (val("cName") || "—"),
+        "Contact:   " + (val("cContact") || "—"),
+        "Location:  " + (val("cLoc") || "—")
+      ];
+      if (val("cMsg")) { lines.push("", "Message:", val("cMsg")); }
+      lines.push("", "Sent from the POGO Studios Archive");
+      copy(lines.join("\n"), this, "INQUIRY COPIED");
+    });
+  }
+
+  function copy(text, btn, label) {
+    var done = function (ok) {
+      if (!ok) return;
+      var was = btn.textContent;
+      btn.textContent = label;
+      setTimeout(function () { btn.textContent = was; }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { fallback(); });
+    } else { fallback(); }
+    function fallback() {
+      try {
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(ta); done(ok);
+      } catch (e) { done(false); }
+    }
   }
 
   function mark(el, state, label) {
@@ -586,20 +724,20 @@
   }
 
   function verify() {
-    var w = works[selected], src = fileOf("reference_image_source");
+    var w = works[selected];
     $("vnote").textContent = "";
     mark("v1", "pass");
-    if (!w.mediaUrl) { mark("v2", "fail", "No media file found for this ID."); return; }
+    if (!w.media_url) { mark("v2", "fail", "No media file found for this ID."); return; }
     mark("v2", "pass");
     mark("v3", "", "Hashing image\u2026");
 
-    fetch(w.mediaUrl).then(function (r) { return r.arrayBuffer(); })
+    fetch(w.media_url).then(function (r) { return r.arrayBuffer(); })
       .then(function (buf) { return crypto.subtle.digest("SHA-256", buf); })
       .then(function (hash) {
         var hex = Array.prototype.map.call(new Uint8Array(hash), function (b) {
           return b.toString(16).padStart(2, "0");
         }).join("");
-        var expect = (src && src.sha256 ? src.sha256 : "").toLowerCase();
+        var expect = (w.source_sha256 || "").toLowerCase();
         if (!expect) {
           mark("v3", "", "Computed " + hex.slice(0,16) + "\u2026 \u2014 no recorded fingerprint to compare against.");
           $("vnote").textContent = "This record does not carry a source fingerprint.";

@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POGO Studios — App</title>
+<title>POGO Studios — Archive & Tools</title>
+<meta name="description" content="A public, permanent record of physical artworks by POGO Studios, with tools for exploring and verifying them.">
+<link rel="icon" href="pogo-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -19,14 +22,10 @@
   .mark {
     display: flex; align-items: center; gap: 9px;
     font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
-    color: #171512; text-decoration: none; opacity: 1;
+    color: #171512; text-decoration: none;
   }
-  .mark img { height: 26px; width: auto; display: block;  }
+  .mark img { height: 40px; width: auto; display: block; }
   .mark:hover { opacity: 0.6; }
-  @media (max-width: 600px) {
-    .mark span { display: none; }
-    .mark img { height: 24px; }
-  }
   .navlinks { display: flex; gap: 18px; flex-wrap: wrap; }
   .navlinks a {
     color: #171512; text-decoration: none; font-size: 10px;
@@ -36,24 +35,63 @@
   .navlinks a:hover { opacity: 1; }
   .navlinks a.here { opacity: 1; border-bottom-color: #171512; }
 
-  /* Sequence hero — full colour, full detail, unobscured */
-  .hero {
-    border-bottom: 2px solid #171512;
-    height: 100vh; min-height: 320px; position: relative; background: #EFEDE6;
-  }
-  .hero iframe { width: 100%; height: 100%; border: none; display: block; }
-  .heroTag {
-    position: absolute; bottom: 12px; left: 20px;
-    font-size: 9px; letter-spacing: 0.2em; color: #171512; opacity: 0.45;
-    pointer-events: none;
-  }
+  main { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
-  main { flex: 1; padding: 54px 24px; max-width: 880px; margin: 0 auto; width: 100%; }
-  .eyebrow { font-size: 11px; letter-spacing: 0.2em; opacity: 0.5; margin-bottom: 14px; }
-  h1 { font-size: clamp(26px, 5.5vw, 46px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.06; }
-  .sub { margin-top: 18px; font-size: 13px; line-height: 1.7; opacity: 0.72; max-width: 54ch; }
+  .intro { padding: 72px 0 56px; border-bottom: 1px solid rgba(23,21,18,0.2); }
+  .eyebrow { font-size: 11px; letter-spacing: 0.2em; opacity: 0.5; margin-bottom: 16px; }
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(21px, 4vw, 38px); font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.1; max-width: 24ch;
+    hyphens: none; text-wrap: nowrap;
+  }
+  .subhead {
+    font-family: var(--font-body);
+    margin-top: 22px; font-size: clamp(21px, 2.8vw, 27px); line-height: 0.95;
+    font-weight: 700; max-width: 46ch; text-wrap: balance; hyphens: none;
+  }
+  .lede {
+    font-family: var(--font-body);
+    margin-top: 16px; font-size: clamp(19px, 2.2vw, 22px); line-height: 1.1;
+    max-width: 62ch; opacity: 0.85; text-align: left;
+    hyphens: none; text-wrap: pretty;
+  }
+  .assure div p { text-align: left; hyphens: none; text-wrap: pretty; }
+  .cta { display: flex; gap: 10px; margin-top: 32px; flex-wrap: wrap; }
+  .cta a {
+    text-decoration: none; font-size: 11px; letter-spacing: 0.12em; font-weight: 700;
+    padding: 13px 22px; border: 2px solid #171512; color: #171512;
+  }
+  .cta a.primary { background: #171512; color: #EFEDE6; }
+  .cta a:hover { background: #171512; color: #EFEDE6; }
+  .cta a.primary:hover { background: transparent; color: #171512; }
+  .stat { margin-top: 26px; font-size: 10px; letter-spacing: 0.14em; opacity: 0.45; }
 
-  .tools { margin-top: 48px; display: flex; flex-direction: column; }
+  .section { padding: 46px 0; border-bottom: 1px solid rgba(23,21,18,0.2); }
+  .shead {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 12px; flex-wrap: wrap; margin-bottom: 22px;
+  }
+  .stitle { font-size: 10px; letter-spacing: 0.2em; opacity: 0.5; }
+  .smore { font-size: 10px; letter-spacing: 0.12em; color: #171512; text-decoration: none; opacity: 0.6; }
+  .smore:hover { opacity: 1; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 2px; }
+  .cell {
+    display: block; text-decoration: none; color: #171512;
+    border: 1px solid rgba(23,21,18,0.3); background: transparent;
+    aspect-ratio: 1 / 1; position: relative; overflow: hidden;
+  }
+  .cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cell .cid {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: rgba(239,237,230,0.92); font-size: 9px; letter-spacing: 0.1em;
+    padding: 6px 7px; border-top: 1px solid rgba(23,21,18,0.25);
+  }
+  .cell:hover { outline: 2px solid #171512; outline-offset: -2px; }
+  .gridnote { font-size: 10px; opacity: 0.45; letter-spacing: 0.1em; }
+
+  .tools { display: flex; flex-direction: column; }
   .tool {
     display: block; text-decoration: none; color: #171512;
     border: 2px solid #171512; padding: 20px 22px;
@@ -62,14 +100,21 @@
   .tool + .tool { border-top: none; }
   .tool:hover { background: #171512; color: #EFEDE6; }
   .tool .num { font-size: 10px; letter-spacing: 0.2em; opacity: 0.6; }
-  .tool .name { font-size: 17px; font-weight: 700; margin-top: 5px; letter-spacing: -0.01em; }
-  .tool .desc { font-size: 12px; line-height: 1.6; margin-top: 7px; opacity: 0.7; max-width: 62ch; }
+  .tool .name { font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-top: 7px; letter-spacing: -0.01em; }
+  .tool .desc { font-family: var(--font-body); font-size: 19px; line-height: 1.15; margin-top: 8px; opacity: 0.8; max-width: 52ch; }
+
+  .assure { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 26px; }
+  .assure div h3 { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .assure div p { font-family: var(--font-body); font-size: 18px; line-height: 1.18; opacity: 0.75; }
 
   footer {
-    border-top: 2px solid #171512; padding: 14px 24px;
+    border-top: 2px solid #171512; padding: 16px 24px; margin-top: 10px;
     font-size: 10px; letter-spacing: 0.1em; opacity: 0.5;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px; flex-wrap: wrap;
   }
   footer a { color: inherit; }
+  @media (max-width: 600px) { footer { flex-direction: column; align-items: flex-start; gap: 6px; } }
 
   @media (max-width: 900px) {
     nav { padding: 11px 16px; }
@@ -79,65 +124,142 @@
     }
     .navlinks::-webkit-scrollbar { display: none; }
     .navlinks a { white-space: nowrap; font-size: 9.5px; }
-    .hero { height: 78vh; min-height: 300px; }
-    main { padding: 36px 18px; }
-    .tools { margin-top: 34px; }
-    .tool { padding: 17px 16px; }
-    .tool .name { font-size: 16px; }
-    .sub { font-size: 12.5px; }
+    main { padding: 0 16px; }
+    .intro { padding: 44px 0 38px; }
+    h1 { text-wrap: balance; }
+    h1 br { display: none; }
+    .section { padding: 34px 0; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .mark span { display: none; }
+    .mark img { height: 34px; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="mark" href="index.html"><img src="pogo-seal.png" alt=""><span>POGO-XYZ</span></a>
+  <a class="mark" href="index.html"><img src="pogo-mark.svg" alt="POGO Studios"></a>
   <div class="navlinks">
     <a href="index.html" class="here">HOME</a>
     <a href="archive.html">ARCHIVE</a>
     <a href="text-renderer.html">TEXT RENDERER</a>
     <a href="art-to-text-live-sequence.html">LIVE SEQUENCE</a>
-    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">REPOSITORIES</a>
+    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">SOURCE &amp; DATA</a>
+    <a href="https://www.pogostudios.xyz/process" target="_blank" rel="noopener">PROCESS</a>
     <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO</a>
   </div>
 </nav>
 
-<div class="hero">
-  <iframe src="art-to-text-live-sequence.html?embed&paper&pogo" scrolling="no" title="Live sequence"></iframe>
-  <div class="heroTag">ARCHIVED WORKS, RENDERED AS TEXT — LIVE</div>
-</div>
-
 <main>
-  <div class="eyebrow">APPLICATION LAYER</div>
-  <h1>Tools for the<br>POGO Studios Archive</h1>
-  <p class="sub">
-    Interactive instruments for exploring archived physical works. Everything here runs
-    entirely in the browser and draws only from the public archive — no accounts,
-    no uploads, no data collected.
-  </p>
 
-  <div class="tools">
-    <a class="tool" href="archive.html">
-      <div class="num">ARCHIVE</div>
-      <div class="name">Browse the Archive</div>
-      <div class="desc">Every documented work, with its full record, media, provenance, and in-browser cryptographic verification.</div>
-    </a>
-    <a class="tool" href="text-renderer.html">
-      <div class="num">TOOL 001</div>
-      <div class="name">Text Renderer</div>
-      <div class="desc">Render any archived work as ASCII or Unicode Braille. Adjustable detail, dithering, colour, and export to text or image.</div>
-    </a>
-    <a class="tool" href="art-to-text-live-sequence.html">
-      <div class="num">TOOL 002</div>
-      <div class="name">Live Sequence</div>
-      <div class="desc">A continuous sequence through the archive, moving between works by tonal similarity. Records to video for use elsewhere.</div>
-    </a>
-  </div>
+  <section class="intro">
+    <div class="eyebrow">POGO STUDIOS</div>
+    <h1>The work outlives the artist.<br>The record should too.</h1>
+    <p class="subhead">View, verify, and learn more about any POGO artwork in the official archive.</p>
+    <p class="lede">
+      Every physical artwork is documented in a permanent public archive — identified,
+      fingerprinted, and timestamped. Any recorded work can be viewed and verified by
+      anyone, anywhere, anytime. No permission, promise, or purchase necessary.
+    </p>
+    <div class="cta">
+      <a class="primary" href="archive.html">BROWSE THE ARCHIVE</a>
+      <a href="https://www.pogostudios.xyz/writings/all-creation-testifies" target="_blank" rel="noopener">WHY IT EXISTS</a>
+    </div>
+    <div class="stat" id="stat">&nbsp;</div>
+  </section>
+
+  <section class="section">
+    <div class="shead">
+      <div class="stitle">RECENTLY ARCHIVED</div>
+      <a class="smore" href="archive.html">VIEW ALL →</a>
+    </div>
+    <div class="grid" id="recent"><div class="gridnote">Loading…</div></div>
+  </section>
+
+  <section class="section">
+    <div class="shead"><div class="stitle">TOOLS</div></div>
+    <div class="tools">
+      <a class="tool" href="archive.html">
+        <div class="num">ARCHIVE</div>
+        <div class="name">Browse the Archive</div>
+        <div class="desc">Every documented work, with its full record, media, provenance, and in-browser cryptographic verification.</div>
+      </a>
+      <a class="tool" href="text-renderer.html">
+        <div class="num">TOOL 001</div>
+        <div class="name">Text Renderer</div>
+        <div class="desc">Render any archived work as ASCII or Unicode Braille. Adjustable detail, dithering, colour, and export to text or image.</div>
+      </a>
+      <a class="tool" href="art-to-text-live-sequence.html">
+        <div class="num">TOOL 002</div>
+        <div class="name">Live Sequence</div>
+        <div class="desc">A continuous sequence through the archive, moving between works by tonal similarity. Records to video for use elsewhere.</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" style="border-bottom:none">
+    <div class="shead"><div class="stitle">HOW THIS WORKS</div></div>
+    <div class="assure">
+      <div>
+        <h3>READ-ONLY</h3>
+        <p>This app only reads public files. Nothing here can change the archive, and nothing you do is recorded.</p>
+      </div>
+      <div>
+        <h3>NOTHING COLLECTED</h3>
+        <p>No accounts, no tracking, no uploads, no cookies. Everything runs in your browser and stops when you close the tab.</p>
+      </div>
+      <div>
+        <h3>VERIFY IT YOURSELF</h3>
+        <p>Images are fingerprinted on your own machine and checked against the record. You don't have to trust the result — you can watch it happen.</p>
+      </div>
+      <div>
+        <h3>OPEN AND ADAPTABLE</h3>
+        <p>The archive, its media, and this app are all public and openly licensed. Any artist is free to build the same for their own work.</p>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
-  PART OF THE <a href="https://github.com/POGO-XYZ/POGO-ARCHIVE" target="_blank" rel="noopener">POGO STUDIOS ARCHIVE</a> · CC BY 4.0
+  <span>PART OF THE <a href="https://github.com/POGO-XYZ/POGO-ARCHIVE" target="_blank" rel="noopener">POGO STUDIOS ARCHIVE</a> · CC BY 4.0</span>
+  <span>POGO STUDIOS LLC · EST 2023</span>
 </footer>
 
+<script>
+(function () {
+  "use strict";
+  var RAW = "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/";
+
+  Promise.all([
+    fetch("manifest.json", { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+    fetch(RAW + "LINKS/LISTINGS.JSON", { cache: "no-cache" })
+      .then(function (r) { return r.json(); }).catch(function () { return { listings: {} }; })
+  ]).then(function (res) {
+    var m = res[0];
+    var grid = document.getElementById("recent");
+    if (!m || !m.works || !m.works.length) {
+      grid.innerHTML = '<div class="gridnote">' +
+        '<a class="smore" href="archive.html">OPEN THE ARCHIVE →</a></div>';
+      return;
+    }
+
+    document.getElementById("stat").textContent =
+      m.count + " WORKS ARCHIVED \u00B7 " + m.years.length + " YEARS \u00B7 UPDATED " + m.generated;
+
+    var html = "";
+    m.works.slice(0, 12).forEach(function (w) {
+      if (!w.media_url) return;
+      html += '<a class="cell" href="archive.html?id=' + encodeURIComponent(w.id) + '">' +
+              '<img src="' + w.media_url + '" alt="' + w.id + '" loading="lazy">' +
+              '<span class="cid">' + w.id.replace("POGO-", "") + '</span></a>';
+    });
+    grid.innerHTML = html || '<div class="gridnote">No media available yet.</div>';
+  });
+})();
+</script>
 </body>
 </html>

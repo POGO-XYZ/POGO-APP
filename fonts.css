@@ -1,0 +1,52 @@
+/* POGO-APP — typography
+   Self-hosted so the app has no third-party dependency and works offline.
+   Unbounded  : headings and display
+   Dongle     : body copy
+   Annie      : occasional handwritten accents
+   Monospace  : IDs, hashes, labels, and text renders — kept deliberately */
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('fonts/unbounded-400.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Unbounded';
+  src: url('fonts/unbounded-700.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Dongle';
+  src: url('fonts/dongle-300.woff2') format('woff2');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Dongle';
+  src: url('fonts/dongle-400.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Dongle';
+  src: url('fonts/dongle-700.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Annie Use Your Telescope';
+  src: url('fonts/annie-400.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+:root {
+  --font-display: 'Unbounded', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Dongle', ui-sans-serif, system-ui, sans-serif;
+  --font-hand: 'Annie Use Your Telescope', cursive;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Menlo, monospace;
+}
+
+/* Dongle renders small for its point size — it needs a larger base
+   and a tighter line height than a typical sans would. */
+.body-type {
+  font-family: var(--font-body);
+  font-size: 1.5em;
+  line-height: 1.35;
+}

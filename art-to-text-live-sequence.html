@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>POGO Studios — Live Sequence</title>
+<link rel="icon" href="pogo-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -21,11 +23,11 @@
     font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
     color: #EFEDE6; text-decoration: none; opacity: 1;
   }
-  .mark img { height: 26px; width: auto; display: block; filter: invert(1); }
+  .mark img { height: 40px; width: auto; display: block; }
   .mark:hover { opacity: 0.6; }
   @media (max-width: 600px) {
     .mark span { display: none; }
-    .mark img { height: 24px; }
+    .mark img { height: 34px; }
   }
   .navlinks { display: flex; gap: 18px; flex-wrap: wrap; }
   .navlinks a {
@@ -42,7 +44,7 @@
     flex-wrap: wrap; gap: 8px;
   }
   .eyebrow { font-size: 10px; letter-spacing: 0.18em; opacity: 0.5; }
-  h1 { font-size: 18px; font-weight: 700; margin-top: 3px; letter-spacing: -0.01em; }
+  h1 { font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-top: 4px; letter-spacing: -0.01em; }
   .status { font-size: 10px; letter-spacing: 0.1em; opacity: 0.5; }
 
   .stage {
@@ -98,20 +100,21 @@
     .panel { padding: 12px 16px; gap: 12px; }
     .ctl { flex: 1 1 45%; }
     select, button { width: 100%; min-height: 38px; }
-    .idtag { bottom: auto; top: 8px; left: 16px; }
+    .idtag { bottom: 8px; left: 14px; top: auto; font-size: 9px; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="mark" href="index.html"><img src="pogo-seal.png" alt=""><span>POGO-XYZ</span></a>
+  <a class="mark" href="index.html"><img src="pogo-mark-light.svg" alt="POGO Studios"></a>
   <div class="navlinks">
     <a href="index.html">HOME</a>
     <a href="archive.html">ARCHIVE</a>
     <a href="text-renderer.html">TEXT RENDERER</a>
     <a href="art-to-text-live-sequence.html" class="here">LIVE SEQUENCE</a>
-    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">REPOSITORIES</a>
+    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">SOURCE &amp; DATA</a>
+    <a href="https://www.pogostudios.xyz/process" target="_blank" rel="noopener">PROCESS</a>
     <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO</a>
   </div>
 </nav>
@@ -156,6 +159,14 @@
     </select>
   </div>
   <div class="ctl">
+    <span class="label">BACKGROUND</span>
+    <div style="display:flex;gap:6px">
+      <button id="bgDark" class="on">DARK</button>
+      <button id="bgPaper">PAPER</button>
+      <button id="bgWhite">WHITE</button>
+    </div>
+  </div>
+  <div class="ctl">
     <span class="label">DISPLAY</span>
     <button id="pauseBtn">PAUSE</button>
   </div>
@@ -182,9 +193,35 @@
   var API = "https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/";
 
   var Q = location.search;
-  var PAPER = /[?&]paper/.test(Q);
-  var RAMP = /[?&]pogo/.test(Q) ? "POGO#*+=-:. " : "@%#*+=-:. ";
-  var BG = PAPER ? "#EFEDE6" : "#171512";
+  var THEMES = {
+    dark:  { bg: "#171512", fg: "#EFEDE6", invert: false },
+    paper: { bg: "#EFEDE6", fg: "#171512", invert: true },
+    white: { bg: "#FFFFFF", fg: "#171512", invert: true }
+  };
+  var theme = /[?&]paper/.test(Q) ? "paper" : /[?&]white/.test(Q) ? "white" : "dark";
+  var BASE_RAMP = /[?&]pogo/.test(Q) ? "POGO#*+=-:. " : "@%#*+=-:. ";
+  var RAMP = BASE_RAMP;
+  var BG = THEMES[theme].bg;
+  var PAPER = theme !== "dark";
+
+  function applyTheme(name) {
+    theme = name;
+    var t = THEMES[name];
+    BG = t.bg;
+    // on light grounds the density ramp reverses so tone reads correctly
+    RAMP = t.invert ? BASE_RAMP.split("").reverse().join("") : BASE_RAMP;
+    document.body.style.background = t.bg;
+    document.body.style.color = t.fg;
+    var st = document.querySelector(".stage");
+    if (st) st.style.background = t.bg;
+    document.documentElement.style.setProperty("--fg", t.fg);
+    Array.prototype.forEach.call(document.querySelectorAll("#bgDark,#bgPaper,#bgWhite"), function (b) {
+      b.classList.toggle("on", b.id.toLowerCase() === "bg" + name);
+    });
+    var m = document.querySelector(".mark img");
+    if (m) m.src = t.invert ? "pogo-mark.svg" : "pogo-mark-light.svg";
+    if (frameB) paint(1);
+  }
   var CELL_W = 8, CELL_H = 14;
   var MIN_CELL = 5, MAX_CELL = 15;      // detail ceiling / floor
   var autoQuality = true;
@@ -253,13 +290,35 @@
   }
 
   function loadArchive() {
-    fetch(API)
+    fetch("manifest.json", { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; })
+      .then(function (m) {
+        if (m && m.works && m.works.length) {
+          m.works.forEach(function (w) {
+            if (w.media_url) playlist.push({ name: w.id, url: w.media_url });
+          });
+          return;
+        }
+        return apiLoad();     // fallback before a manifest is published
+      })
+      .then(function () {
+        if (!playlist.length) throw new Error("no works");
+        shuffle(playlist);
+        setStatus(playlist.length + " WORKS");
+        return fillPool(8);
+      })
+      .then(start)
+      .catch(function () { setStatus("ARCHIVE UNAVAILABLE"); });
+  }
+
+  function apiLoad() {
+    return fetch(API)
       .then(function (r) { return r.json(); })
       .then(function (items) {
         var years = items.filter(function (i) {
           return i.type === "dir" && /^\d{4}$/.test(i.name);
         }).map(function (i) { return i.name; });
-        if (!years.length) throw new Error("no years");
         return Promise.all(years.map(function (y) {
           return fetch(API + y).then(function (r) { return r.json(); });
         }));
@@ -273,13 +332,7 @@
             }
           });
         });
-        if (!playlist.length) throw new Error("no works");
-        shuffle(playlist);
-        setStatus(playlist.length + " WORKS");
-        return fillPool(8);
-      })
-      .then(start)
-      .catch(function () { setStatus("ARCHIVE UNAVAILABLE"); });
+      });
   }
 
   function shuffle(a) {
@@ -359,10 +412,13 @@
     var w, h;
     if (ia > frameAspect) { w = subW; h = subW/ia*(CELL_W/CELL_H)*2; }
     else { h = subH; w = subH*ia/(CELL_W/CELL_H)/2; }
-    w = Math.round(w); h = Math.round(h);
-    var _cx = img.width * 0.006, _cy = img.height * 0.006;
-    wctx.drawImage(img, _cx, _cy, img.width - _cx*2, img.height - _cy*2,
-                   Math.floor((subW-w)/2), Math.floor((subH-h)/2), w, h);
+    w = Math.max(2, Math.round(w)); h = Math.max(2, Math.round(h));
+    // crop a margin off the source, then overdraw by a pixel on each side so
+    // no half-sampled background row survives at the frame edge
+    var _cx = Math.round(img.width * 0.035), _cy = Math.round(img.height * 0.035);
+    var _ox = Math.floor((subW - w) / 2) - 2, _oy = Math.floor((subH - h) / 2) - 2;
+    wctx.drawImage(img, _cx, _cy, img.width - _cx * 2, img.height - _cy * 2,
+                   _ox, _oy, w + 3, h + 3);
 
     var d = wctx.getImageData(0, 0, subW, subH).data;
     var tones = new Float32Array(subW*subH);
@@ -608,11 +664,11 @@
   });
 
   if (/[?&]embed/.test(Q)) document.body.classList.add("embed");
-  if (PAPER) {
-    var st = document.querySelector(".stage");
-    if (st) st.style.background = BG;
-    document.body.style.background = BG;
-  }
+  ["Dark","Paper","White"].forEach(function (n) {
+    var b = document.getElementById("bg" + n);
+    if (b) b.addEventListener("click", function () { applyTheme(n.toLowerCase()); });
+  });
+  applyTheme(theme);
 
   sizeGrid();
   loadArchive();
