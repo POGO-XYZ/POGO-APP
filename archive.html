@@ -231,7 +231,7 @@
         documented. Choose a work to view its details, media, and verification state.
         <br><br>
         This app is read-only. It reads public files, runs entirely in your browser,
-        and collects nothing \u2014 no accounts, no tracking, no uploads.
+        and collects nothing — no accounts, no tracking, no uploads.
       </div>
     </div>
   </div>
@@ -589,9 +589,10 @@
     if (listing.store_url)
       h += '<a class="btn" href="' + listing.store_url + '" target="_blank" rel="noopener">' +
            (st === "available" ? "VIEW IN STUDIO STORE" : "VIEW WORK PAGE") + '</a>';
-    h += '<div class="note" style="margin-top:12px">Enquiries \u2014 quote this ID:<br>' +
-         '<strong>hello@pogostudios.xyz</strong></div>' +
-         '<button class="btn" id="copyMail">COPY EMAIL ADDRESS</button>' +
+    h += '<div class="note" style="margin-top:12px">Inquiries go to ' +
+         '<strong>hello@pogostudios.xyz</strong>. Compose a message below and copy it across.</div>' +
+         '<button class="btn" id="openCompose">COMPOSE AN INQUIRY</button>' +
+         '<div id="composer" style="display:none"></div>' +
          '<button class="btn" id="copyLink">COPY LINK TO THIS WORK</button></div>';
 
     h += '<div class="panel"><div class="ptitle">VERIFICATION</div>' +
