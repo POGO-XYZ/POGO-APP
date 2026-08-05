@@ -8,38 +8,64 @@
 <link rel="stylesheet" href="fonts.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --fg: #EFEDE6; --bg: #171512; }
   body {
-    background: #171512; color: #EFEDE6;
+    background: var(--bg); color: var(--fg);
+    transition: background 0.25s, color 0.25s;
     font-family: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Menlo, monospace;
     min-height: 100vh; display: flex; flex-direction: column;
   }
   nav {
-    border-bottom: 2px solid #EFEDE6; padding: 14px 24px;
+    border-bottom: 2px solid var(--fg); padding: 14px 24px;
     display: flex; justify-content: space-between; align-items: center;
     flex-wrap: wrap; gap: 12px;
   }
   .mark {
     display: flex; align-items: center; gap: 9px;
     font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
-    color: #EFEDE6; text-decoration: none; opacity: 1;
+    color: var(--fg); text-decoration: none; opacity: 1;
   }
-  .mark img { height: 40px; width: auto; display: block; }
+  .mark img { height: 50px; width: auto; display: block; }
   .mark:hover { opacity: 0.6; }
   @media (max-width: 600px) {
     .mark span { display: none; }
-    .mark img { height: 34px; }
+    .mark img { height: 42px; }
   }
-  .navlinks { display: flex; gap: 18px; flex-wrap: wrap; }
+  .navlinks { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
   .navlinks a {
-    color: #EFEDE6; text-decoration: none; font-size: 10px;
+    color: var(--fg); text-decoration: none; font-size: 10px;
     letter-spacing: 0.14em; opacity: 0.6; padding-bottom: 2px;
     border-bottom: 2px solid transparent;
   }
   .navlinks a:hover { opacity: 1; }
-  .navlinks a.here { opacity: 1; border-bottom-color: #EFEDE6; }
+  .navdrop { position: relative; display: flex; align-items: center; }
+  .navtrigger {
+    font-family: inherit; font-size: 10px; letter-spacing: 0.14em;
+    background: none; border: none; padding: 0 0 2px; cursor: pointer;
+    display: block; line-height: inherit; font-weight: inherit;
+    color: var(--fg); opacity: 0.55; border-bottom: 2px solid transparent;
+  }
+  .navtrigger:hover, .navdrop.open .navtrigger { opacity: 1; }
+  .navdrop.open .navtrigger { border-bottom-color: var(--fg); }
+  .navmenu {
+    display: none; position: absolute; top: 100%; left: 0; z-index: 60;
+    max-width: min(240px, calc(100vw - 32px));
+    background: var(--bg); border: 2px solid var(--fg); min-width: 172px; margin-top: 6px;
+  }
+  .navdrop.open .navmenu { display: block; }
+  .navmenu a, .navmenu .navcopy {
+    display: block; width: 100%; text-align: left; padding: 10px 13px;
+    font-family: inherit; font-size: 10px; letter-spacing: 0.12em;
+    border: none; border-bottom: 1px solid rgba(128,128,128,0.35);
+    background: none; color: inherit; opacity: 0.75; cursor: pointer;
+  }
+  .navmenu a:last-child, .navmenu .navcopy:last-child { border-bottom: none; }
+  .navmenu a:hover, .navmenu .navcopy:hover { opacity: 1; background: rgba(128,128,128,0.16); }
+
+  .navlinks a.here { opacity: 1; border-bottom-color: var(--fg); }
 
   header {
-    border-bottom: 2px solid #EFEDE6; padding: 14px 24px;
+    border-bottom: 2px solid var(--fg); padding: 14px 24px;
     display: flex; justify-content: space-between; align-items: baseline;
     flex-wrap: wrap; gap: 8px;
   }
@@ -54,7 +80,7 @@
   canvas { max-width: 100%; max-height: 100%; display: block; }
 
   .panel {
-    border-top: 2px solid #EFEDE6; padding: 14px 24px;
+    border-top: 2px solid var(--fg); padding: 14px 24px;
     display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end;
   }
   .ctl { display: flex; flex-direction: column; gap: 5px; }
@@ -62,11 +88,11 @@
   select, button {
     font-family: inherit; font-size: 11px; font-weight: 700;
     letter-spacing: 0.06em; padding: 7px 12px;
-    border: 2px solid #EFEDE6; background: #171512; color: #EFEDE6; cursor: pointer;
+    border: 2px solid var(--fg); background: transparent; color: var(--fg); cursor: pointer;
   }
-  button.on { background: #EFEDE6; color: #171512; }
+  button.on { background: var(--fg); color: var(--bg); }
   button.rec { border-color: #C4452F; color: #C4452F; }
-  button.rec.on { background: #C4452F; color: #EFEDE6; }
+  button.rec.on { background: #C4452F; color: var(--bg); }
   .idtag {
     position: fixed; bottom: 84px; left: 24px; z-index: 5;
     font-size: 10px; letter-spacing: 0.16em; opacity: 0.35; pointer-events: none;
@@ -111,11 +137,22 @@
   <div class="navlinks">
     <a href="index.html">HOME</a>
     <a href="archive.html">ARCHIVE</a>
-    <a href="text-renderer.html">TEXT RENDERER</a>
-    <a href="art-to-text-live-sequence.html" class="here">LIVE SEQUENCE</a>
-    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">SOURCE &amp; DATA</a>
-    <a href="https://www.pogostudios.xyz/process" target="_blank" rel="noopener">PROCESS</a>
-    <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO</a>
+    <div class="navdrop open-current">
+      <button class="navtrigger" type="button">TOOLS ▾</button>
+      <div class="navmenu">
+        <a href="text-renderer.html">TEXT RENDERER</a>
+        <a href="art-to-text-live-sequence.html">LIVE SEQUENCE</a>
+      </div>
+    </div>
+    <div class="navdrop">
+      <button class="navtrigger" type="button">STUDIO ▾</button>
+      <div class="navmenu">
+        <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO SITE</a>
+        <a href="https://www.pogostudios.xyz/process" target="_blank" rel="noopener">PROCESS</a>
+        <button class="navcopy" type="button" data-copy="hello@pogostudios.xyz">CONTACT</button>
+      </div>
+    </div>
+    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">GITHUB</a>
   </div>
 </nav>
 
@@ -210,11 +247,10 @@
     BG = t.bg;
     // on light grounds the density ramp reverses so tone reads correctly
     RAMP = t.invert ? BASE_RAMP.split("").reverse().join("") : BASE_RAMP;
-    document.body.style.background = t.bg;
-    document.body.style.color = t.fg;
+    document.documentElement.style.setProperty("--bg", t.bg);
+    document.documentElement.style.setProperty("--fg", t.fg);
     var st = document.querySelector(".stage");
     if (st) st.style.background = t.bg;
-    document.documentElement.style.setProperty("--fg", t.fg);
     Array.prototype.forEach.call(document.querySelectorAll("#bgDark,#bgPaper,#bgWhite"), function (b) {
       b.classList.toggle("on", b.id.toLowerCase() === "bg" + name);
     });
@@ -672,6 +708,44 @@
 
   sizeGrid();
   loadArchive();
+})();
+</script>
+
+<script>
+(function () {
+  var drops = document.querySelectorAll(".navdrop");
+  Array.prototype.forEach.call(drops, function (d) {
+    var t = d.querySelector(".navtrigger");
+    t.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var wasOpen = d.classList.contains("open");
+      Array.prototype.forEach.call(drops, function (x) { x.classList.remove("open"); });
+      if (!wasOpen) d.classList.add("open");
+    });
+  });
+  document.addEventListener("click", function () {
+    Array.prototype.forEach.call(drops, function (d) { d.classList.remove("open"); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      Array.prototype.forEach.call(drops, function (d) { d.classList.remove("open"); });
+    }
+  });
+
+  // Contact: copy the studio address rather than opening a mail client
+  Array.prototype.forEach.call(document.querySelectorAll(".navcopy"), function (b) {
+    b.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var text = b.getAttribute("data-copy");
+      var done = function (ok) {
+        b.textContent = ok ? "COPIED \u2713" : text;
+        setTimeout(function () { b.textContent = "CONTACT"; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      } else { done(false); }
+    });
+  });
 })();
 </script>
 </body>

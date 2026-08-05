@@ -30,19 +30,43 @@
     font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
     color: #171512; text-decoration: none; opacity: 1;
   }
-  .mark img { height: 40px; width: auto; display: block; }
+  .mark img { height: 50px; width: auto; display: block; }
   .mark:hover { opacity: 0.6; }
   @media (max-width: 600px) {
     .mark span { display: none; }
-    .mark img { height: 34px; }
+    .mark img { height: 42px; }
   }
-  .navlinks { display: flex; gap: 16px; flex-wrap: wrap; }
+  .navlinks { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
   .navlinks a {
     color: var(--ink); text-decoration: none; font-size: 10px;
     letter-spacing: 0.14em; opacity: 0.55; padding-bottom: 2px;
     border-bottom: 2px solid transparent;
   }
   .navlinks a:hover { opacity: 1; }
+  .navdrop { position: relative; display: flex; align-items: center; }
+  .navtrigger {
+    font-family: inherit; font-size: 10px; letter-spacing: 0.14em;
+    background: none; border: none; padding: 0 0 2px; cursor: pointer;
+    display: block; line-height: inherit; font-weight: inherit;
+    color: #171512; opacity: 0.55; border-bottom: 2px solid transparent;
+  }
+  .navtrigger:hover, .navdrop.open .navtrigger { opacity: 1; }
+  .navdrop.open .navtrigger { border-bottom-color: #171512; }
+  .navmenu {
+    display: none; position: absolute; top: 100%; left: 0; z-index: 60;
+    max-width: min(240px, calc(100vw - 32px));
+    background: #EFEDE6; border: 2px solid #171512; min-width: 172px; margin-top: 6px;
+  }
+  .navdrop.open .navmenu { display: block; }
+  .navmenu a, .navmenu .navcopy {
+    display: block; width: 100%; text-align: left; padding: 10px 13px;
+    font-family: inherit; font-size: 10px; letter-spacing: 0.12em;
+    border: none; border-bottom: 1px solid rgba(128,128,128,0.35);
+    background: none; color: inherit; opacity: 0.75; cursor: pointer;
+  }
+  .navmenu a:last-child, .navmenu .navcopy:last-child { border-bottom: none; }
+  .navmenu a:hover, .navmenu .navcopy:hover { opacity: 1; background: rgba(128,128,128,0.16); }
+
   .navlinks a.here { opacity: 1; border-bottom-color: var(--ink); }
 
   .workbench { flex: 1; display: flex; overflow: hidden; }
@@ -81,6 +105,8 @@
     display: flex; justify-content: space-between; align-items: center;
     flex-wrap: wrap; gap: 10px; flex: none; }
   .wid { font-family: var(--font-mono); font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+  .wid:empty { display: none; }
+  .wid:empty + .wsub { margin-top: 0; }
   .wsub { font-size: 10px; opacity: 0.55; letter-spacing: 0.1em; margin-top: 2px; }
   .views { display: flex; }
   .views button {
@@ -93,6 +119,48 @@
   .canvasWrap { flex: 1; display: flex; align-items: center; justify-content: center;
     padding: 20px; overflow: hidden; min-height: 0; }
   .canvasWrap img, .canvasWrap canvas { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+  .stepbar {
+    display: none; border-top: 1px solid var(--faint);
+    justify-content: space-between; align-items: stretch; flex: none;
+  }
+  .stepbar.on { display: flex; }
+  .step {
+    display: flex; align-items: center; gap: 9px;
+    font-family: inherit; font-size: 10px; letter-spacing: 0.1em; font-weight: 700;
+    padding: 12px 18px; border: none; background: transparent; color: var(--ink);
+    cursor: pointer; opacity: 0.6; min-width: 0;
+  }
+  .step:hover { opacity: 1; }
+  .step:disabled { opacity: 0.2; cursor: default; }
+  .step .arw { font-size: 12px; }
+  .step .lab { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .browse {
+    width: 100%; height: 100%; overflow-y: auto; align-self: stretch;
+  }
+  .bgrid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 2px; padding: 2px;
+  }
+  .bcell {
+    display: block; text-decoration: none; color: var(--ink);
+    border: 1px solid var(--faint); cursor: pointer; background: none;
+    font-family: inherit; padding: 0; text-align: left;
+  }
+  .bcell .bthumb {
+    aspect-ratio: 1 / 1; width: 100%; overflow: hidden;
+    display: block; background: var(--paper);
+  }
+  .bcell .bthumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .bcell .bid {
+    display: flex; justify-content: space-between; align-items: center; gap: 6px;
+    font-size: 9px; letter-spacing: 0.1em; padding: 6px 7px;
+    border-top: 1px solid var(--faint);
+  }
+  .bcell:hover { outline: 2px solid var(--ink); outline-offset: -1px; }
+  .browsehead {
+    font-size: 9px; letter-spacing: 0.18em; opacity: 0.45;
+    padding: 12px 4px 8px;
+  }
   .empty { opacity: 0.35; font-size: 12px; letter-spacing: 0.12em; text-align: center; }
 
   .record { width: 300px; flex: none; border-left: 2px solid var(--ink);
@@ -101,6 +169,7 @@
   .ptitle { font-size: 9px; letter-spacing: 0.18em; opacity: 0.5; margin-bottom: 10px; }
   .row { display: flex; justify-content: space-between; gap: 10px; font-size: 11px; padding: 3px 0; }
   .row .k { opacity: 0.5; flex: none; }
+  .rule { height: 1px; background: rgba(23,21,18,0.16); margin: 11px 0; }
   .row .v { text-align: right; word-break: break-word; }
   .hash { font-size: 8.5px; line-height: 1.5; word-break: break-all; opacity: 0.75; margin-top: 4px; }
   .status { display: inline-block; font-size: 10px; letter-spacing: 0.12em;
@@ -181,11 +250,22 @@
   <div class="navlinks">
     <a href="index.html">HOME</a>
     <a href="archive.html" class="here">ARCHIVE</a>
-    <a href="text-renderer.html">TEXT RENDERER</a>
-    <a href="art-to-text-live-sequence.html">LIVE SEQUENCE</a>
-    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">SOURCE &amp; DATA</a>
-    <a href="https://www.pogostudios.xyz/process" target="_blank" rel="noopener">PROCESS</a>
-    <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO</a>
+    <div class="navdrop">
+      <button class="navtrigger" type="button">TOOLS ▾</button>
+      <div class="navmenu">
+        <a href="text-renderer.html">TEXT RENDERER</a>
+        <a href="art-to-text-live-sequence.html">LIVE SEQUENCE</a>
+      </div>
+    </div>
+    <div class="navdrop">
+      <button class="navtrigger" type="button">STUDIO ▾</button>
+      <div class="navmenu">
+        <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO SITE</a>
+        <a href="https://www.pogostudios.xyz/process" target="_blank" rel="noopener">PROCESS</a>
+        <button class="navcopy" type="button" data-copy="hello@pogostudios.xyz">CONTACT</button>
+      </div>
+    </div>
+    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">GITHUB</a>
   </div>
 </nav>
 
@@ -209,10 +289,10 @@
   <div class="stage">
     <div class="stagehead">
       <div>
-        <div class="wid" id="wid">—</div>
+        <div class="wid" id="wid"></div>
         <div class="wsub" id="wsub">Select a work from the index</div>
       </div>
-      <div class="views">
+      <div class="views" id="views" style="display:none">
         <button data-v="photo" class="on">PHOTOGRAPH</button>
         <button data-v="ascii">ASCII</button>
         <button data-v="braille">BRAILLE</button>
@@ -220,6 +300,10 @@
     </div>
     <div class="canvasWrap" id="canvasWrap">
       <div class="empty">SELECT A WORK TO BEGIN</div>
+    </div>
+    <div class="stepbar" id="stepbar">
+      <button class="step" id="prevWork"><span class="arw">←</span><span class="lab"></span></button>
+      <button class="step right" id="nextWork"><span class="lab"></span><span class="arw">→</span></button>
     </div>
   </div>
 
@@ -263,7 +347,7 @@
   var CROP = 0.006;
 
   var works = {}, listings = {}, order = [];
-  var selected = null, record = null, imgEl = null;
+  var selected = null, record = null, imgEl = null, hasSelected = false;
   var view = "photo", filter = "all", query = "";
 
   var $ = function (id) { return document.getElementById(id); };
@@ -289,6 +373,7 @@
     }).then(function () {
       renderIndex();
       $("idxfoot").textContent = order.length + " WORKS ARCHIVED";
+      if (!/[?&]id=/.test(location.search)) renderBrowse();
       openFromUrl();
     }).catch(function () {
       $("idxlist").innerHTML = '<div class="yearhead">ARCHIVE UNAVAILABLE</div>';
@@ -347,9 +432,95 @@
   }
   window.addEventListener("popstate", function () {
     var m = /[?&]id=([^&]+)/.exec(location.search);
-    if (m && works[decodeURIComponent(m[1]).toUpperCase()]) {
-      select(decodeURIComponent(m[1]).toUpperCase(), true);
+    if (m) {
+      var id = decodeURIComponent(m[1]).toUpperCase();
+      if (works[id]) { select(id, true); return; }
     }
+    clearSelection();
+  });
+
+  // Return to the archive's unselected state without a page load.
+  function clearSelection() {
+    selected = null; record = null; imgEl = null;
+    document.title = "POGO Studios — Archive";
+    renderIndex();
+    $("wid").textContent = "";
+    $("wsub").textContent = "Select a work from the index";
+    renderBrowse();
+    $("record").innerHTML =
+      '<div class="panel"><div class="ptitle">RECORD</div><div class="note">' +
+      'The archive holds a permanent record for every physical work POGO Studios has ' +
+      'documented. Choose a work to view its details, media, and verification state.' +
+      '<br><br>This app is read-only. It reads public files, runs entirely in your ' +
+      'browser, and collects nothing \u2014 no accounts, no tracking, no uploads.' +
+      '</div></div>';
+    updateStepbar();
+    if (isMobile()) setPane("index");
+  }
+
+  // "POGO-2025-PO-CG" -> "25 PO-CG"
+  function shortLabel(id) {
+    var rest = id.replace(/^POGO-/, "");
+    var m = /^(\d{4})-(.*)$/.exec(rest);
+    return m ? m[1].slice(2) + " " + m[2] : rest;
+  }
+
+  function neighbours(id) {
+    var i = order.indexOf(id);
+    return { prev: i > 0 ? order[i - 1] : null,
+             next: (i > -1 && i < order.length - 1) ? order[i + 1] : null };
+  }
+
+  function updateStepbar() {
+    var bar = $("stepbar");
+    if (!selected) { bar.classList.remove("on"); return; }
+    bar.classList.add("on");
+    var n = neighbours(selected);
+    var set = function (btnId, target) {
+      var b = $(btnId);
+      b.disabled = !target;
+      b.querySelector(".lab").textContent = target ? shortLabel(target) : "";
+      b.dataset.target = target || "";
+    };
+    set("prevWork", n.prev);
+    set("nextWork", n.next);
+  }
+
+  ["prevWork", "nextWork"].forEach(function (bid) {
+    document.getElementById(bid).addEventListener("click", function () {
+      if (this.dataset.target) select(this.dataset.target);
+    });
+  });
+
+  // Grid of every work, newest first — the default view for browsing.
+  function renderBrowse() {
+    var wrap = $("canvasWrap");
+    var v = $("views");
+    if (v) v.style.display = "none";
+    // browsing always shows photographs; reset the toggle for next time
+    view = "photo";
+    Array.prototype.forEach.call(document.querySelectorAll(".views button"), function (x) {
+      x.classList.toggle("on", x.getAttribute("data-v") === "photo");
+    });
+    if (!order.length) { wrap.innerHTML = '<div class="empty">NO WORKS FOUND</div>'; return; }
+    var html = '<div class="browse"><div class="browsehead">' +
+               order.length + ' WORKS \u00B7 NEWEST FIRST</div><div class="bgrid">';
+    order.forEach(function (id) {
+      var w = works[id], st = statusOf(id);
+      html += '<button class="bcell" data-id="' + id + '">' +
+              '<span class="bthumb">' +
+              (w.media_url ? '<img src="' + w.media_url + '" alt="' + id + '" loading="lazy">' : "") +
+              '</span><span class="bid"><span>' + esc(shortLabel(id)) + '</span>' +
+              '<span class="dot ' + st + '"></span></span></button>';
+    });
+    wrap.innerHTML = html + "</div></div>";
+    wrap.style.alignItems = "stretch";
+    wrap.style.padding = "0";
+  }
+
+  document.getElementById("canvasWrap").addEventListener("click", function (e) {
+    var b = e.target.closest(".bcell");
+    if (b) select(b.getAttribute("data-id"));
   });
 
   function statusOf(id) {
@@ -405,14 +576,22 @@
     renderIndex();
     if (isMobile()) setPane("work");
 
-    // deep link: give every work its own address
+    // deep link: every work gets its own address.
+    // First selection replaces the entry (so Back leaves the archive the way
+    // the visitor arrived); later selections push, so Back steps between works.
     if (!fromUrl) {
-      history.pushState({ id: id }, "", "?id=" + encodeURIComponent(id));
+      var url = "?id=" + encodeURIComponent(id);
+      if (hasSelected) history.pushState({ id: id }, "", url);
+      else history.replaceState({ id: id }, "", url);
+      hasSelected = true;
     }
     document.title = id + " — POGO Studios Archive";
 
     $("wid").textContent = id;
     $("wsub").textContent = [w.medium, w.dimensions].filter(Boolean).join(" \u00B7 ") || "Loading\u2026";
+    $("views").style.display = "flex";
+    $("canvasWrap").style.alignItems = "center";
+    $("canvasWrap").style.padding = "20px";
     $("canvasWrap").innerHTML = '<div class="empty">LOADING\u2026</div>';
 
     var ready = w.medium
@@ -576,13 +755,20 @@
 
     var h = "";
 
+    var yr = function (d) { return d ? String(d).slice(0, 4) : ""; };
     h += '<div class="panel"><div class="ptitle">DETAILS</div>' +
       row("ID", id) +
-      row("Title", (!w.title || w.title === "untitled") ? "Untitled" : w.title) +
-      row("Medium", w.medium) + row("Dimensions", w.dimensions) +
       (w.focus && w.focus !== "none" ? row("Focus", w.focus) : "") +
       (w.series && w.series !== "none" ? row("Series", w.series) : "") +
-      row("Created", w.created) + row("Archived", w.archived) + '</div>';
+      '<div class="rule"></div>' +
+      row("Medium", w.medium) +
+      row("Dimensions", w.dimensions) +
+      '<div class="rule"></div>' +
+      row("Year created", yr(w.created)) +
+      row("Year archived", yr(w.archived)) +
+      '<div class="rule"></div>' +
+      row("Title", (!w.title || w.title === "untitled") ? "Untitled" : w.title) +
+      '</div>';
 
     h += '<div class="panel"><div class="ptitle">AVAILABILITY</div>' +
       '<span class="status ' + st + '">' + st.toUpperCase() + '</span>';
@@ -609,9 +795,7 @@
       row("Schema", w.schema_version) + row("Year", w.year) +
       row("Type", w.type_code) + row("Sequence", w.sequence);
     if (w.source_sha256)
-      h += '<div class="lbl" style="margin-top:12px">SOURCE IMAGE SHA-256</div><div class="hash">' + esc(w.source_sha256) + '</div>';
-    if (w.web_sha256)
-      h += '<div class="lbl" style="margin-top:12px">WEB IMAGE SHA-256</div><div class="hash">' + esc(w.web_sha256) + '</div>';
+      h += '<div class="lbl" style="margin-top:12px">IMAGE FINGERPRINT (SHA-256)</div><div class="hash">' + esc(w.source_sha256) + '</div>';
     h += '<a class="btn" href="' + w.record_url + '" target="_blank" rel="noopener">VIEW RAW RECORD</a></div>';
 
     h += '<div class="panel"><div class="ptitle">PROVENANCE</div>' +
@@ -636,10 +820,15 @@
     h += '<div class="panel"><div class="ptitle">EXPLORE</div>' +
       '<a class="btn" href="text-renderer.html">OPEN THE FULL TEXT EDITOR</a>' +
       '<a class="btn" href="art-to-text-live-sequence.html">VIEW THE LIVE SEQUENCE</a>' +
-      '<a class="btn" href="index.html">RETURN HOME</a></div>';
+      '<button class="btn" id="clearSel">BACK TO ALL WORKS</button></div>';
 
     $("record").innerHTML = h;
+    updateStepbar();
     $("verifyBtn").addEventListener("click", verify);
+    $("clearSel").addEventListener("click", function () {
+      history.pushState({}, "", location.pathname);
+      clearSelection();
+    });
     $("openCompose").addEventListener("click", function () {
       var box = $("composer");
       var open = box.style.display !== "none";
@@ -764,13 +953,51 @@
   Array.prototype.forEach.call(document.querySelectorAll(".tabbar button"), function (b) {
     b.addEventListener("click", function () { setPane(b.getAttribute("data-p")); });
   });
-  if (isMobile()) setPane("index");
+  if (isMobile()) setPane("work");
   window.addEventListener("resize", function () {
     if (!isMobile()) document.body.className = "";
     else if (!document.body.className) setPane("index");
   });
 
   boot();
+})();
+</script>
+
+<script>
+(function () {
+  var drops = document.querySelectorAll(".navdrop");
+  Array.prototype.forEach.call(drops, function (d) {
+    var t = d.querySelector(".navtrigger");
+    t.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var wasOpen = d.classList.contains("open");
+      Array.prototype.forEach.call(drops, function (x) { x.classList.remove("open"); });
+      if (!wasOpen) d.classList.add("open");
+    });
+  });
+  document.addEventListener("click", function () {
+    Array.prototype.forEach.call(drops, function (d) { d.classList.remove("open"); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      Array.prototype.forEach.call(drops, function (d) { d.classList.remove("open"); });
+    }
+  });
+
+  // Contact: copy the studio address rather than opening a mail client
+  Array.prototype.forEach.call(document.querySelectorAll(".navcopy"), function (b) {
+    b.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var text = b.getAttribute("data-copy");
+      var done = function (ok) {
+        b.textContent = ok ? "COPIED \u2713" : text;
+        setTimeout(function () { b.textContent = "CONTACT"; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      } else { done(false); }
+    });
+  });
 })();
 </script>
 </body>

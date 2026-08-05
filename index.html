@@ -24,15 +24,39 @@
     font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
     color: #171512; text-decoration: none;
   }
-  .mark img { height: 40px; width: auto; display: block; }
+  .mark img { height: 50px; width: auto; display: block; }
   .mark:hover { opacity: 0.6; }
-  .navlinks { display: flex; gap: 18px; flex-wrap: wrap; }
+  .navlinks { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
   .navlinks a {
     color: #171512; text-decoration: none; font-size: 10px;
     letter-spacing: 0.14em; opacity: 0.55; padding-bottom: 2px;
     border-bottom: 2px solid transparent;
   }
   .navlinks a:hover { opacity: 1; }
+  .navdrop { position: relative; display: flex; align-items: center; }
+  .navtrigger {
+    font-family: inherit; font-size: 10px; letter-spacing: 0.14em;
+    background: none; border: none; padding: 0 0 2px; cursor: pointer;
+    display: block; line-height: inherit; font-weight: inherit;
+    color: #171512; opacity: 0.55; border-bottom: 2px solid transparent;
+  }
+  .navtrigger:hover, .navdrop.open .navtrigger { opacity: 1; }
+  .navdrop.open .navtrigger { border-bottom-color: #171512; }
+  .navmenu {
+    display: none; position: absolute; top: 100%; left: 0; z-index: 60;
+    max-width: min(240px, calc(100vw - 32px));
+    background: #EFEDE6; border: 2px solid #171512; min-width: 172px; margin-top: 6px;
+  }
+  .navdrop.open .navmenu { display: block; }
+  .navmenu a, .navmenu .navcopy {
+    display: block; width: 100%; text-align: left; padding: 10px 13px;
+    font-family: inherit; font-size: 10px; letter-spacing: 0.12em;
+    border: none; border-bottom: 1px solid rgba(128,128,128,0.35);
+    background: none; color: inherit; opacity: 0.75; cursor: pointer;
+  }
+  .navmenu a:last-child, .navmenu .navcopy:last-child { border-bottom: none; }
+  .navmenu a:hover, .navmenu .navcopy:hover { opacity: 1; background: rgba(128,128,128,0.16); }
+
   .navlinks a.here { opacity: 1; border-bottom-color: #171512; }
 
   main { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 24px; }
@@ -47,8 +71,9 @@
   }
   .subhead {
     font-family: var(--font-body);
-    margin-top: 22px; font-size: clamp(21px, 2.8vw, 27px); line-height: 0.95;
-    font-weight: 700; max-width: 46ch; text-wrap: balance; hyphens: none;
+    margin-top: 0; font-size: clamp(26px, 4vw, 38px); line-height: 0.95;
+    font-weight: 700; max-width: 24ch; text-wrap: balance; hyphens: none;
+    letter-spacing: 0;
   }
   .lede {
     font-family: var(--font-body);
@@ -80,15 +105,19 @@
   .cell {
     display: block; text-decoration: none; color: #171512;
     border: 1px solid rgba(23,21,18,0.3); background: transparent;
-    aspect-ratio: 1 / 1; position: relative; overflow: hidden;
   }
-  .cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cell .thumb {
+    aspect-ratio: 1 / 1; width: 100%; overflow: hidden;
+    display: block; background: #EFEDE6;
+  }
+  .cell .thumb img {
+    width: 100%; height: 100%; object-fit: contain; display: block;
+  }
   .cell .cid {
-    position: absolute; left: 0; right: 0; bottom: 0;
-    background: rgba(239,237,230,0.92); font-size: 9px; letter-spacing: 0.1em;
-    padding: 6px 7px; border-top: 1px solid rgba(23,21,18,0.25);
+    display: block; font-size: 9px; letter-spacing: 0.1em;
+    padding: 7px 8px; border-top: 1px solid rgba(23,21,18,0.25);
   }
-  .cell:hover { outline: 2px solid #171512; outline-offset: -2px; }
+  .cell:hover { outline: 2px solid #171512; outline-offset: -1px; }
   .gridnote { font-size: 10px; opacity: 0.45; letter-spacing: 0.1em; }
 
   .tools { display: flex; flex-direction: column; }
@@ -133,7 +162,7 @@
   }
   @media (max-width: 600px) {
     .mark span { display: none; }
-    .mark img { height: 34px; }
+    .mark img { height: 42px; }
   }
 </style>
 </head>
@@ -144,11 +173,22 @@
   <div class="navlinks">
     <a href="index.html" class="here">HOME</a>
     <a href="archive.html">ARCHIVE</a>
-    <a href="text-renderer.html">TEXT RENDERER</a>
-    <a href="art-to-text-live-sequence.html">LIVE SEQUENCE</a>
-    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">SOURCE &amp; DATA</a>
-    <a href="https://www.pogostudios.xyz/process" target="_blank" rel="noopener">PROCESS</a>
-    <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO</a>
+    <div class="navdrop">
+      <button class="navtrigger" type="button">TOOLS ▾</button>
+      <div class="navmenu">
+        <a href="text-renderer.html">TEXT RENDERER</a>
+        <a href="art-to-text-live-sequence.html">LIVE SEQUENCE</a>
+      </div>
+    </div>
+    <div class="navdrop">
+      <button class="navtrigger" type="button">STUDIO ▾</button>
+      <div class="navmenu">
+        <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO SITE</a>
+        <a href="https://www.pogostudios.xyz/process" target="_blank" rel="noopener">PROCESS</a>
+        <button class="navcopy" type="button" data-copy="hello@pogostudios.xyz">CONTACT</button>
+      </div>
+    </div>
+    <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">GITHUB</a>
   </div>
 </nav>
 
@@ -156,8 +196,7 @@
 
   <section class="intro">
     <div class="eyebrow">POGO STUDIOS</div>
-    <h1>The work outlives the artist.<br>The record should too.</h1>
-    <p class="subhead">View, verify, and learn more about any POGO artwork in the official archive.</p>
+    <h1 class="subhead">View, verify, and learn more about any POGO artwork in the official archive.</h1>
     <p class="lede">
       Every physical artwork is documented in a permanent public archive — identified,
       fingerprinted, and timestamped. Any recorded work can be viewed and verified by
@@ -254,10 +293,48 @@
     m.works.slice(0, 12).forEach(function (w) {
       if (!w.media_url) return;
       html += '<a class="cell" href="archive.html?id=' + encodeURIComponent(w.id) + '">' +
-              '<img src="' + w.media_url + '" alt="' + w.id + '" loading="lazy">' +
+              '<span class="thumb"><img src="' + w.media_url + '" alt="' + w.id + '" loading="lazy"></span>' +
               '<span class="cid">' + w.id.replace("POGO-", "") + '</span></a>';
     });
     grid.innerHTML = html || '<div class="gridnote">No media available yet.</div>';
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var drops = document.querySelectorAll(".navdrop");
+  Array.prototype.forEach.call(drops, function (d) {
+    var t = d.querySelector(".navtrigger");
+    t.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var wasOpen = d.classList.contains("open");
+      Array.prototype.forEach.call(drops, function (x) { x.classList.remove("open"); });
+      if (!wasOpen) d.classList.add("open");
+    });
+  });
+  document.addEventListener("click", function () {
+    Array.prototype.forEach.call(drops, function (d) { d.classList.remove("open"); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      Array.prototype.forEach.call(drops, function (d) { d.classList.remove("open"); });
+    }
+  });
+
+  // Contact: copy the studio address rather than opening a mail client
+  Array.prototype.forEach.call(document.querySelectorAll(".navcopy"), function (b) {
+    b.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var text = b.getAttribute("data-copy");
+      var done = function (ok) {
+        b.textContent = ok ? "COPIED \u2713" : text;
+        setTimeout(function () { b.textContent = "CONTACT"; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      } else { done(false); }
+    });
   });
 })();
 </script>
