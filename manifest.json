@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-03",
+  "generated": "2026-08-06",
   "count": 183,
   "years": [
     "2026",
@@ -24,7 +24,8 @@
       "source_sha256": "d163e880b3ee14e56b3e8649ee0201c9e02fc555c6fc5126f3060fc208f59233",
       "web_sha256": "8b30f7ea0453d2b09955e5f39302611e0d14624f66a07cf216693b3e4cbf9616",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-EQ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EQ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EQ.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-EQ.webp"
     },
     {
       "id": "POGO-2026-PO-ER",
@@ -42,7 +43,8 @@
       "source_sha256": "8ffcbc272bf791059c2017d2dbc0f9ce657daed3306d56cebd57c7b2a4b9e63d",
       "web_sha256": "0bc644f05e54ff87a0d774a20c06db6664ee438cd87e470d7d6c42195c115958",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-ER.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-ER.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-ER.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-ER.webp"
     },
     {
       "id": "POGO-2026-PO-ES",
@@ -60,7 +62,8 @@
       "source_sha256": "0e5e1a9662fbceadfee163702bfc9c9037afb983293f4e2b2663c5ae737ee1aa",
       "web_sha256": "d0e33a1a60fcfded873f511ec0edc8f77d5c618c38f9469587cad79363953c59",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-ES.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-ES.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-ES.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-ES.webp"
     },
     {
       "id": "POGO-2026-PO-ET",
@@ -78,7 +81,8 @@
       "source_sha256": "94671e3fa3f809d9f84dd7228c77a08985166535cd9b884d4897a7d61d2ac6f4",
       "web_sha256": "a241cb318f677dd206960697b3914a7475376bb0f342f3c6e69766337e1a656b",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-ET.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-ET.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-ET.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-ET.webp"
     },
     {
       "id": "POGO-2026-PO-EU",
@@ -96,7 +100,8 @@
       "source_sha256": "e382d26dde13e02dacb47f474feaae68c2715c1ae6307d1b426352816d0b846f",
       "web_sha256": "a72ad27012e27440c3a78656bf3a570487db399ffe0c1fa782f776853b0a1026",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-EU.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EU.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EU.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-EU.webp"
     },
     {
       "id": "POGO-2026-PO-EV",
@@ -114,7 +119,8 @@
       "source_sha256": "b7b5cc0f5de1d13fd57b2a3fa0541e292b8e9b1ba1582a24f496879616852c38",
       "web_sha256": "fc0312b27fd8cb0d19ddbc0953b117d5b58a3494f838bf5ddbdf72d0d670cad8",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-EV.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EV.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EV.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-EV.webp"
     },
     {
       "id": "POGO-2026-PO-EW",
@@ -132,7 +138,8 @@
       "source_sha256": "e3b74c38690a9b0c69bf3ebc15677a75650f76756ececc822268f89e9d5c5c37",
       "web_sha256": "d1f116e5f96f3e068ed985c2618a5cbba8c1af56b5640a49fde15194dbfa4a64",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-EW.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EW.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EW.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-EW.webp"
     },
     {
       "id": "POGO-2026-PO-EX",
@@ -150,7 +157,8 @@
       "source_sha256": "f0e6ba9e3ab91cf0fa8243fde0fa4c995b9f18e42e5990f453debbb653d60be8",
       "web_sha256": "c5a8039041e94ac41eb33352f5dd449b54853abbf30d749c363d31bd3b88f28a",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-EX.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EX.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EX.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-EX.webp"
     },
     {
       "id": "POGO-2026-PO-EY",
@@ -168,7 +176,8 @@
       "source_sha256": "1e92b68871712b6058968706e5b080426550388728a03565d951cadc66a60c10",
       "web_sha256": "59e9bb77376559770c5995f0d80bb4eeaf3708906f598fd538bf7a64c7c99314",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-EY.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EY.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EY.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-EY.webp"
     },
     {
       "id": "POGO-2026-PO-EZ",
@@ -186,7 +195,8 @@
       "source_sha256": "3790ec18f0b58b9359f3b418b38bdfb52bb8dc4ee4996f855173e92ebae4f3d5",
       "web_sha256": "c8ab2e46d6ceb90fc7bf24655626fa36970af14daa56e11bd693f1246ba2bc3c",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-EZ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EZ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-EZ.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-EZ.webp"
     },
     {
       "id": "POGO-2026-PO-FA",
@@ -204,7 +214,8 @@
       "source_sha256": "f9b86caec6689e4e275382ff1e60807893887c0a6fe443f06a2f1f292a1c04ab",
       "web_sha256": "183d59162b14df94f45ba6ac013fe861dce781abde0ed98a950db19c7e41380a",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FA.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FA.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FA.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FA.webp"
     },
     {
       "id": "POGO-2026-PO-FB",
@@ -222,7 +233,8 @@
       "source_sha256": "ebe63405c6562758dd86e833da675a0eb8524e83acb9d3ebe9a5a765d74088c8",
       "web_sha256": "2408b0ad0aecd600e0fbfdde45d85a534243ae03274d6a42e2a17b30a992422a",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FB.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FB.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FB.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FB.webp"
     },
     {
       "id": "POGO-2026-PO-FC",
@@ -240,7 +252,8 @@
       "source_sha256": "ace5c3e59a358eb2b1fb3de66d50a37f5ea49a5e9fecf4ebeca9427d9f450946",
       "web_sha256": "bde0e9f0e03f2824a2113a03dd4bb0142381c57b9dc7590a6b8e58d6b0335f04",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FC.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FC.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FC.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FC.webp"
     },
     {
       "id": "POGO-2026-PO-FD",
@@ -258,7 +271,8 @@
       "source_sha256": "1b80d0b6e3c99a6f7c528056b622745ec4df2294912fbeed2995ae97b41f0199",
       "web_sha256": "20a5029da162a26c25bd303ccbffe64ac594901968f4b7272dc7998fa229d97b",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FD.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FD.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FD.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FD.webp"
     },
     {
       "id": "POGO-2026-PO-FE",
@@ -276,7 +290,8 @@
       "source_sha256": "b2b905f70aa8ecd07039d420747eba57e62baf21723d4a8a725cd99336b47437",
       "web_sha256": "05fe87c9c28de5a9e51d34a0ee0cd78575f3bd61def2d8e180eb299930daade3",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FE.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FE.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FE.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FE.webp"
     },
     {
       "id": "POGO-2026-PO-FF",
@@ -294,7 +309,8 @@
       "source_sha256": "0aae7076ff809629ec3b3ab85904f0e94de88b2381c31826bc394547b9408e06",
       "web_sha256": "9d69eccedbabfeaeb0d0975e40543daa9df4dd9f2eb7cf23dae3553e330ba296",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FF.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FF.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FF.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FF.webp"
     },
     {
       "id": "POGO-2026-PO-FG",
@@ -312,7 +328,8 @@
       "source_sha256": "46a7a526521dbd95987e32faae42c1dae85ece92574264f65ac5850f2678b52c",
       "web_sha256": "a0768caffaafa0cc3670556cbb7c389c1ab16313d287abb7c302ea72192338e4",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FG.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FG.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FG.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FG.webp"
     },
     {
       "id": "POGO-2026-PO-FH",
@@ -330,7 +347,8 @@
       "source_sha256": "f22954463aee78ebfa95658319119f4bad24bbc1493faafccf7ca0223c748d36",
       "web_sha256": "d166b0c48d8c7291c705497870384cfdfe8d867f51756bc4d6e90a6f1c42fcab",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FH.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FH.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FH.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FH.webp"
     },
     {
       "id": "POGO-2026-PO-FI",
@@ -348,7 +366,8 @@
       "source_sha256": "8647be4331ec3be8268fd55db209d1907a1becf413da2849d38a0bebe5e6875c",
       "web_sha256": "518a23563db9821826fa586b97bf5077c5a50a95786a6780d1a89b2dc83e1a32",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FI.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FI.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FI.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FI.webp"
     },
     {
       "id": "POGO-2026-PO-FJ",
@@ -366,7 +385,8 @@
       "source_sha256": "55f82fc1150e37fdaa88c63381c58117c2df0ac1edb9358cde1b11127d5b8bdd",
       "web_sha256": "c32c7dce4f6af3abbd36b13bf5629084fa02c29543a61255811b3f989a01a514",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FJ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FJ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FJ.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FJ.webp"
     },
     {
       "id": "POGO-2026-PO-FK",
@@ -384,7 +404,8 @@
       "source_sha256": "eea0cbc0fb72959abfa6b4f6b5f8c5ee22c9e67e26d9c17a56a085df34f56291",
       "web_sha256": "c9f6eb900f0bc6a7c1fb4f154915f65cdb7f7077c898cbde22b1a4f93abe6042",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FK.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FK.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FK.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FK.webp"
     },
     {
       "id": "POGO-2026-PO-FL",
@@ -402,7 +423,8 @@
       "source_sha256": "7f4ad911def17530db3735095bc53ca76751fe64da60a7bfc3045b27cdc922a2",
       "web_sha256": "478aae81fffb8aa10baf62786d3f6b7cd747ad5c37a21693b3bf3f4e47c53067",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FL.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FL.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FL.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FL.webp"
     },
     {
       "id": "POGO-2026-PO-FM",
@@ -420,7 +442,8 @@
       "source_sha256": "82383d9097415a6b40f6edb1aea42de8515061fcb5ed1285facb01a90b5ea040",
       "web_sha256": "8cc4c2556170b347ffdade609715a858e3da8ba0ec989d3ff87b972520e922e2",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FM.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FM.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FM.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FM.webp"
     },
     {
       "id": "POGO-2026-PO-FN",
@@ -438,7 +461,8 @@
       "source_sha256": "028c32251e9bb95779ce9bca5d6f1f869ed20f8c1474937f737a0d427507a2b2",
       "web_sha256": "3f6787bee917faa4dbc9052b5ff814a72b2565a6b0999d7d2fe457cb99ae2057",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FN.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FN.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FN.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FN.webp"
     },
     {
       "id": "POGO-2026-PO-FO",
@@ -456,7 +480,8 @@
       "source_sha256": "8668821ac88b29231240d2f0a8e158f47d79acb61644df1f5ab5fafb2b92b72a",
       "web_sha256": "ee0dd254d82317708dda761e63a5e0cd53e770b7b30cbc2e1a9f83e201d33786",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FO.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FO.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FO.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FO.webp"
     },
     {
       "id": "POGO-2026-PO-FP",
@@ -474,7 +499,8 @@
       "source_sha256": "f47efbbef851b78148c776fcb4613b07ba83d811622a82ada3238afa18fb044f",
       "web_sha256": "171d1d7941e0c2ed3053a8c66effa902145c3db0c8c94338a25447b5d3115b20",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FP.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FP.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FP.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FP.webp"
     },
     {
       "id": "POGO-2026-PO-FQ",
@@ -492,7 +518,8 @@
       "source_sha256": "755fb10145a712ab090773d910864125e44876836bc52a569992b52b08c67e7b",
       "web_sha256": "0e43f31f8b07a1b59662e68719aa2c6c28691f504cd5c96cbe32560d49ad2abf",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FQ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FQ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FQ.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FQ.webp"
     },
     {
       "id": "POGO-2026-PO-FR",
@@ -510,7 +537,8 @@
       "source_sha256": "487ebeb09265e8c2350537f256f171b851a6ea3c785924fb73fbc58b3e07f37b",
       "web_sha256": "a56a8b1391e0f586f9c5b2a63e5e6becfec4f10ec0f5213ce9983f8f2788a16b",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FR.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FR.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FR.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FR.webp"
     },
     {
       "id": "POGO-2026-PO-FS",
@@ -528,7 +556,8 @@
       "source_sha256": "ac65d3e6e3972562db330f810acffe0cee90f1bcdd0129e32f3388efeb6393ec",
       "web_sha256": "4c11042d3258eb7513c66d1324eddfdad08a88f851910654ede7d24f800c5f65",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FS.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FS.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FS.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FS.webp"
     },
     {
       "id": "POGO-2026-PO-FT",
@@ -546,7 +575,8 @@
       "source_sha256": "0987a6946aad75fbe7dbab5c1c7e0c9ddc5a26a0547e658d3cd5a4505b738f5f",
       "web_sha256": "eea3f69a307f704891b54af4b31eda577f9c44b985d6480d6a9c3c304fb48861",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FT.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FT.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FT.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FT.webp"
     },
     {
       "id": "POGO-2026-PO-FU",
@@ -564,7 +594,8 @@
       "source_sha256": "0ab50f4f1e9d201218a84593defdf347c1390cea0d3c6c8432a8640b6529870c",
       "web_sha256": "49d6d9be9c90a27ef28e24665df61ad3de80962b8ba7f0d08d65abf6b8654236",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FU.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FU.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FU.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FU.webp"
     },
     {
       "id": "POGO-2026-PO-FV",
@@ -582,7 +613,8 @@
       "source_sha256": "a710de4c631ec66ac5821dbaf11d8755905a844f4a577627bbd886dfe6bca6ca",
       "web_sha256": "53915fb000cf7e10255b474e06ee6fd874b592fced1264b95de64f9d40fd7ca2",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FV.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FV.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FV.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FV.webp"
     },
     {
       "id": "POGO-2026-PO-FW",
@@ -600,7 +632,8 @@
       "source_sha256": "62bc46d70521553781765831f735368adc1521126044123e707c67890069dd5e",
       "web_sha256": "1811b4a219323ebb43131b6d2b649fee53bdd8fc95b52e9d2b577e9da018f962",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FW.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FW.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FW.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FW.webp"
     },
     {
       "id": "POGO-2026-PO-FX",
@@ -618,7 +651,8 @@
       "source_sha256": "462f0812b6ed1c9e39086cf65708768892b4b6e43550a496da2b64d59c85d7ca",
       "web_sha256": "0bf68101a88f14706557222c338be9c948d3860badf116be78c0acd2a631c9da",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FX.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FX.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FX.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FX.webp"
     },
     {
       "id": "POGO-2026-PO-FY",
@@ -636,7 +670,8 @@
       "source_sha256": "72ac03ecf94f2ba3686d01a1d14a3036817cb787b29e62aac71e660cfcf41c04",
       "web_sha256": "650b91febf7ae1b3e2b564d1169b022dc7a9992beb2b7348be818d86e96cc699",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FY.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FY.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FY.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FY.webp"
     },
     {
       "id": "POGO-2026-PO-FZ",
@@ -654,7 +689,8 @@
       "source_sha256": "74be8af74aad497271cb1dcc09e2fd03e74a90dfc63c0d68a1aa2e7e279e2f90",
       "web_sha256": "8b5e1ed3d8bae9188309c6ea081a564a56b5523548b0c655e20936ca3e30e4a1",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2026/records-2026/POGO-2026-PO-FZ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FZ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2026/POGO-2026-PO-FZ.PNG",
+      "thumb_url": "thumbs/POGO-2026-PO-FZ.webp"
     },
     {
       "id": "POGO-2025-PO-AU",
@@ -672,7 +708,8 @@
       "source_sha256": "8d982a0fe5971561233f8946846d8a4998f28a1963dadb1c7a4bfa9201f89eda",
       "web_sha256": "c9052d78578481469a5ddb7142e4ac5ef556f614cdadee4affe615c4704f2aba",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-AU.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AU.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AU.png",
+      "thumb_url": "thumbs/POGO-2025-PO-AU.webp"
     },
     {
       "id": "POGO-2025-PO-AV",
@@ -690,7 +727,8 @@
       "source_sha256": "07702461494e8965620a006844a03ac174e111d45fe2fdfc4134e2abaf6ec095",
       "web_sha256": "f19e65f9c30d9d3d1285267b73f1c3c1e9cea04a970d15b0b14db84553122dbc",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-AV.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AV.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AV.png",
+      "thumb_url": "thumbs/POGO-2025-PO-AV.webp"
     },
     {
       "id": "POGO-2025-PO-AW",
@@ -708,7 +746,8 @@
       "source_sha256": "50857cb7541959dfd93f742d7edfa639ab570251c01e771bbbd6945a858ba40d",
       "web_sha256": "a3c94c75a51f5e721ae81abe2614aef5c4a7f61f22669615f190c71bb1702049",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-AW.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AW.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AW.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-AW.webp"
     },
     {
       "id": "POGO-2025-PO-AX",
@@ -726,7 +765,8 @@
       "source_sha256": "be2416fde561c2ed60206ae34db305d151eb70a8ec79c2fd7eb66db7f164e3ba",
       "web_sha256": "aefa5cd0f06b99d3b4a1da1771ec8b08c29a64424c34e9bb6d54cf60ba31fb57",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-AX.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AX.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AX.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-AX.webp"
     },
     {
       "id": "POGO-2025-PO-AY",
@@ -744,7 +784,8 @@
       "source_sha256": "1d07b2db1815366463c0db84d33bbd9031b8fe7ff6274c30ffafe56f0f3d8f26",
       "web_sha256": "f975e2774d7eb0e7102d1d66ab71b2e6ecd09b0c250b20ddfa1c7065877ef51f",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-AY.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AY.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AY.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-AY.webp"
     },
     {
       "id": "POGO-2025-PO-AZ",
@@ -762,7 +803,8 @@
       "source_sha256": "8733cbbb40a1a55280ff106d8a0c1737ed845b4071d0d82a6be2f44e56c0064a",
       "web_sha256": "e937eb51c9a8998e96464e75cc114365c32361d9926c95a83be7a2969f1932aa",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-AZ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AZ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-AZ.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-AZ.webp"
     },
     {
       "id": "POGO-2025-PO-BA",
@@ -780,7 +822,8 @@
       "source_sha256": "97555a5a68802f57c98ee3c5cff89d7f0ed36e77db9100cf6505cd8b9a489d87",
       "web_sha256": "fb7e692785594728cdcf5757a4e41180a0ab7930bddd6c19d7966e9bf97ddef2",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BA.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BA.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BA.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BA.webp"
     },
     {
       "id": "POGO-2025-PO-BB",
@@ -798,7 +841,8 @@
       "source_sha256": "fcc4e5e61e66a2bb6d122b23929781649c39a3437222484f89cea3db59ebaa81",
       "web_sha256": "7f3397151dbce2510735baa776547a2bfde0ed3896fd958a72b403ae0524fc12",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BB.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BB.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BB.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BB.webp"
     },
     {
       "id": "POGO-2025-PO-BC",
@@ -816,7 +860,8 @@
       "source_sha256": "03ca9d291b713b30fd7fe999ecc8d6e2416ceb5f69fbc5a2b2119051420d3400",
       "web_sha256": "cb82f58d61318762d8cfb12e6f1eae37abaa110d69ad729631f5dea44365451b",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BC.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BC.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BC.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BC.webp"
     },
     {
       "id": "POGO-2025-PO-BD",
@@ -834,7 +879,8 @@
       "source_sha256": "6231c34348cb6ed09c91bd49e206a357aa89832189bbfdbc7f63c7e5c1d538e1",
       "web_sha256": "6433966ccd06fa9d3e05123e18d8085181373218ff1a54bb6f23723b72a2a7c2",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BD.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BD.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BD.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-BD.webp"
     },
     {
       "id": "POGO-2025-PO-BE",
@@ -852,7 +898,8 @@
       "source_sha256": "a9fe32c050654740c2647a2e007de1d77a635e418d955b624484e71dbd7fa137",
       "web_sha256": "643c873bce4152997ffd763494400be30c2e8a1819802345c0f51d0bea13ef9f",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BE.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BE.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BE.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-BE.webp"
     },
     {
       "id": "POGO-2025-PO-BF",
@@ -870,7 +917,8 @@
       "source_sha256": "ad232ba0c1ddf16c455066928a49a0dd88bc4b5ff78762eccb72f62f42245d7a",
       "web_sha256": "e3d00dd3eab6c1ed599504fe25c3a4befba89dba86321e7947a4a02896c7ce4c",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BF.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BF.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BF.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-BF.webp"
     },
     {
       "id": "POGO-2025-PO-BG",
@@ -888,7 +936,8 @@
       "source_sha256": "bc26c1f67384ef3be46798567e49a5421938c1b9a96ee2abc31e2d8e3b6db51c",
       "web_sha256": "3112cc4bf90ee8f213b717f0a5078b93c0460c06d0d610010de2550d0c50df7a",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BG.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BG.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BG.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-BG.webp"
     },
     {
       "id": "POGO-2025-PO-BH",
@@ -906,7 +955,8 @@
       "source_sha256": "b8ffe4324f0f69c3ea00a48e735399b936e49f84b0782d11fe8b060c17dab2c3",
       "web_sha256": "e2cd233e2b8d3b462c0ed2584ae61f94e46f4b7b5ad9b227f88e8c73bf905fb5",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BH.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BH.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BH.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-BH.webp"
     },
     {
       "id": "POGO-2025-PO-BI",
@@ -924,7 +974,8 @@
       "source_sha256": "50a69c3f2c67d4209fd1e1a04216c1181c3e2a6e362da9e60ce7a32c59c58afc",
       "web_sha256": "840e656680bf74acefc61b35153d01118b5c4149d1d1c7e24eff1ea71136367b",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BI.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BI.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BI.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-BI.webp"
     },
     {
       "id": "POGO-2025-PO-BJ",
@@ -942,7 +993,8 @@
       "source_sha256": "1dea669f20ed783aef20e02c9d95ab52a54b3908308e23dacedf5f92360dccb4",
       "web_sha256": "888dc94395038c306d96892e0731025139177e84bcf8a79cf48c6995efff7735",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BJ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BJ.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BJ.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BJ.webp"
     },
     {
       "id": "POGO-2025-PO-BK",
@@ -960,7 +1012,8 @@
       "source_sha256": "14075ad39d099fec56911b7b8d32682a8425bef868b7ffc10fc80b801677b143",
       "web_sha256": "171842ccb460855bb265f0a987da36d20b7fead850d8538926598e429d045c4c",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BK.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BK.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BK.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BK.webp"
     },
     {
       "id": "POGO-2025-PO-BL",
@@ -978,7 +1031,8 @@
       "source_sha256": "2c010ec1419f5ce3ce4578e006f5dcf10493424b12e413904f575de5530ca139",
       "web_sha256": "e2bea721b53d4a14d3e06c822bd4bb124a3470e86220cdbc996cfd819e138626",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BL.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BL.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BL.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BL.webp"
     },
     {
       "id": "POGO-2025-PO-BM",
@@ -996,7 +1050,8 @@
       "source_sha256": "4da4b87d7ec38dfecc869cca99c79479e7a589984e762031aa9696a51c0d126e",
       "web_sha256": "673b0ee245faac197777b0a14c5f3827de37a9625858178da288e0b4c9abb0a7",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BM.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BM.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BM.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BM.webp"
     },
     {
       "id": "POGO-2025-PO-BN",
@@ -1014,7 +1069,8 @@
       "source_sha256": "a4366ce4a49bbd31e6fc7d8689dc85e8ac61b72cf4cffc9a1e5f2fded9856f0a",
       "web_sha256": "efe0450f11c2abc82e6687da82297bae007761983bfca0b49c1a61a8aabbdf68",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BN.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BN.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BN.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BN.webp"
     },
     {
       "id": "POGO-2025-PO-BO",
@@ -1032,7 +1088,8 @@
       "source_sha256": "c8abf24bd40b665fe141e2b4dafbb3690643f3eae7046e6c738945998c04f818",
       "web_sha256": "b1ed911a8ba438d7e116c51b0a9951907f2171719af66c85ef14e5c5a33e0b53",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BO.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BO.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BO.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BO.webp"
     },
     {
       "id": "POGO-2025-PO-BP",
@@ -1050,7 +1107,8 @@
       "source_sha256": "2a3dd6d7e24ee50af91957c51775c5fb7af3057fa32427b1964fc7a8f066dabd",
       "web_sha256": "b1ed911a8ba438d7e116c51b0a9951907f2171719af66c85ef14e5c5a33e0b53",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BP.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BP.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BP.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BP.webp"
     },
     {
       "id": "POGO-2025-PO-BQ",
@@ -1068,7 +1126,8 @@
       "source_sha256": "ab45d89de66cafb52b198ddb5a409139ad4a1bbd28312f48bbb6c92129f2a72c",
       "web_sha256": "9db9733f8b3a10a48d7b85d475c2fc224988caf1cd1b705ad5c6be74af2d9115",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BQ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BQ.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BQ.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BQ.webp"
     },
     {
       "id": "POGO-2025-PO-BR",
@@ -1086,7 +1145,8 @@
       "source_sha256": "2f364afb39aa4bae7a7687b21fa3a9e5c38349e14b803521fc99734f5e50c5fb",
       "web_sha256": "d1491430a3c0d4ad64f20ebcbf87a3697266637d00b5bcfcaa4bec3d3c1e161d",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BR.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BR.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BR.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BR.webp"
     },
     {
       "id": "POGO-2025-PO-BS",
@@ -1104,7 +1164,8 @@
       "source_sha256": "1acb7c2fd9058c160509b0904f60941857fbb99e5cf9b963007583d473519569",
       "web_sha256": "a2ad14de4c8af7ee92fa65d421caef73a6d3d284d3d25e279e022d57ea7b2742",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BS.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BS.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BS.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BS.webp"
     },
     {
       "id": "POGO-2025-PO-BT",
@@ -1122,7 +1183,8 @@
       "source_sha256": "c6bc7834978da502cad9506a8ab4f09f1ff86ce446757b891be214d920ba2484",
       "web_sha256": "bd35251984d3b41e9bd0fbe09a9dfb96f66efbeb2e3dd459836d865728912245",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BT.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BT.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BT.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BT.webp"
     },
     {
       "id": "POGO-2025-PO-BU",
@@ -1140,7 +1202,8 @@
       "source_sha256": "e12342c41eba84f2d4711f59e9e0cff9713fc90fa1decfc6d07ce3d9301afcd4",
       "web_sha256": "0a3b0888e72b599a7713da2c709699e5f4473c9c2bedcebd48909ad25dcfa59c",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BU.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BU.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BU.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BU.webp"
     },
     {
       "id": "POGO-2025-PO-BV",
@@ -1158,7 +1221,8 @@
       "source_sha256": "1a6f5b8625269af3b7fd164554eafeb0033aa0ba1c425a22839aa16b012bf65e",
       "web_sha256": "49a4b5e2c7ab41b3515812722e73ba1e781efd773dca373b77570194d5ac3375",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BV.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BV.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BV.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BV.webp"
     },
     {
       "id": "POGO-2025-PO-BW",
@@ -1176,7 +1240,8 @@
       "source_sha256": "e0d00b8f0377208d4d4d61dddebf2ac262d375e9cda9426c635b161b3f466027",
       "web_sha256": "711b923ebd2503265146d5b779dc66ca41788ad8becb2a8c58e02e278ff33ec9",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BW.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BW.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BW.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BW.webp"
     },
     {
       "id": "POGO-2025-PO-BX",
@@ -1194,7 +1259,8 @@
       "source_sha256": "eb001a043480777533cbeb430e5c986017471c3e726c9391e75aac72c02dfeba",
       "web_sha256": "df7220093d0d48533221e19dce05d40c86d310aa7ca47c216266a86f2b8cf739",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BX.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BX.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BX.png",
+      "thumb_url": "thumbs/POGO-2025-PO-BX.webp"
     },
     {
       "id": "POGO-2025-PO-BY",
@@ -1212,7 +1278,8 @@
       "source_sha256": "a900d0139fcc32e4f4191ee7f4baeed08075aa064e7b7b3371d4d180a3e70b88",
       "web_sha256": "49d3562439976df561f91fd018ad657105d1d1f552524fde1e932a5a5d32508f",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BY.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BY.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BY.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-BY.webp"
     },
     {
       "id": "POGO-2025-PO-BZ",
@@ -1230,7 +1297,8 @@
       "source_sha256": "081b6c92cd0aab45d1a489b9569c4c4d116ea88907f6b36fa062799f80f9530d",
       "web_sha256": "3827a6cb38693f428cf394a60e0b4fd44c62555c092b3fc52a8a3a9249fb243a",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-BZ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BZ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-BZ.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-BZ.webp"
     },
     {
       "id": "POGO-2025-PO-CA",
@@ -1248,7 +1316,8 @@
       "source_sha256": "e874c57fc13cde1cfa3e782d5dc027de2b54b7ad6ac372cef7134c65349d2afd",
       "web_sha256": "ed72af84c8f31cf90326e425ad468762874b062d093aab38de8b1c933a5a9f69",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CA.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CA.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CA.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CA.webp"
     },
     {
       "id": "POGO-2025-PO-CB",
@@ -1266,7 +1335,8 @@
       "source_sha256": "ca653959b40f71a2e884d4daa058cfcac1e5a3862c8e3a23a84c58778e0ef8c8",
       "web_sha256": "4fca703eb7ab5e9a329748e40794af85a2d932209a8dc0a7d40ee5c099ddf454",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CB.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CB.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CB.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CB.webp"
     },
     {
       "id": "POGO-2025-PO-CC",
@@ -1284,7 +1354,8 @@
       "source_sha256": "ffe28a639c1ef9ad9371b46a3d4590526df0aa42c1e1d74bd315907805aaa8ab",
       "web_sha256": "3aff3fd6802a2c71a3b6ef7b58ef9a2c3330bf3dd8fb668b4976d53c377c346b",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CC.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CC.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CC.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CC.webp"
     },
     {
       "id": "POGO-2025-PO-CD",
@@ -1302,7 +1373,8 @@
       "source_sha256": "092d18a80f786b1ef798ebb5981d35d5524364896a19802acc78cdfba19c8b60",
       "web_sha256": "45f6b5fd319f72a505ded88b5ff7970e82fa9a128d4ad00d732d8a470fa09fcc",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CD.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CD.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CD.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CD.webp"
     },
     {
       "id": "POGO-2025-PO-CE",
@@ -1320,7 +1392,8 @@
       "source_sha256": "e22d4b51cf1d6be0f5ebd27934720b6463063462c5ac0865d24ee72968fab00f",
       "web_sha256": "9b16b151dd5532d7f5d0b8978c4216f7dfb24f1a883f583a0c3a268e20597fca",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CE.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CE.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CE.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CE.webp"
     },
     {
       "id": "POGO-2025-PO-CF",
@@ -1338,7 +1411,8 @@
       "source_sha256": "f73e26fb0697fbad3c547ac4da4d7b0a62efe123275983e675df265b0285b1ae",
       "web_sha256": "0ac70c38c729c0226a352d4127ab1574f3f8f08d0979b7927ba180c3a9ef6be0",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CF.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CF.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CF.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CF.webp"
     },
     {
       "id": "POGO-2025-PO-CG",
@@ -1356,7 +1430,8 @@
       "source_sha256": "42fe466b11566d98d3c142e989ade7a0777b6de32dd21ce3ee55485909055160",
       "web_sha256": "12b7d6313d25462f66e1a261bf67876ea3eab01218819d1145880298b24be15f",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CG.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CG.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CG.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CG.webp"
     },
     {
       "id": "POGO-2025-PO-CH",
@@ -1374,7 +1449,8 @@
       "source_sha256": "4708ecfc071b1146826876578aecef3b9cf20e0f233e399f797a67d7904771ac",
       "web_sha256": "9e91c0e2e879448c90823793825aec5d954825d50596f7952cd0ed9258769ad1",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CH.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CH.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CH.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CH.webp"
     },
     {
       "id": "POGO-2025-PO-CI",
@@ -1392,7 +1468,8 @@
       "source_sha256": "ad318f6f156bbe3fff5daa3a3b971d0185db50fc1907f84ea7d7b585fe1900c6",
       "web_sha256": "02acd6f3176998853236fb6ad6818cbfffca89b27d948936d0a40bf50224fa08",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CI.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CI.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CI.png",
+      "thumb_url": "thumbs/POGO-2025-PO-CI.webp"
     },
     {
       "id": "POGO-2025-PO-CJ",
@@ -1410,7 +1487,8 @@
       "source_sha256": "d9acf2d67612019d05f6237653b4bd88b9ff57f172329ca229e2dedee6ddd36e",
       "web_sha256": "e48f0743b34b64f514822e99447b8d7cee9e68ef97704a17df328719b27b67ae",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CJ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CJ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CJ.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CJ.webp"
     },
     {
       "id": "POGO-2025-PO-CK",
@@ -1428,7 +1506,8 @@
       "source_sha256": "37d2c62d1c238493996c2e16b96848bba6b9e9d41ab8f2047b84eda2844aef61",
       "web_sha256": "ba191dfc394b4b88ca98c67a475a123cddddd012ec3e6fb8a60272134cfa02ee",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CK.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CK.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CK.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CK.webp"
     },
     {
       "id": "POGO-2025-PO-CL",
@@ -1446,7 +1525,8 @@
       "source_sha256": "0578e11496fc97da209d771576276ce2f1cc9d767912cb62341f0aa35e912132",
       "web_sha256": "990a647970e36968ace4b1d4b178a8d34ccd237cde5d11a1f7809dcfb43c01d1",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CL.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CL.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CL.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CL.webp"
     },
     {
       "id": "POGO-2025-PO-CM",
@@ -1464,7 +1544,8 @@
       "source_sha256": "68e004ec027160359b5f41509039b806d4e6453c6331b7202f7a3395d9cffcdf",
       "web_sha256": "5d4c1821426b49a0b70b9ad4ffa1dbf0514beb1be395dc0ddbc770857f61a24b",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CM.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CM.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CM.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CM.webp"
     },
     {
       "id": "POGO-2025-PO-CN",
@@ -1482,7 +1563,8 @@
       "source_sha256": "3bfc0878042080790a056891516198afccb32d08739d69be634968832905a317",
       "web_sha256": "77d5f1b2fdf02b451d4d6f3ad920716b88d3a6b961870c1276ec740ee562da19",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CN.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CN.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CN.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CN.webp"
     },
     {
       "id": "POGO-2025-PO-CO",
@@ -1500,7 +1582,8 @@
       "source_sha256": "de3d45180f2fe2f66a236631aaf71f910de929d70765bbe101bbaf28fee211d5",
       "web_sha256": "90540e992f8768e5be7591731e5ba29ccd40b65dc90dbdaee5216d99a5482ced",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CO.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CO.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CO.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CO.webp"
     },
     {
       "id": "POGO-2025-PO-CP",
@@ -1518,7 +1601,8 @@
       "source_sha256": "a6e2d314b06dabb545d71670430806502db4bf04bdf649144c8ef051f9a499af",
       "web_sha256": "56ec78837ce430116f66a8f9d2f361b082ebf56bd43dcfd2bcc5af97795ce7b1",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CP.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CP.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CP.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CP.webp"
     },
     {
       "id": "POGO-2025-PO-CQ",
@@ -1536,7 +1620,8 @@
       "source_sha256": "b7882880a7e3168d74a66cca49b049b1178feed136d15266f204290753904b5e",
       "web_sha256": "9d0059caad8c1978ef4ab4e516b7c1a05129375c90918f0d8186747f78306530",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CQ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CQ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CQ.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CQ.webp"
     },
     {
       "id": "POGO-2025-PO-CR",
@@ -1554,7 +1639,8 @@
       "source_sha256": "4e73bc0303b870dd3e1186f85c6b1178100efc38b89518ddeabd2966dacc9f97",
       "web_sha256": "25196807799baf63ff05600f8b2f1c25fa854c8a3367ca913084f9d15d151c1e",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CR.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CR.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CR.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CR.webp"
     },
     {
       "id": "POGO-2025-PO-CS",
@@ -1572,7 +1658,8 @@
       "source_sha256": "e34a2951828b221e5d4656a670a66e3bbeeead7e288496b8854d33c635b26fe5",
       "web_sha256": "a8f224d7f153f95dd59de4ed7ed63370cb14cda88b5878c1d50f9155df8dec4a",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CS.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CS.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CS.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CS.webp"
     },
     {
       "id": "POGO-2025-PO-CT",
@@ -1590,7 +1677,8 @@
       "source_sha256": "0bc1b5ec172f9e8ab9dfdf60e5cbb7fc708a17ea7d4b2cf6af70f36a4b69fc9c",
       "web_sha256": "9ca3a6143023f76d4fa7dcf34d3acfe3c3bde31fa02ce3875115580408d3e830",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CT.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CT.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CT.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CT.webp"
     },
     {
       "id": "POGO-2025-PO-CU",
@@ -1608,7 +1696,8 @@
       "source_sha256": "1bfd53b8908d1ab1f7ebd56b736c09c81554f8d9daa970aa63705e71cd60fa30",
       "web_sha256": "f60335aa5ae513d25c38eae4073de3562bedfb59865b339799fa75cf66c372dd",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CU.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CU.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CU.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CU.webp"
     },
     {
       "id": "POGO-2025-PO-CV",
@@ -1626,7 +1715,8 @@
       "source_sha256": "223cdda8ccfac1f569a5ca7c4433497ff0f774e10e9c9681a81abfc64ab96280",
       "web_sha256": "60e6c4d5f187d025c4680f0b4980827c1b1b7052a071a612f6383ceccd0a28c5",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CV.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CV.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CV.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CV.webp"
     },
     {
       "id": "POGO-2025-PO-CW",
@@ -1644,7 +1734,8 @@
       "source_sha256": "7e73c5a2ba98761b35246300a2ddac49b88f0bb15c4e36e071c4b9a741ff3235",
       "web_sha256": "9d1219112641c49665c90690b43dd43226a8e176a93f34309840d5b4b0fa3acd",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CW.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CW.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CW.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CW.webp"
     },
     {
       "id": "POGO-2025-PO-CX",
@@ -1662,7 +1753,8 @@
       "source_sha256": "9f229a307aaeb8b84d20a75cbbe77ed751a40d6c5d10b6389099acfbe13574e9",
       "web_sha256": "a616106cd0e7a56d0ca1fa18363558a43e20769eaaa3651127695625c01c8c18",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CX.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CX.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CX.png",
+      "thumb_url": "thumbs/POGO-2025-PO-CX.webp"
     },
     {
       "id": "POGO-2025-PO-CY",
@@ -1680,7 +1772,8 @@
       "source_sha256": "b4406e597288820277549548f6011aecf50a758a7a3b674ea3e643b897300311",
       "web_sha256": "36ee2e0186479903804687bc77872f9bd44c26c3295e55565d34fffd070fd731",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CY.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CY.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CY.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CY.webp"
     },
     {
       "id": "POGO-2025-PO-CZ",
@@ -1698,7 +1791,8 @@
       "source_sha256": "adb84f4dcb7d26d1137fb15bcd48311c12211156b3541fb316edf3d9b99af5f8",
       "web_sha256": "57e883270197accdcd8594edf8bfd98a44e2b836939e66bc71203aa3874b3a00",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-CZ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CZ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-CZ.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-CZ.webp"
     },
     {
       "id": "POGO-2025-PO-DA",
@@ -1716,7 +1810,8 @@
       "source_sha256": "78cdcc5e6ed89097529e9edb654c24216ad588973e817432726f59c9fe3e22bf",
       "web_sha256": "d29e574ed9a35a7bbb3e6514d24edf8def1916f77c721cc9ad2f885f9c13d835",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DA.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DA.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DA.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DA.webp"
     },
     {
       "id": "POGO-2025-PO-DB",
@@ -1734,7 +1829,8 @@
       "source_sha256": "96dc945351249f054e3600183114d9ebf46ce3b0942484e029d9edcd2953ab2b",
       "web_sha256": "1aeb8bb0856962a3d5fb204d84be21ff60009ff87a8a23e012d52e41c4f51596",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DB.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DB.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DB.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DB.webp"
     },
     {
       "id": "POGO-2025-PO-DC",
@@ -1752,7 +1848,8 @@
       "source_sha256": "4792ed91766f769978ae7b5dba75d632db04eb882cbd2947a78742b7f642af3c",
       "web_sha256": "488e79cc4f9bb984ff4ed0168865de1601ee07a676ce7497a66f4a5db7f3d069",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DC.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DC.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DC.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DC.webp"
     },
     {
       "id": "POGO-2025-PO-DD",
@@ -1770,7 +1867,8 @@
       "source_sha256": "85f3894ee0d736d94026c955cf4306ea94246985a7e11935999d16984a83b18c",
       "web_sha256": "4d76a78e3f434d55c92bab623a9471bf0ff6685b7ec2b21e7e6ce99ed7c80a36",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DD.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DD.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DD.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DD.webp"
     },
     {
       "id": "POGO-2025-PO-DE",
@@ -1788,7 +1886,8 @@
       "source_sha256": "1e7fe5e5f0f0dbf52a14657b9f67822b637de9d96fa4d0c3b4de387c5c318707",
       "web_sha256": "e243d21a14f59752067cf6eb9196e0014b73f3a245a5fbdb4bb10c6eda390e87",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DE.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DE.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DE.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DE.webp"
     },
     {
       "id": "POGO-2025-PO-DF",
@@ -1806,7 +1905,8 @@
       "source_sha256": "5810dda97e511d44335d8c984ca065af0385571b838a2a994dc96a21706cb7d2",
       "web_sha256": "9f715b0e339de223fecc2c19b1af5e1bb9b7f615558c04098ad1a9f822608d11",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DF.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DF.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DF.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DF.webp"
     },
     {
       "id": "POGO-2025-PO-DG",
@@ -1824,7 +1924,8 @@
       "source_sha256": "82f1c87b58ea6381c1174e6b3248a0ed47aa0d2ae2a2ac8f164dd0668638477f",
       "web_sha256": "9bd62a910368c2fd090e355d9e2c6ec90e413d93132551619d42e4d093fc4e2f",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DG.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DG.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DG.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DG.webp"
     },
     {
       "id": "POGO-2025-PO-DH",
@@ -1842,7 +1943,8 @@
       "source_sha256": "fb2c1be5c81c1f98bdb2635ce19a19c820a71a7aaf37ceef0502f006c574bc8a",
       "web_sha256": "1a86d36f7afd64679a0d7e2dc04f33859fb183dda6071f70eba9c57568e79a22",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DH.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DH.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DH.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DH.webp"
     },
     {
       "id": "POGO-2025-PO-DI",
@@ -1860,7 +1962,8 @@
       "source_sha256": "dc7384e546c1a98cf12ff9de3b05251ac2dd8151e0d5cd9f3c8d4606db9e31b2",
       "web_sha256": "eb757c9550db2981bf96ec2f6fc4588ba2271d5978ab827b2808d5db617d8e8c",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DI.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DI.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DI.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DI.webp"
     },
     {
       "id": "POGO-2025-PO-DJ",
@@ -1878,7 +1981,8 @@
       "source_sha256": "ffad72a0be3a8e9dca3e7f32ce2539cad07b6227f41e177dd600119512375678",
       "web_sha256": "525dbc1444ca2eb6f9bf935f6586dabc0f29a8583e92a1b5f9b30b65856c9bab",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DJ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DJ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DJ.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DJ.webp"
     },
     {
       "id": "POGO-2025-PO-DK",
@@ -1896,7 +2000,8 @@
       "source_sha256": "52b15fecad925593c8451e58e0afae6f98d113abdcfc6ec1f2a16887973ad38d",
       "web_sha256": "77cf6156889870d352997e0e7e4da7ce055efc188060465793d18484c2370d57",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DK.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DK.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DK.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DK.webp"
     },
     {
       "id": "POGO-2025-PO-DL",
@@ -1914,7 +2019,8 @@
       "source_sha256": "84f3d2a3a5fbc68054cf815003f670323182c03cac4dae2a3f848211364aedfd",
       "web_sha256": "1d6b125d9f92e7e55d21f569d8421b3746d825c0c8daa17759ed09c250bc7c81",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DL.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DL.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DL.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DL.webp"
     },
     {
       "id": "POGO-2025-PO-DM",
@@ -1932,7 +2038,8 @@
       "source_sha256": "f75e3a8f6059349b8b3e74fe20c97533cab159a0606849042a6c6dfd1018c761",
       "web_sha256": "e3d97627b03e78f1b793e8d50b68c5741905a329fda91a4677986aafc45df383",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DM.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DM.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DM.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DM.webp"
     },
     {
       "id": "POGO-2025-PO-DN",
@@ -1950,7 +2057,8 @@
       "source_sha256": "928f7c3b48226476bb4710021eb685df25e70350a3cec4532e4dc4ec0766f456",
       "web_sha256": "4dda9016cf2604195ec7450c4566659c2f5c83223d5fac821a91f9262cc4b696",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DN.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DN.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DN.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DN.webp"
     },
     {
       "id": "POGO-2025-PO-DO",
@@ -1968,7 +2076,8 @@
       "source_sha256": "ae203771fabf51df14214f480a2d1b6f75c0a74e0f1206496478e54ed43e7ee9",
       "web_sha256": "7193ad38140cd6f14f3b0a169f21adb6e5ff51febc5c6a5feee8821f8d012c31",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DO.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DO.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DO.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DO.webp"
     },
     {
       "id": "POGO-2025-PO-DP",
@@ -1986,7 +2095,8 @@
       "source_sha256": "e964b684f09e3c3c74f85b3d0f4b18b106d1f4998ab792699407604da59c98b2",
       "web_sha256": "1f36214eb046834afaf3bb2a8e748d279a074abfae9c61adf1c54394818a93b3",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DP.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DP.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DP.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DP.webp"
     },
     {
       "id": "POGO-2025-PO-DQ",
@@ -2004,7 +2114,8 @@
       "source_sha256": "9a4e4e3dbcf1a3808db9972d432ead860781dac108649ea077e19850f7db6511",
       "web_sha256": "47bbfda39487b288494133d39ff2b99b2bc604d9bff08f8746bf94e8241b66fa",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DQ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DQ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DQ.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DQ.webp"
     },
     {
       "id": "POGO-2025-PO-DR",
@@ -2022,7 +2133,8 @@
       "source_sha256": "48257d52d3e91374ef9d24858f22bd9efb642a33b42f9a17bd51abac4b84d883",
       "web_sha256": "8fc888c4a631d9b250386443f5b77c2c06e8cde9de5ebd2f398d5cb4ed2cff40",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DR.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DR.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DR.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DR.webp"
     },
     {
       "id": "POGO-2025-PO-DS",
@@ -2040,7 +2152,8 @@
       "source_sha256": "7bc6325d50596eb787449d24fd097e7ad840d97a4999c53718dc70a36cc14268",
       "web_sha256": "95d87286ffae70472a367bdd9b760cf0af3ac715f570499c839e25643d05864f",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DS.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DS.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DS.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DS.webp"
     },
     {
       "id": "POGO-2025-PO-DT",
@@ -2058,7 +2171,8 @@
       "source_sha256": "bbcd741f46ade4389378d342d7e3750e687ebe867f25bd25b3e9b359b141ccac",
       "web_sha256": "508da1564eb160cc55efea30dbd4534d2596e9da2fa59ad9261aa14867d61f73",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DT.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DT.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DT.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DT.webp"
     },
     {
       "id": "POGO-2025-PO-DU",
@@ -2076,7 +2190,8 @@
       "source_sha256": "9a8eb4667ae745b0fdaf1fc569c84be75ec727f0ce3ba3b9aab30c166874f7e5",
       "web_sha256": "46f41cba3763f1c4820423345aab721caa9335fd8860b10eccb9094f17cda3fa",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DU.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DU.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DU.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DU.webp"
     },
     {
       "id": "POGO-2025-PO-DV",
@@ -2094,7 +2209,8 @@
       "source_sha256": "d10c2465ae9c3e83c0db9d3d30a43d7fc27920ad8be15f5913bfbe79d78b8f79",
       "web_sha256": "3f14041aa61bdeac52ce1a301d274ff729d9941c17d72bcc73e3a38805a86e33",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DV.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DV.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DV.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DV.webp"
     },
     {
       "id": "POGO-2025-PO-DW",
@@ -2112,7 +2228,8 @@
       "source_sha256": "110d9d3b61612fabc741f670d38fb919e98a00bff7919ef6bbfa3eb588e3bfb5",
       "web_sha256": "9bea47455e032d352e3c1a9abc22e16bed6509af33891b22afb7857e73f48989",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DW.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DW.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DW.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DW.webp"
     },
     {
       "id": "POGO-2025-PO-DX",
@@ -2130,7 +2247,8 @@
       "source_sha256": "59ccd56698f5c18879452690f71c29bfcc0560f68f6dd53b3721e75450b3d464",
       "web_sha256": "520b0f7a2a61b4738ec042f6a92a88a7c251ccd094c158ed98a97ae859c4827a",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DX.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DX.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DX.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DX.webp"
     },
     {
       "id": "POGO-2025-PO-DY",
@@ -2148,7 +2266,8 @@
       "source_sha256": "08fe3cebbcad6ac79e04c7f7b8e6ad2d005d4df8e71ae9864ed7894d8ee66577",
       "web_sha256": "7875804abbed56f6e5c3cc472fcf689a34ac593901311ef10c9d0957bb94ca35",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DY.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DY.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DY.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DY.webp"
     },
     {
       "id": "POGO-2025-PO-DZ",
@@ -2166,7 +2285,8 @@
       "source_sha256": "1010036b2e1f534d7f8c7b853de2099ab3d78de983f16972055e76e60e36c5c7",
       "web_sha256": "141425fc81f7e1ed4d147e171284a577db8b7d811f68d4990b6f7819528bb344",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-DZ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DZ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-DZ.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-DZ.webp"
     },
     {
       "id": "POGO-2025-PO-EA",
@@ -2184,7 +2304,8 @@
       "source_sha256": "3302f9fb2f5c89f10244195fc649da734f1e8cafb06889bd0d41c82276bc6d21",
       "web_sha256": "9db40e4aca78446621882c2032bddb11dbb3fe452155ab2f34db07825ec8c485",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EA.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EA.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EA.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EA.webp"
     },
     {
       "id": "POGO-2025-PO-EB",
@@ -2202,7 +2323,8 @@
       "source_sha256": "231a4da97125c556bb9b7f5775f37a15d281dfdaec21c1364ca41030c65806c2",
       "web_sha256": "30bfe7a665b4eaf10d2f6eb12687ccd74686ecab7506c64044f77c13c4c3d677",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EB.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EB.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EB.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EB.webp"
     },
     {
       "id": "POGO-2025-PO-EC",
@@ -2220,7 +2342,8 @@
       "source_sha256": "bc8a8cbb527ea64733d96245bd9382d49b22f544bf04d5500448e954f5e6b35c",
       "web_sha256": "4db450faee5d16e31c232416e401e6e4e16d926a6cbb79525c506eeb798dc512",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EC.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EC.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EC.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EC.webp"
     },
     {
       "id": "POGO-2025-PO-ED",
@@ -2238,7 +2361,8 @@
       "source_sha256": "d3738a09546759be1b27767ed6b9f433ccacd6d75b3151949be70991f7fe8525",
       "web_sha256": "bf0a13cf96ace7151cc6bfce0257587c88affae3ac5822bbb6d3d119bde28c85",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-ED.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-ED.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-ED.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-ED.webp"
     },
     {
       "id": "POGO-2025-PO-EE",
@@ -2256,7 +2380,8 @@
       "source_sha256": "87c9e36347f237edf2d7ea06f44368aa14279be40862e321ffce9f9903099ebc",
       "web_sha256": "9e8a26d3a3b0fce06125a6c6020e2aa4550ebcb96fc1f0dd3e78a305ffed3264",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EE.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EE.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EE.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EE.webp"
     },
     {
       "id": "POGO-2025-PO-EF",
@@ -2274,7 +2399,8 @@
       "source_sha256": "b453500e3fa8eeea80d1ab374f771b8152f00a3099a0f49a0df5ac5a50605f90",
       "web_sha256": "55347057a7a3a0e4cb33045ff7dc324622cceb2c7b2dd8b64dbfe240bd3401a2",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EF.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EF.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EF.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EF.webp"
     },
     {
       "id": "POGO-2025-PO-EG",
@@ -2292,7 +2418,8 @@
       "source_sha256": "9f240c4c2be651202cba688997f3c5c1b70252a6b95efff26063895ec445eebe",
       "web_sha256": "934de9ffb5b9a1a3bb8a3c2e9b3556d56fa405191d1b76a78ca6a30c47d4a251",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EG.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EG.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EG.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EG.webp"
     },
     {
       "id": "POGO-2025-PO-EH",
@@ -2310,7 +2437,8 @@
       "source_sha256": "3ca253a17fe09505fdd389673e4e98ddab9e913863d6172c2edd686ccfd48c1f",
       "web_sha256": "eea3a3ee7d4f431e2116db5a0e23132ef2bdd2be4f6b640b605e7a737c2b39a6",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EH.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EH.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EH.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EH.webp"
     },
     {
       "id": "POGO-2025-PO-EI",
@@ -2328,7 +2456,8 @@
       "source_sha256": "00afc89245701eab01d3c28e25accba8706121aff9056ee373fc807877306df1",
       "web_sha256": "6cdeba44aaca5b931a320b175f0e784511acd7a7b1e472b1faed19d7179e690d",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EI.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EI.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EI.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EI.webp"
     },
     {
       "id": "POGO-2025-PO-EJ",
@@ -2346,7 +2475,8 @@
       "source_sha256": "57e43f2ce588e094db868b55606c04c3c5bd46b7a97dbbb7c09b96750e53d7d0",
       "web_sha256": "1c55926abc4058e2018d7d5fb4df6596238e70d44658af6037d47b5dd63236bd",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EJ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EJ.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EJ.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EJ.webp"
     },
     {
       "id": "POGO-2025-PO-EK",
@@ -2364,7 +2494,8 @@
       "source_sha256": "44c6ddbaaa1f2166394072f02978dc9c89f2cb88b2fd6b388770041e40ef4863",
       "web_sha256": "d3ab442447a7fe309a32ca07c28417053b9ca94072ad45d465dc956bf62ac0ed",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EK.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EK.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EK.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EK.webp"
     },
     {
       "id": "POGO-2025-PO-EL",
@@ -2382,7 +2513,8 @@
       "source_sha256": "9529ea288efd90ed96b25a3226fb08c19be659cb45cd11472da39848e56dd846",
       "web_sha256": "bbe4294751ae57a57c8aeec7a2e26b056094d37a706377b82745ea73c12dab28",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EL.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EL.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EL.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EL.webp"
     },
     {
       "id": "POGO-2025-PO-EM",
@@ -2400,7 +2532,8 @@
       "source_sha256": "4abeb438a3a7f79fb981210ee78a905467fcf97cb6443bfd2bc12379fe296dbb",
       "web_sha256": "2eca6b7b7600db1dc0f257bbb50754a248a48c7f6cc9126a7020a5c93d943bce",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EM.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EM.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EM.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EM.webp"
     },
     {
       "id": "POGO-2025-PO-EN",
@@ -2418,7 +2551,8 @@
       "source_sha256": "3d98b6927c8e8c5480b83925402dcba04492c42eae9d00bbf05c19f88de994e8",
       "web_sha256": "1748a756f914df4149a851dba7a263bcbd1ea38b84ff40f5231be08117911f22",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EN.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EN.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EN.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EN.webp"
     },
     {
       "id": "POGO-2025-PO-EO",
@@ -2436,7 +2570,8 @@
       "source_sha256": "31402a1fb35a500578a6afb36d8e641808ae4b834d8e2b7995a8bf12163cc9cb",
       "web_sha256": "8a3408c77b3136fc25e4c4f7d0c256244eec1cae366cf49b66b166597d470e57",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EO.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EO.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EO.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EO.webp"
     },
     {
       "id": "POGO-2025-PO-EP",
@@ -2454,7 +2589,8 @@
       "source_sha256": "8686402174e22b48a6a8bb38549e10868f483839bc4e00bc8cda5fc9a15767d0",
       "web_sha256": "99ae684a1b0a586ec10a27a3a0110899ac266d1ab0098969eff29bc4dd561246",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2025/records-2025/POGO-2025-PO-EP.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EP.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2025/POGO-2025-PO-EP.PNG",
+      "thumb_url": "thumbs/POGO-2025-PO-EP.webp"
     },
     {
       "id": "POGO-2024-PO-A",
@@ -2472,7 +2608,8 @@
       "source_sha256": "2386bb31d48e21122b24b84f3772ea3c228b9e49245b826cfb04f08e72af9124",
       "web_sha256": "13682eb828408cd4ff57464ecb1b773eb0bba0a4771846b0de7a8fbc31935e7c",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-A.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-A.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-A.png",
+      "thumb_url": "thumbs/POGO-2024-PO-A.webp"
     },
     {
       "id": "POGO-2024-PO-AA",
@@ -2490,7 +2627,8 @@
       "source_sha256": "aad59bc9cb96909264bf9959e13c96dd98061f3eccc0a27562f0c96d1c892370",
       "web_sha256": "69f2db55e91d2ebd8e5a16e32a9be34f8872b1e4d842d5f1c8a55b660ebc3f2a",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AA.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AA.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AA.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AA.webp"
     },
     {
       "id": "POGO-2024-PO-AB",
@@ -2508,7 +2646,8 @@
       "source_sha256": "54c0f671a3342fa13308024817abc6ada0767b08cbbd789983b83d2d21b6f5e5",
       "web_sha256": "a33146f63a6691eba8d6696824426bd1f34baa2324a35f531fc8b6a6af8c5406",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AB.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AB.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AB.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AB.webp"
     },
     {
       "id": "POGO-2024-PO-AC",
@@ -2526,7 +2665,8 @@
       "source_sha256": "bc7a3f41a15093e6822b7fa64ba59a96c2d9f81aa89529d7f25b423fc27398e9",
       "web_sha256": "5182fe41621ae9127b3840a65182431e2771cf9b26225d222031be6212e5f273",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AC.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AC.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AC.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AC.webp"
     },
     {
       "id": "POGO-2024-PO-AD",
@@ -2544,7 +2684,8 @@
       "source_sha256": "d77422d9cc66e5af02605be2a34faf89dfb437a92abf115a5ee15c3bee31dc9e",
       "web_sha256": "3b0f196d35e25ef15954054f803ec163696b5cc10f05c88bea889d39a4808874",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AD.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AD.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AD.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AD.webp"
     },
     {
       "id": "POGO-2024-PO-AE",
@@ -2562,7 +2703,8 @@
       "source_sha256": "323460baffed06d578e29c70c6c7f4f1382441c8c0c924231a6b05f7d3590a4f",
       "web_sha256": "edbc8a450455072e921c6f9fe8b2fa0f9f1a0a020e67e55b9c91c198a4aebd86",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AE.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AE.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AE.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AE.webp"
     },
     {
       "id": "POGO-2024-PO-AF",
@@ -2580,7 +2722,8 @@
       "source_sha256": "b55ecfef8299f092dc0788b664760040d989c21fe30a09cae99af56382ae51be",
       "web_sha256": "4b9dc2a7b9d256a4304bab68f7d377793ed9921f67b14628b58226731af3702d",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AF.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AF.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AF.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AF.webp"
     },
     {
       "id": "POGO-2024-PO-AG",
@@ -2598,7 +2741,8 @@
       "source_sha256": "00e46d11c83db21d6df2c7f82b7ef8f4a8e6130cfa0185cc450e5aa7df48d64d",
       "web_sha256": "2d1dd4527195f056fbe433d8f3764dc9985b04d4df6261394e467b5190a070fd",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AG.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AG.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AG.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AG.webp"
     },
     {
       "id": "POGO-2024-PO-AH",
@@ -2616,7 +2760,8 @@
       "source_sha256": "8c2afa7500c3fef84573b70eff61ca5e0be112eec7003060d754e7359e3cae7a",
       "web_sha256": "bb2c867de4763e9b42cef59aee3125b132b0ccacab26918f49ce901beec1c766",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AH.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AH.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AH.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AH.webp"
     },
     {
       "id": "POGO-2024-PO-AI",
@@ -2634,7 +2779,8 @@
       "source_sha256": "e55eac518fa9da07b92dcd51201faf8c7e972be09f339c3dd972b85fef462d6a",
       "web_sha256": "691537f004f9fb8c704f038cf93561b7dc1632102ce1661bec12ac8dd79e5035",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AI.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AI.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AI.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AI.webp"
     },
     {
       "id": "POGO-2024-PO-AJ",
@@ -2652,7 +2798,8 @@
       "source_sha256": "12d31f10558e6a63d5e21fb89ac81b6e29db9d5edf1cbce3c55bd9c38dae29f6",
       "web_sha256": "081c513847ad5ef7c29ac300a1a1c66e7eb52315fadbf6f32152fbab665c666d",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AJ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AJ.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AJ.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AJ.webp"
     },
     {
       "id": "POGO-2024-PO-AK",
@@ -2670,7 +2817,8 @@
       "source_sha256": "edadce8d014dd02a408aec1bbc8b7478aab89c3ff8ac4357b963aff87f721ed0",
       "web_sha256": "6db3fee3ebb1d2a0fbcb4bb2241170c416cdc8d27f760540cbf37016ed89c052",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AK.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AK.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AK.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AK.webp"
     },
     {
       "id": "POGO-2024-PO-AL",
@@ -2688,7 +2836,8 @@
       "source_sha256": "a50962f3c0f6aea7bfa8d184339fc76fb8ce3993628f88da7711b24a0846fa45",
       "web_sha256": "bfdc84cfdb155b062d98fb22c3be5b9b10d0bbe28a09081878231297bcaeaff0",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AL.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AL.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AL.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AL.webp"
     },
     {
       "id": "POGO-2024-PO-AM",
@@ -2706,7 +2855,8 @@
       "source_sha256": "b0ef4abc09af87e3d8a3b4b6fd4ce96243b7f0d1e9dc3e799776b6bbd4249d01",
       "web_sha256": "2176d86177723174135113e4e0ee61c5f72857658fa2e3e96c6219fc31dd6eb4",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AM.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AM.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AM.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AM.webp"
     },
     {
       "id": "POGO-2024-PO-AN",
@@ -2724,7 +2874,8 @@
       "source_sha256": "90d23637f60425adbaafed14c5843b2677dfd8cfb23bee5a7e40aa713211da10",
       "web_sha256": "d9df84a2fd3ceb4a085d2e63276c97a1a0129d0b8500f0af32adba93c06b5af9",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AN.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AN.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AN.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AN.webp"
     },
     {
       "id": "POGO-2024-PO-AO",
@@ -2742,7 +2893,8 @@
       "source_sha256": "073ba8cfb9f194097210918f73de5f8df73644cf680b0e68d85ba67f3f6fe35b",
       "web_sha256": "1c7e35260168797657b3cd1419b7f92bb562a0937096a81a2691345abda63c12",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AO.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AO.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AO.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AO.webp"
     },
     {
       "id": "POGO-2024-PO-AP",
@@ -2760,7 +2912,8 @@
       "source_sha256": "ca0d5d68a93f945e818e6ef5ef76efb93889a327af715ec0808956501706690a",
       "web_sha256": "2640b1be66c02be479f73bee5ef6812ea6bf3acd5d5d6ecbf1b8ac1769ba9870",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AP.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AP.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AP.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AP.webp"
     },
     {
       "id": "POGO-2024-PO-AQ",
@@ -2778,7 +2931,8 @@
       "source_sha256": "9e74ed9180b1fe4816f8f2811c00493ef1e4ccf6c4692fe2291283a917efd93d",
       "web_sha256": "d54a5e090c69ebdb81ca3bd66f0e57946f246abc3680166ae7fee47ce6993198",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AQ.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AQ.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AQ.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AQ.webp"
     },
     {
       "id": "POGO-2024-PO-AR",
@@ -2796,7 +2950,8 @@
       "source_sha256": "a3c1e5bc9ff305e0762185e4c805c78ff1c127c5ec1a34a6c1e19b50c21473c3",
       "web_sha256": "d26ae976e879192575c7bc64cc534413159f9d4e7eb9f2a042de37a4510d0ecb",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AR.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AR.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AR.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AR.webp"
     },
     {
       "id": "POGO-2024-PO-AS",
@@ -2814,7 +2969,8 @@
       "source_sha256": "7d6150a4ead4b823b0e834d42d83a0533cf29bc0a74ea8fc54059cb064479129",
       "web_sha256": "6623fac924b51a1999f36f5599a78f06f0b39a6f3f4277e54538c70339a6d318",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AS.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AS.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AS.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AS.webp"
     },
     {
       "id": "POGO-2024-PO-AT",
@@ -2832,7 +2988,8 @@
       "source_sha256": "a59a4a39ce9db2faef4f3ba84f1c75d7041a7decf5387b5aeacbbf1850c12768",
       "web_sha256": "7ca76dcea8a596a16b2283360b06c15e4751a9d05d44035a8d1f92bbe8171575",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-AT.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AT.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-AT.png",
+      "thumb_url": "thumbs/POGO-2024-PO-AT.webp"
     },
     {
       "id": "POGO-2024-PO-B",
@@ -2850,7 +3007,8 @@
       "source_sha256": "f1b0bffa89cf266ff2d53e61016d8371baf49749e8767ef07aa08bcaa07b0737",
       "web_sha256": "607ce2a6f3b4c5f701bbf42d790979ad794223893b08c3f628edd975673af0e2",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-B.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-B.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-B.png",
+      "thumb_url": "thumbs/POGO-2024-PO-B.webp"
     },
     {
       "id": "POGO-2024-PO-C",
@@ -2868,7 +3026,8 @@
       "source_sha256": "32b39443087b393b585e74edbe5eb68f5fa4c00d5787589414414aacad4c53e9",
       "web_sha256": "a3f48ac542a746b7426f02b0d47b19fa9a0925b473b475fcbe71aec25224b517",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-C.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-C.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-C.png",
+      "thumb_url": "thumbs/POGO-2024-PO-C.webp"
     },
     {
       "id": "POGO-2024-PO-D",
@@ -2886,7 +3045,8 @@
       "source_sha256": "f30705c27fdcff5fe86e6494a241cc427d276160c9f31251f2c490eb8d672081",
       "web_sha256": "02789c66d5cbb84371a3804316fa5ff1780db8039756e3b5d426c76e1df159bd",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-D.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-D.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-D.png",
+      "thumb_url": "thumbs/POGO-2024-PO-D.webp"
     },
     {
       "id": "POGO-2024-PO-E",
@@ -2904,7 +3064,8 @@
       "source_sha256": "0630d42b731d81fcc0683b4f912a2226826dcc96fe74fdbed0a34a101249c899",
       "web_sha256": "914166ef2feb3c816a8b75c7004a37271456e2832afa9d9d2102474e4106a469",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-E.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-E.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-E.png",
+      "thumb_url": "thumbs/POGO-2024-PO-E.webp"
     },
     {
       "id": "POGO-2024-PO-F",
@@ -2922,7 +3083,8 @@
       "source_sha256": "f070c19336aa4f456a6531f8a32fbfd6aa7a2d81a46ac3bc89e0ab218c84cff1",
       "web_sha256": "86c47f42ca007ccaa314db49e7a1cf69249dac8fdbb89b57c7be187110694bb5",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-F.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-F.PNG"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-F.PNG",
+      "thumb_url": "thumbs/POGO-2024-PO-F.webp"
     },
     {
       "id": "POGO-2024-PO-G",
@@ -2940,7 +3102,8 @@
       "source_sha256": "b1e720f2bb2e1193dcf6b81e84623c1e32bae150c2160181b18714a48ef5b74f",
       "web_sha256": "efc4af0f1e3e14f84ec8cdb3d2c8aec7ff2b9829e687f43dfd151c193a51da2f",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-G.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-G.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-G.png",
+      "thumb_url": "thumbs/POGO-2024-PO-G.webp"
     },
     {
       "id": "POGO-2024-PO-H",
@@ -2958,7 +3121,8 @@
       "source_sha256": "fc126aa6ab82f337d5ea4d303838e1576f20226952d5efbe4c99ce4bf2ee6836",
       "web_sha256": "d917c0fc57eeb96232671a61949a7cb23ce9810d5a401c6ed10b8a35be95ab08",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-H.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-H.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-H.png",
+      "thumb_url": "thumbs/POGO-2024-PO-H.webp"
     },
     {
       "id": "POGO-2024-PO-I",
@@ -2976,7 +3140,8 @@
       "source_sha256": "0f7b665a662ce286a9b755ee7a81f0496f807aab2ee14cbc5d513e794cccdb60",
       "web_sha256": "5d021fce1e6c95194a18f993f8af087a494d46ae71b993f0e9bdcf3c6c17ee14",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-I.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-I.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-I.png",
+      "thumb_url": "thumbs/POGO-2024-PO-I.webp"
     },
     {
       "id": "POGO-2024-PO-J",
@@ -2994,7 +3159,8 @@
       "source_sha256": "7859bcc0770678085b7cdc515755781d03ce18a168299b3a2b4f1b5d25463e85",
       "web_sha256": "0a8ed8319dbe03b24c7d3f6b1aaec9841f0014db6e9fefb082d1d03f13257803",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-J.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-J.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-J.png",
+      "thumb_url": "thumbs/POGO-2024-PO-J.webp"
     },
     {
       "id": "POGO-2024-PO-K",
@@ -3012,7 +3178,8 @@
       "source_sha256": "836b6184eb924d549497bf02f40d477fea071e06942fbe15de313798765b8bf0",
       "web_sha256": "22841adbd3c4667cad544c18d27d8e00f6f42cbd159482b88579c746ce68bd43",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-K.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-K.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-K.png",
+      "thumb_url": "thumbs/POGO-2024-PO-K.webp"
     },
     {
       "id": "POGO-2024-PO-L",
@@ -3030,7 +3197,8 @@
       "source_sha256": "2ae52491c24fe120e9e7c0e86804f2c75d77580de9d03dab99251c1ac2acf871",
       "web_sha256": "7f3d10332c7e2586dfed9d9b6f93722c47019940f524a1fc17f04cfc242d19a7",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-L.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-L.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-L.png",
+      "thumb_url": "thumbs/POGO-2024-PO-L.webp"
     },
     {
       "id": "POGO-2024-PO-M",
@@ -3048,7 +3216,8 @@
       "source_sha256": "de75790e3f84b3e32337d0be13c575ff7bbe53f80400dfbb434ed9b8c6e37721",
       "web_sha256": "4bb63ff34b99007b0aadfca45c6cbd835991bf3b9cdfde38406c6cb776f999cd",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-M.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-M.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-M.png",
+      "thumb_url": "thumbs/POGO-2024-PO-M.webp"
     },
     {
       "id": "POGO-2024-PO-N",
@@ -3066,7 +3235,8 @@
       "source_sha256": "9f672ccec85459f359dedc41d53d8a76d03a9068a3f3134950a534954154f140",
       "web_sha256": "0c81f45bc065c4f2906aed643d27c93db89af105cd66e687deac5fe90b20972b",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-N.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-N.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-N.png",
+      "thumb_url": "thumbs/POGO-2024-PO-N.webp"
     },
     {
       "id": "POGO-2024-PO-O",
@@ -3084,7 +3254,8 @@
       "source_sha256": "2948152dce7ca083522cac211b64818a20981f1a41e1f1349061f95778ab055a",
       "web_sha256": "106055cc6823b7eb2c020bc7675659b13e08d1a449a350513170a5bdce42ced3",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-O.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-O.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-O.png",
+      "thumb_url": "thumbs/POGO-2024-PO-O.webp"
     },
     {
       "id": "POGO-2024-PO-P",
@@ -3102,7 +3273,8 @@
       "source_sha256": "4f0b75ec2e14ac0ca5e286b3b62427c55434808c1a6e70fe0df43f20eb44f44a",
       "web_sha256": "772392bcb26db15a374417c6fa33dfb2c7ca93383c6b4c090f2ea31a57847815",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-P.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-P.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-P.png",
+      "thumb_url": "thumbs/POGO-2024-PO-P.webp"
     },
     {
       "id": "POGO-2024-PO-Q",
@@ -3120,7 +3292,8 @@
       "source_sha256": "1fb5233a395c90360fec1922d9feb3e06cebc135d7dd3ff011478a37c176d635",
       "web_sha256": "513d61825181cf50a89e701655b2a0cce89a7a081b961574b24dc487e948416b",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-Q.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-Q.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-Q.png",
+      "thumb_url": "thumbs/POGO-2024-PO-Q.webp"
     },
     {
       "id": "POGO-2024-PO-R",
@@ -3138,7 +3311,8 @@
       "source_sha256": "adac8794e5d08659a16a91658eab620c200082bf673c649e12b7b3ad466d8aa9",
       "web_sha256": "ecd2e19d60208d727684379aef73421ee7b4765dc3abe785ac3224bc988a9f93",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-R.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-R.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-R.png",
+      "thumb_url": "thumbs/POGO-2024-PO-R.webp"
     },
     {
       "id": "POGO-2024-PO-S",
@@ -3156,7 +3330,8 @@
       "source_sha256": "cf7ef3e42d641588fd3d76e7d59eec3fccb7ddae0d9f81436309ad80c9ad0bd2",
       "web_sha256": "3357a046508fb3c30da1267df53ab19245245dfe56f67aa72ab971553626e782",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-S.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-S.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-S.png",
+      "thumb_url": "thumbs/POGO-2024-PO-S.webp"
     },
     {
       "id": "POGO-2024-PO-T",
@@ -3174,7 +3349,8 @@
       "source_sha256": "cd52e467314d0fe7c3d50f522f581f0086600b93c4f33238a7cdd014c90d2386",
       "web_sha256": "8c5cf8619f99a70661eabbcb557b831cea5cb8e44b5eb55d2acb625220ae4031",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-T.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-T.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-T.png",
+      "thumb_url": "thumbs/POGO-2024-PO-T.webp"
     },
     {
       "id": "POGO-2024-PO-TEST",
@@ -3192,7 +3368,8 @@
       "source_sha256": "3fc8a1e614c77be83ef4ff9cd380d13bc3c724df91c535813f558950293b306b",
       "web_sha256": "c6782912ccb6b53616ddde9d01c5cadbe2ec56935d0edabc7783865ab756a8c9",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-TEST.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-TEST.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-TEST.png",
+      "thumb_url": "thumbs/POGO-2024-PO-TEST.webp"
     },
     {
       "id": "POGO-2024-PO-U",
@@ -3210,7 +3387,8 @@
       "source_sha256": "6aa3667cb2e0fbd0bb3d8d8d892441b19935e73549e6f3b3b19054e7efb89806",
       "web_sha256": "ec4020dfdfeecde4a1634ec1ce2667043a41667ba7f15b0700c54ae5fae929e8",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-U.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-U.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-U.png",
+      "thumb_url": "thumbs/POGO-2024-PO-U.webp"
     },
     {
       "id": "POGO-2024-PO-V",
@@ -3228,7 +3406,8 @@
       "source_sha256": "f3d8ec74a7ee0b363833b48c4200ab7bbcd4a1d6a12d3c2f0c48f6a0e4d763c1",
       "web_sha256": "31e03faf29bebb7d2625581069e94651a9f699ef02656bd722678c2a6add78b8",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-V.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-V.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-V.png",
+      "thumb_url": "thumbs/POGO-2024-PO-V.webp"
     },
     {
       "id": "POGO-2024-PO-W",
@@ -3246,7 +3425,8 @@
       "source_sha256": "4997a157b0542d7f512978ad85b30538847b0fbc6860e0dba3523167a94ede5c",
       "web_sha256": "c29169bcb8d57fa4477201bd1eb1082524a007cf15a8195e0300e127672094ae",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-W.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-W.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-W.png",
+      "thumb_url": "thumbs/POGO-2024-PO-W.webp"
     },
     {
       "id": "POGO-2024-PO-X",
@@ -3264,7 +3444,8 @@
       "source_sha256": "1f12b7a710be6815b6f2ff594f4be478002883deaaa60b83fa0772ca301f8705",
       "web_sha256": "97fe085e1278b150e4ae87168c001eaa487652af8e75cd2da66ae6451966a7b5",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-X.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-X.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-X.png",
+      "thumb_url": "thumbs/POGO-2024-PO-X.webp"
     },
     {
       "id": "POGO-2024-PO-Y",
@@ -3282,7 +3463,8 @@
       "source_sha256": "9aa3aa6bdc213f33f651492f55eb449e2321899d78bd7ed7b01eead2300196b6",
       "web_sha256": "264b3c6d899266972689794368e899afcfc5a18cfd143f55cd60d852b4537c25",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-Y.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-Y.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-Y.png",
+      "thumb_url": "thumbs/POGO-2024-PO-Y.webp"
     },
     {
       "id": "POGO-2024-PO-Z",
@@ -3300,7 +3482,8 @@
       "source_sha256": "11aa36308207a3c3e04f5616de8f5541e2be990ceb1f309e11d96c40e0132fd3",
       "web_sha256": "032d9613a44f9e06090086b8879705340f152c6de56dde4b07b44ff5194345f0",
       "record_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/2024/records-2024/POGO-2024-PO-Z.JSON",
-      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-Z.png"
+      "media_url": "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE-MEDIA/main/2024/POGO-2024-PO-Z.png",
+      "thumb_url": "thumbs/POGO-2024-PO-Z.webp"
     }
   ]
 }

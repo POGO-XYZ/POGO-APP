@@ -186,18 +186,16 @@
   }
   /* Artwork sits in its own layer so it can move independently of the mark.
      The drawing radiates outward, so the motion pushes gently outward too. */
-  .splash video, .splash .fallback {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; display: block;
-  }
-  /* shown if the video can't play — never a blank screen */
-  .splash .fallback {
+  .splash::before {
+    content: ""; position: absolute; inset: 0;
     background-image: url('splash-poster.webp');
     background-size: cover; background-position: center;
   }
   .splash img {
-    position: relative; width: 96px; height: auto;
-    filter: drop-shadow(0 0 26px rgba(239,237,230,0.9));
+    position: relative; width: 108px; height: auto;
+    padding: 26px; border-radius: 50%;
+    background: rgba(239,237,230,0.94);
+    box-shadow: 0 0 0 1px rgba(23,21,18,0.08), 0 8px 40px rgba(23,21,18,0.18);
   }
   .splash.gone { opacity: 0; pointer-events: none; }
 
@@ -233,12 +231,7 @@
 </style>
 </head>
 <body>
-<div class="splash" id="splash">
-  <div class="fallback"></div>
-  <video src="splash.mp4" poster="splash-poster.webp"
-         autoplay muted playsinline preload="auto"></video>
-  <img src="pogo-mark.svg" alt="POGO Studios">
-</div>
+<div class="splash" id="splash"><img src="pogo-mark.svg" alt="POGO Studios"></div>
 
 <nav>
   <a class="mark" href="index.html"><img src="pogo-mark.svg" alt="POGO Studios"></a>
@@ -370,8 +363,10 @@
     var html = "";
     pool.slice(0, 12).forEach(function (w) {
       if (!w.media_url) return;
+      var src = w.thumb_url || w.media_url;
       html += '<a class="cell" href="archive.html?id=' + encodeURIComponent(w.id) + '">' +
-              '<span class="thumb"><img src="' + w.media_url + '" alt="' + w.id + '" loading="lazy"></span>' +
+              '<span class="thumb"><img src="' + src + '" alt="' + w.id +
+              '" loading="lazy" decoding="async" width="480" height="480"></span>' +
               '<span class="cid">' + w.id.replace("POGO-", "") + '</span></a>';
     });
     grid.innerHTML = html || '<div class="gridnote">No media available yet.</div>';
@@ -436,7 +431,7 @@
       setTimeout(function () {
         sp.classList.add("gone");
         setTimeout(function () { if (sp.parentNode) sp.parentNode.removeChild(sp); }, 500);
-      }, 2400);
+      }, 900);
     }
   }
   // Mark the active tab from the filename

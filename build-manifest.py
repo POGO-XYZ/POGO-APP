@@ -33,6 +33,11 @@ import sys
 from datetime import date
 from pathlib import Path
 
+try:
+    from PIL import Image
+except ImportError:
+    Image = None
+
 RAW = "https://raw.githubusercontent.com/POGO-XYZ/{repo}/main/{path}"
 YEAR_DIR = re.compile(r"^\d{4}$")
 IMAGE_EXT = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
@@ -56,6 +61,29 @@ def file_entry(record, role):
     return {}
 
 
+THUMB_DIR = Path("thumbs")
+THUMB_PX = 480
+THUMB_QUALITY = 72
+
+
+def build_thumb(source_path, work_id):
+    """Small WebP copy for grid views. Full images stay untouched."""
+    if Image is None:
+        return None
+    THUMB_DIR.mkdir(exist_ok=True)
+    out = THUMB_DIR / (work_id + ".webp")
+    if out.exists() and out.stat().st_mtime >= source_path.stat().st_mtime:
+        return out.as_posix()
+    try:
+        with Image.open(source_path) as im:
+            im = im.convert("RGB")
+            im.thumbnail((THUMB_PX, THUMB_PX), Image.LANCZOS)
+            im.save(out, "WEBP", quality=THUMB_QUALITY, method=6)
+        return out.as_posix()
+    except Exception:
+        return None
+
+
 def collect_media(media_root):
     """Map uppercase POGO ID -> raw media URL."""
     index = {}
@@ -67,9 +95,10 @@ def collect_media(media_root):
         for path in sorted(year_dir.iterdir()):
             if path.is_file() and path.suffix.lower() in IMAGE_EXT:
                 key = path.stem.upper()
-                index[key] = raw_url(
-                    "POGO-ARCHIVE-MEDIA", f"{year_dir.name}/{path.name}"
-                )
+                index[key] = {
+                    "url": raw_url("POGO-ARCHIVE-MEDIA", f"{year_dir.name}/{path.name}"),
+                    "path": path,
+                }
     return index
 
 
@@ -97,7 +126,9 @@ def collect_works(archive_root, media_index):
             work_id = path.stem.upper()
             source = file_entry(record, "reference_image_source")
             web = file_entry(record, "reference_image_web")
-            media_url = media_index.get(work_id)
+            media = media_index.get(work_id)
+            media_url = media["url"] if media else None
+            thumb_url = build_thumb(media["path"], work_id) if media else None
 
             if not media_url:
                 problems.append(f"{work_id}: no media file found")
@@ -122,6 +153,7 @@ def collect_works(archive_root, media_index):
                         "POGO-ARCHIVE", f"{year}/records-{year}/{path.name}"
                     ),
                     "media_url": media_url,
+                    "thumb_url": thumb_url,
                 }
             )
 
@@ -160,6 +192,12 @@ def main():
     )
 
     print(f"Wrote {out_path} — {len(works)} works across {len(manifest['years'])} years")
+    if Image is None:
+        print("\nPillow not installed — thumbnails were skipped and grids will")
+        print("load full-size images. Install it with:  pip3 install pillow")
+    else:
+        made = sum(1 for w in works if w.get("thumb_url"))
+        print(f"Thumbnails: {made} in ./thumbs/")
     orphans = set(media_index) - {w["id"] for w in works}
     if orphans:
         problems.extend(f"{i}: media file with no matching record" for i in sorted(orphans))

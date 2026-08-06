@@ -117,7 +117,10 @@
   .views button:last-child { border-right: 1px solid var(--ink); }
   .views button.on { background: var(--ink); color: var(--paper); }
   .canvasWrap { flex: 1; display: flex; align-items: center; justify-content: center;
-    padding: 20px; overflow: hidden; min-height: 0; }
+    padding: 0; overflow: hidden; min-height: 0; background: var(--paper); }
+  /* the photograph fills its panel on the same white as the artwork ground */
+  .canvasWrap.photo { background: #FFFFFF; padding: 0; }
+  .canvasWrap.photo img { width: 100%; height: 100%; object-fit: contain; }
   .canvasWrap img, .canvasWrap canvas { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
   .stepbar {
     display: none; border-top: 1px solid var(--faint);
@@ -219,8 +222,7 @@
 
     .index { flex-direction: column; }
     .idxlist { flex: 1; }
-    .canvasWrap { padding: 14px 14px 4px; }
-    .stage { overflow-y: auto; }
+    .canvasWrap { padding: 0; }
     .stepbar { padding-bottom: 4px; }
     .step { padding: 14px 16px; font-size: 11px; }
     .stagehead { padding: 12px 14px; }
@@ -258,18 +260,16 @@
   }
   /* Artwork sits in its own layer so it can move independently of the mark.
      The drawing radiates outward, so the motion pushes gently outward too. */
-  .splash video, .splash .fallback {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; display: block;
-  }
-  /* shown if the video can't play — never a blank screen */
-  .splash .fallback {
+  .splash::before {
+    content: ""; position: absolute; inset: 0;
     background-image: url('splash-poster.webp');
     background-size: cover; background-position: center;
   }
   .splash img {
-    position: relative; width: 96px; height: auto;
-    filter: drop-shadow(0 0 26px rgba(239,237,230,0.9));
+    position: relative; width: 108px; height: auto;
+    padding: 26px; border-radius: 50%;
+    background: rgba(239,237,230,0.94);
+    box-shadow: 0 0 0 1px rgba(23,21,18,0.08), 0 8px 40px rgba(23,21,18,0.18);
   }
   .splash.gone { opacity: 0; pointer-events: none; }
 
@@ -305,12 +305,7 @@
 </style>
 </head>
 <body>
-<div class="splash" id="splash">
-  <div class="fallback"></div>
-  <video src="splash.mp4" poster="splash-poster.webp"
-         autoplay muted playsinline preload="auto"></video>
-  <img src="pogo-mark.svg" alt="POGO Studios">
-</div>
+<div class="splash" id="splash"><img src="pogo-mark.svg" alt="POGO Studios"></div>
 
 <nav>
   <a class="mark" href="index.html"><img src="pogo-mark.svg" alt="POGO Studios"></a>
@@ -575,11 +570,13 @@
       var w = works[id], st = statusOf(id);
       html += '<button class="bcell" data-id="' + id + '">' +
               '<span class="bthumb">' +
-              (w.media_url ? '<img src="' + w.media_url + '" alt="' + id + '" loading="lazy">' : "") +
+              (w.media_url ? '<img src="' + (w.thumb_url || w.media_url) + '" alt="' + id +
+                '" loading="lazy" decoding="async" width="480" height="480">' : "") +
               '</span><span class="bid"><span>' + esc(shortLabel(id)) + '</span>' +
               '<span class="dot ' + st + '"></span></span></button>';
     });
     wrap.innerHTML = html + "</div></div>";
+    wrap.classList.remove("photo");
     wrap.style.alignItems = "stretch";
     wrap.style.padding = "0";
   }
@@ -657,7 +654,7 @@
     $("wsub").textContent = [w.medium, w.dimensions].filter(Boolean).join(" \u00B7 ") || "Loading\u2026";
     $("views").style.display = "flex";
     $("canvasWrap").style.alignItems = "center";
-    $("canvasWrap").style.padding = "20px";
+    $("canvasWrap").style.padding = "0";
     $("canvasWrap").innerHTML = '<div class="empty">LOADING\u2026</div>';
 
     var ready = w.medium
@@ -704,6 +701,7 @@
     var wrap = $("canvasWrap");
     wrap.innerHTML = "";
 
+    wrap.classList.toggle("photo", view === "photo");
     if (view === "photo") {
       var i = new Image();
       i.src = imgEl.src;
@@ -717,8 +715,8 @@
     // larger cells on phones: fewer characters, far lighter to draw
     CELL_W = isMobile() ? 5 : 6;
     CELL_H = isMobile() ? 8 : 10;
-    var availW = wrap.clientWidth - 40;
-    var availH = wrap.clientHeight - 40;
+    var availW = wrap.clientWidth - 24;
+    var availH = wrap.clientHeight - 24;
     var ia = imgEl.height / imgEl.width;
 
     var cols = Math.floor(availW / CELL_W);
@@ -738,6 +736,24 @@
     sctx.drawImage(imgEl, cw, chh, imgEl.width - cw * 2, imgEl.height - chh * 2, 0, 0, pxW, pxH);
     var d = sctx.getImageData(0, 0, pxW, pxH).data;
 
+    // auto-levels: find the tones actually present, ignoring extremes,
+    // then remap them across the full range so the drawing reads.
+    var hist = new Uint32Array(256), tot = pxW * pxH;
+    for (var hp = 0; hp < tot; hp++) {
+      var hk = hp * 4;
+      hist[(0.2126*d[hk] + 0.7152*d[hk+1] + 0.0722*d[hk+2]) | 0]++;
+    }
+    var lo = 0, hi = 255, cut = tot * 0.005, acc = 0;
+    for (var li = 0; li < 256; li++) { acc += hist[li]; if (acc > cut) { lo = li; break; } }
+    acc = 0;
+    for (var hi2 = 255; hi2 >= 0; hi2--) { acc += hist[hi2]; if (acc > cut) { hi = hi2; break; } }
+    if (hi - lo < 24) { lo = 0; hi = 255; }
+    var span = hi - lo;
+    var lev = function (v) {
+      var t = (v - lo) / span * 255;
+      return t < 0 ? 0 : t > 255 ? 255 : t;
+    };
+
     var out = document.createElement("canvas");
     out.width = cols * CELL_W; out.height = rows * CELL_H;
     var ctx = out.getContext("2d");
@@ -751,7 +767,7 @@
       var lum = new Float32Array(total);
       for (var p = 0; p < total; p++) {
         var k = p * 4;
-        lum[p] = 0.2126*d[k] + 0.7152*d[k+1] + 0.0722*d[k+2];
+        lum[p] = lev(0.2126*d[k] + 0.7152*d[k+1] + 0.0722*d[k+2]);
       }
       for (var y = 0; y < pxH; y++) {
         for (var x = 0; x < pxW; x++) {
@@ -788,7 +804,7 @@
         for (var ax = 0; ax < cols; ax++) {
           var kk = (ay*pxW+ax)*4;
           var R = d[kk], G = d[kk+1], B = d[kk+2];
-          var L = (0.2126*R + 0.7152*G + 0.0722*B) / 255;
+          var L = lev(0.2126*R + 0.7152*G + 0.0722*B) / 255;
           var ch = RAMP[Math.min(RAMP.length-1, Math.floor(L * RAMP.length))];
           if (ch === " ") continue;
           ctx.fillStyle = "rgb(" + R + "," + G + "," + B + ")";
@@ -1086,7 +1102,7 @@
       setTimeout(function () {
         sp.classList.add("gone");
         setTimeout(function () { if (sp.parentNode) sp.parentNode.removeChild(sp); }, 500);
-      }, 2400);
+      }, 900);
     }
   }
   // Mark the active tab from the filename
