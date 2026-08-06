@@ -52,14 +52,14 @@
     background: #EFEDE6; border: 2px solid #171512; min-width: 172px; margin-top: 6px;
   }
   .navdrop.open .navmenu { display: block; }
-  .navmenu a, .navmenu .navcopy {
+  .navmenu a {
     display: block; width: 100%; text-align: left; padding: 10px 13px;
     font-family: inherit; font-size: 10px; letter-spacing: 0.12em;
     border: none; border-bottom: 1px solid rgba(128,128,128,0.35);
     background: none; color: inherit; opacity: 0.75; cursor: pointer;
   }
-  .navmenu a:last-child, .navmenu .navcopy:last-child { border-bottom: none; }
-  .navmenu a:hover, .navmenu .navcopy:hover { opacity: 1; background: rgba(128,128,128,0.16); }
+  .navmenu a:last-child { border-bottom: none; }
+  .navmenu a:hover { opacity: 1; background: rgba(128,128,128,0.16); }
 
   .navlinks a.here { opacity: 1; border-bottom-color: #171512; }
   header {
@@ -121,7 +121,7 @@
       flex-wrap: wrap; overflow: visible; gap: 10px 14px; max-width: 100%;
     }
     .navlinks a { white-space: nowrap; font-size: 9.5px; }
-    .navmenu a, .navmenu .navcopy { padding: 13px 14px; font-size: 11px; }
+    .navmenu a { padding: 13px 14px; font-size: 11px; }
     .navtrigger { font-size: 9.5px; }
     header { padding: 14px 18px; }
     .controls, div[style*="border-right"] { max-width: 100% !important; width: 100% !important; border-right: none !important; }
@@ -144,14 +144,11 @@
      The drawing radiates outward, so the motion pushes gently outward too. */
   .splash::before {
     content: ""; position: absolute; inset: 0;
-    background-image: url('splash-poster.webp');
+    background-image: url('splash.png');
     background-size: cover; background-position: center;
-  }
-  .splash img {
-    position: relative; width: 108px; height: auto;
-    padding: 26px; border-radius: 50%;
-    background: rgba(239,237,230,0.94);
-    box-shadow: 0 0 0 1px rgba(23,21,18,0.08), 0 8px 40px rgba(23,21,18,0.18);
+    /* pixel art: keep the squares crisp rather than smoothed */
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
   }
   .splash.gone { opacity: 0; pointer-events: none; }
 
@@ -187,7 +184,7 @@
 </style>
 </head>
 <body>
-<div class="splash" id="splash"><img src="pogo-mark.svg" alt="POGO Studios"></div>
+<div class="splash" id="splash"></div>
 
 <nav>
   <a class="mark" href="index.html"><img src="pogo-mark.svg" alt="POGO Studios"></a>
@@ -205,7 +202,7 @@
       <div class="navmenu">
         <a href="https://www.pogostudios.xyz" target="_blank" rel="noopener">STUDIO SITE</a>
         <a href="https://www.pogostudios.xyz/process" target="_blank" rel="noopener">PROCESS</a>
-        <button class="navcopy" type="button" data-copy="hello@pogostudios.xyz">CONTACT</button>
+        <a href="https://x.com/pogo_xyz" target="_blank" rel="noopener">POGO ON X</a>
       </div>
     </div>
     <a href="https://github.com/POGO-XYZ" target="_blank" rel="noopener">GITHUB</a>
@@ -830,20 +827,6 @@
     }
   });
 
-  // Contact: copy the studio address rather than opening a mail client
-  Array.prototype.forEach.call(document.querySelectorAll(".navcopy"), function (b) {
-    b.addEventListener("click", function (e) {
-      e.stopPropagation();
-      var text = b.getAttribute("data-copy");
-      var done = function (ok) {
-        b.textContent = ok ? "COPIED \u2713" : text;
-        setTimeout(function () { b.textContent = "CONTACT"; }, 1800);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
-      } else { done(false); }
-    });
-  });
 })();
 </script>
 <nav class="appbar">
