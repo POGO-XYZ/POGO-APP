@@ -1,0 +1,47 @@
+{
+  "name": "POGO Studios Archive",
+  "short_name": "POGO",
+  "description": "View, verify, and explore any POGO artwork in the official archive.",
+  "id": "/POGO-APP/",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#EFEDE6",
+  "theme_color": "#EFEDE6",
+  "categories": ["art", "reference", "productivity"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Browse the Archive",
+      "short_name": "Archive",
+      "url": "./archive.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Text Renderer",
+      "short_name": "Render",
+      "url": "./text-renderer.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

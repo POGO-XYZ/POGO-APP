@@ -6,6 +6,12 @@
 <title>POGO Studios — Archive</title>
 <link rel="icon" href="pogo-mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="fonts.css">
+<link rel="manifest" href="app.webmanifest">
+<meta name="theme-color" content="#EFEDE6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="POGO">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -1115,6 +1121,15 @@
     if (a.getAttribute("data-page") === here) a.classList.add("here");
   });
 })();
+</script>
+
+<script>
+// Register the service worker so the app can be installed and used offline.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  });
+}
 </script>
 </body>
 </html>

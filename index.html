@@ -7,6 +7,12 @@
 <meta name="description" content="A public, permanent record of physical artworks by POGO Studios, with tools for exploring and verifying them.">
 <link rel="icon" href="pogo-mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="fonts.css">
+<link rel="manifest" href="app.webmanifest">
+<meta name="theme-color" content="#EFEDE6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="POGO">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -90,13 +96,29 @@
   .cta a.primary { background: #171512; color: #EFEDE6; }
   .cta a:hover { background: #171512; color: #EFEDE6; }
   .cta a.primary:hover { background: transparent; color: #171512; }
+  .install { margin-top: 26px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .install button {
+    font-family: inherit; font-size: 10px; letter-spacing: 0.12em; font-weight: 700;
+    padding: 11px 18px; border: 2px solid #171512; background: transparent;
+    color: #171512; cursor: pointer;
+  }
+  .install button:hover { background: #171512; color: #EFEDE6; }
+  .installnote { font-size: 10px; letter-spacing: 0.1em; opacity: 0.5; }
   .stat {
     margin-top: 26px; font-size: 10px; letter-spacing: 0.14em; opacity: 0.45;
     display: flex; gap: 0 10px; flex-wrap: wrap;
   }
   .stat #statDate::before { content: "\00B7"; margin-right: 10px; }
   @media (max-width: 640px) {
-    .stat { flex-direction: column; gap: 4px; }
+    .install { margin-top: 26px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .install button {
+    font-family: inherit; font-size: 10px; letter-spacing: 0.12em; font-weight: 700;
+    padding: 11px 18px; border: 2px solid #171512; background: transparent;
+    color: #171512; cursor: pointer;
+  }
+  .install button:hover { background: #171512; color: #EFEDE6; }
+  .installnote { font-size: 10px; letter-spacing: 0.1em; opacity: 0.5; }
+  .stat { flex-direction: column; gap: 4px; }
     .stat #statDate::before { content: none; }
   }
 
@@ -267,6 +289,10 @@
       <a class="primary" href="archive.html">BROWSE THE ARCHIVE</a>
       <a href="https://www.pogostudios.xyz/writings/all-creation-testifies" target="_blank" rel="noopener">WHY IT EXISTS</a>
     </div>
+    <div class="install" id="install" hidden>
+      <button id="installBtn">INSTALL THIS APP</button>
+      <span class="installnote">Add POGO to your home screen — works offline.</span>
+    </div>
     <div class="stat" id="stat"><span id="statMain">&nbsp;</span><span id="statDate"></span></div>
   </section>
 
@@ -324,7 +350,8 @@
 </main>
 
 <footer>
-  <span>PART OF THE <a href="https://github.com/POGO-XYZ/POGO-ARCHIVE" target="_blank" rel="noopener">POGO STUDIOS ARCHIVE</a> · CC BY 4.0</span>
+  <span>PART OF THE <a href="https://github.com/POGO-XYZ/POGO-ARCHIVE" target="_blank" rel="noopener">POGO STUDIOS ARCHIVE</a> ·
+  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span>
   <span>POGO STUDIOS LLC · EST 2023</span>
 </footer>
 
@@ -332,6 +359,34 @@
 (function () {
   "use strict";
   var RAW = "https://raw.githubusercontent.com/POGO-XYZ/POGO-ARCHIVE/main/";
+
+  // Offer installation only when the browser says it's available
+  var deferred = null;
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault();
+    deferred = e;
+    var box = document.getElementById("install");
+    if (box) box.hidden = false;
+  });
+  var ib = document.getElementById("installBtn");
+  if (ib) ib.addEventListener("click", function () {
+    if (!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function () {
+      deferred = null;
+      document.getElementById("install").hidden = true;
+    });
+  });
+  // iOS has no prompt API — tell people how instead
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  var standalone = window.navigator.standalone || window.matchMedia("(display-mode: standalone)").matches;
+  if (isIOS && !standalone) {
+    var box = document.getElementById("install");
+    if (box) {
+      box.hidden = false;
+      box.innerHTML = '<span class="installnote">To install: tap Share, then Add to Home Screen.</span>';
+    }
+  }
 
   Promise.all([
     fetch("manifest.json", { cache: "no-cache" })
@@ -425,6 +480,15 @@
     if (a.getAttribute("data-page") === here) a.classList.add("here");
   });
 })();
+</script>
+
+<script>
+// Register the service worker so the app can be installed and used offline.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  });
+}
 </script>
 </body>
 </html>
