@@ -3,9 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POGO Studios — Archive</title>
+<title>POGO Studios Archive</title>
 <link rel="icon" href="pogo-mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="fonts.css">
+<meta property="og:site_name" content="POGO Studios">
+<meta property="og:title" content="POGO Studios Archive">
+<meta property="og:description" content="Every documented work, with its full record, media, provenance, and in-browser verification.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://app.pogostudios.xyz/archive.html">
+<meta property="og:image" content="https://app.pogostudios.xyz/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="POGO Studios Archive">
+<meta name="twitter:description" content="Every documented work, with its full record, media, provenance, and in-browser verification.">
+<meta name="twitter:image" content="https://app.pogostudios.xyz/share-card.png">
+<meta name="description" content="Every documented work, with its full record, media, provenance, and in-browser verification.">
 <link rel="manifest" href="app.webmanifest">
 <meta name="theme-color" content="#EFEDE6">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -174,8 +187,15 @@
   }
   .bcell:hover { outline: 2px solid var(--ink); outline-offset: -1px; }
   .browsehead {
-    font-size: 9px; letter-spacing: 0.18em; opacity: 0.45;
-    padding: 12px 4px 8px;
+    font-size: 9px; letter-spacing: 0.18em; opacity: 0.6;
+    padding: 14px 6px 10px; display: flex; justify-content: space-between;
+    align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .sortwrap { display: flex; align-items: center; gap: 7px; }
+  .browsehead select {
+    font-family: inherit; font-size: 9px; letter-spacing: 0.12em;
+    padding: 4px 6px; border: 1px solid var(--ink);
+    background: var(--paper); color: var(--ink); cursor: pointer;
   }
   .empty { opacity: 0.35; font-size: 12px; letter-spacing: 0.12em; text-align: center; }
 
@@ -421,6 +441,32 @@
 
   var works = {}, listings = {}, order = [];
   var selected = null, record = null, imgEl = null, hasSelected = false;
+  var sortMode = "new";
+  var baseOrder = [];
+
+  function applySort() {
+    if (sortMode === "new") {
+      order = baseOrder.slice().sort(function (a, b) { return a > b ? -1 : a < b ? 1 : 0; });
+    } else if (sortMode === "old") {
+      order = baseOrder.slice().sort(function (a, b) { return a < b ? -1 : a > b ? 1 : 0; });
+    } else {
+      order = baseOrder.slice();
+      for (var i = order.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = order[i]; order[i] = order[j]; order[j] = t;
+      }
+    }
+  }
+
+  // The list a visitor is actually looking at — filter and search applied.
+  // Stepping between works should follow this, not the full catalogue.
+  function visibleOrder() {
+    return order.filter(function (id) {
+      if (filter !== "all" && statusOf(id) !== filter) return false;
+      if (query && id.toLowerCase().indexOf(query) === -1) return false;
+      return true;
+    });
+  }
   var view = "photo", filter = "all", query = "";
 
   var $ = function (id) { return document.getElementById(id); };
@@ -458,7 +504,8 @@
       works[w.id] = w;
       order.push(w.id);
     });
-    order.sort(function (a, b) { return a > b ? -1 : a < b ? 1 : 0; });
+    baseOrder = order.slice();
+    applySort();
   }
 
   // Fallback: query the GitHub API directly. Slower and rate-limited,
@@ -472,7 +519,8 @@
         }).map(function (i) { return i.name; }).sort().reverse();
         return Promise.all(years.map(loadYear));
       }).then(function () {
-        order.sort(function (a, b) { return a > b ? -1 : a < b ? 1 : 0; });
+        baseOrder = order.slice();
+        applySort();
       });
   }
 
@@ -539,9 +587,11 @@
   }
 
   function neighbours(id) {
-    var i = order.indexOf(id);
-    return { prev: i > 0 ? order[i - 1] : null,
-             next: (i > -1 && i < order.length - 1) ? order[i + 1] : null };
+    var list = visibleOrder();
+    var i = list.indexOf(id);
+    if (i === -1) list = order, i = order.indexOf(id);
+    return { prev: i > 0 ? list[i - 1] : null,
+             next: (i > -1 && i < list.length - 1) ? list[i + 1] : null };
   }
 
   function updateStepbar() {
@@ -570,15 +620,23 @@
     var wrap = $("canvasWrap");
     var v = $("views");
     if (v) v.style.display = "none";
+    $("wsub").textContent = "Select a work from the index";
     // browsing always shows photographs; reset the toggle for next time
     view = "photo";
     Array.prototype.forEach.call(document.querySelectorAll(".views button"), function (x) {
       x.classList.toggle("on", x.getAttribute("data-v") === "photo");
     });
     if (!order.length) { wrap.innerHTML = '<div class="empty">NO WORKS FOUND</div>'; return; }
+    var list = visibleOrder();
     var html = '<div class="browse"><div class="browsehead">' +
-               order.length + ' WORKS \u00B7 NEWEST FIRST</div><div class="bgrid">';
-    order.forEach(function (id) {
+      '<span>' + list.length + ' WORKS</span>' +
+      '<span class="sortwrap">SORT ' +
+      '<select id="sortSel">' +
+        '<option value="new"' + (sortMode === "new" ? " selected" : "") + '>NEWEST</option>' +
+        '<option value="old"' + (sortMode === "old" ? " selected" : "") + '>OLDEST</option>' +
+        '<option value="rand"' + (sortMode === "rand" ? " selected" : "") + '>RANDOM</option>' +
+      '</select></span></div><div class="bgrid">';
+    list.forEach(function (id) {
       var w = works[id], st = statusOf(id);
       html += '<button class="bcell" data-id="' + id + '">' +
               '<span class="bthumb">' +
@@ -588,6 +646,13 @@
               '<span class="dot ' + st + '"></span></span></button>';
     });
     wrap.innerHTML = html + "</div></div>";
+    var sel = $("sortSel");
+    if (sel) sel.addEventListener("change", function () {
+      sortMode = this.value;
+      applySort();
+      renderIndex();
+      renderBrowse();
+    });
     wrap.classList.remove("photo");
     wrap.style.alignItems = "stretch";
     wrap.style.padding = "0";
@@ -624,7 +689,9 @@
     if (el) select(el.getAttribute("data-id"));
   });
   $("search").addEventListener("input", function () {
-    query = this.value.trim().toLowerCase(); renderIndex();
+    query = this.value.trim().toLowerCase();
+    renderIndex();
+    if (selected) updateStepbar(); else renderBrowse();
   });
   Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function (b) {
     b.addEventListener("click", function () {

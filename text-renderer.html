@@ -3,9 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POGO Studios — Text Renderer</title>
+<title>POGO Studios Archive — Text Renderer</title>
 <link rel="icon" href="pogo-mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="fonts.css">
+<meta property="og:site_name" content="POGO Studios">
+<meta property="og:title" content="POGO Studios Archive — Text Renderer">
+<meta property="og:description" content="Render any archived POGO work as ASCII or Unicode Braille.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://app.pogostudios.xyz/text-renderer.html">
+<meta property="og:image" content="https://app.pogostudios.xyz/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="POGO Studios Archive — Text Renderer">
+<meta name="twitter:description" content="Render any archived POGO work as ASCII or Unicode Braille.">
+<meta name="twitter:image" content="https://app.pogostudios.xyz/share-card.png">
+<meta name="description" content="Render any archived POGO work as ASCII or Unicode Braille.">
 <link rel="manifest" href="app.webmanifest">
 <meta name="theme-color" content="#EFEDE6">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -80,6 +93,13 @@
   .eyebrow { font-size: 11px; letter-spacing: 0.18em; opacity: 0.55; }
   h1 { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-top: 5px; letter-spacing: -0.01em; }
   .tagline { font-size: 11px; opacity: 0.55; letter-spacing: 0.08em; }
+  .mbr { display: none; }
+  .taghint::before { content: " \00B7 "; }
+  @media (max-width: 900px) {
+    .mbr { display: block; }
+    .taghint::before { content: none; }
+    .tagline { line-height: 1.7; }
+  }
   .layout { display: flex; flex-wrap: wrap; }
   .controls {
     width: 280px; min-width: 240px; flex-grow: 1; max-width: 340px;
@@ -220,7 +240,7 @@
     <div class="eyebrow">TOOL 001</div>
     <h1>TEXT RENDERER</h1>
   </div>
-  <div class="tagline">ARCHIVED WORKS → CHARACTERS · RUNS ENTIRELY IN-BROWSER</div>
+  <div class="tagline">ARCHIVED WORKS → CHARACTERS<br class="mbr"><span class="taghint">RUNS IN YOUR BROWSER · WORKS OFFLINE</span></div>
 </header>
 
 <div class="layout">

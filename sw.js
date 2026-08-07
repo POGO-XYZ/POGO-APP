@@ -13,7 +13,7 @@
  *     that can grow without pushing out the shell.
  */
 
-const VERSION = "v1";
+const VERSION = "v2";
 const SHELL = "pogo-shell-" + VERSION;
 const DATA = "pogo-data-" + VERSION;
 const MEDIA = "pogo-media-" + VERSION;

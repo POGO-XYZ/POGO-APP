@@ -3,9 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POGO Studios — Live Sequence</title>
+<title>POGO Studios Archive — Live Sequence</title>
 <link rel="icon" href="pogo-mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="fonts.css">
+<meta property="og:site_name" content="POGO Studios">
+<meta property="og:title" content="POGO Studios Archive — Live Sequence">
+<meta property="og:description" content="A continuous sequence through the POGO Studios archive, rendered as text.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://app.pogostudios.xyz/art-to-text-live-sequence.html">
+<meta property="og:image" content="https://app.pogostudios.xyz/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="POGO Studios Archive — Live Sequence">
+<meta name="twitter:description" content="A continuous sequence through the POGO Studios archive, rendered as text.">
+<meta name="twitter:image" content="https://app.pogostudios.xyz/share-card.png">
+<meta name="description" content="A continuous sequence through the POGO Studios archive, rendered as text.">
 <link rel="manifest" href="app.webmanifest">
 <meta name="theme-color" content="#171512">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -365,6 +378,8 @@
     return Math.max(80, Math.min(420, c));
   }
 
+  var DPR = Math.min(window.devicePixelRatio || 1, 3);
+
   function sizeGrid() {
     cols = computeCols();
     var frameW = cols * CELL_W;
@@ -378,8 +393,12 @@
       if (detailSetting !== "max" && detailSetting !== "auto") cols = +detailSetting;
     }
     subW = cols * 2; subH = rows * 4;
-    canvas.width = cols * CELL_W;
-    canvas.height = rows * CELL_H;
+    var cssW = cols * CELL_W, cssH = rows * CELL_H;
+    canvas.width = Math.round(cssW * DPR);
+    canvas.height = Math.round(cssH * DPR);
+    canvas.style.width = cssW + "px";
+    canvas.style.height = cssH + "px";
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     ctx.font = CELL_H + 'px ui-monospace, "Cascadia Code", Menlo, monospace';
     ctx.textBaseline = "top";
     mixTones = new Float32Array(subW * subH);
@@ -393,7 +412,9 @@
       .then(function (m) {
         if (m && m.works && m.works.length) {
           m.works.forEach(function (w) {
-            if (w.media_url) playlist.push({ name: w.id, url: w.media_url });
+            // thumbnails are ample for character rendering and load far faster
+            var src = w.thumb_url || w.media_url;
+            if (src) playlist.push({ name: w.id, url: src });
           });
           return;
         }
@@ -512,10 +533,10 @@
     w = Math.max(2, Math.round(w)); h = Math.max(2, Math.round(h));
     // crop a margin off the source, then overdraw by a pixel on each side so
     // no half-sampled background row survives at the frame edge
-    var _cx = Math.round(img.width * 0.035), _cy = Math.round(img.height * 0.035);
+    var _cx = Math.round(img.width * 0.05), _cy = Math.round(img.height * 0.05);
     var _ox = Math.floor((subW - w) / 2) - 2, _oy = Math.floor((subH - h) / 2) - 2;
     wctx.drawImage(img, _cx, _cy, img.width - _cx * 2, img.height - _cy * 2,
-                   _ox, _oy, w + 3, h + 3);
+                   _ox, _oy, w + 4, h + 4);
 
     var d = wctx.getImageData(0, 0, subW, subH).data;
     var tones = new Float32Array(subW*subH);
@@ -542,7 +563,7 @@
 
   function paint(p) {
     ctx.fillStyle = BG;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, cols * CELL_W, rows * CELL_H);
     if (!frameB) return;
     var A = frameA, B = frameB;
     var blending = A && p < 1;
@@ -735,14 +756,21 @@
   });
   document.getElementById("exitClean").addEventListener("click", function () { toggleClean(false); });
 
-  document.getElementById("fsBtn").addEventListener("click", function () {
-    if (!document.fullscreenElement) {
-      (document.documentElement.requestFullscreen || function(){})
-        .call(document.documentElement);
-    } else if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-  });
+  var fsBtn = document.getElementById("fsBtn");
+  var canFullscreen = !!(document.documentElement.requestFullscreen);
+  if (!canFullscreen) {
+    // iOS Safari can't fullscreen arbitrary elements; clean view is the
+    // equivalent experience, so relabel rather than offering a dead button.
+    fsBtn.textContent = "HIDE CONTROLS";
+    fsBtn.addEventListener("click", function () {
+      toggleClean(!document.body.classList.contains("clean"));
+    });
+  } else {
+    fsBtn.addEventListener("click", function () {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else if (document.exitFullscreen) document.exitFullscreen();
+    });
+  }
   document.addEventListener("fullscreenchange", function () {
     var on = !!document.fullscreenElement;
     document.getElementById("fsBtn").classList.toggle("on", on);

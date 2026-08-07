@@ -2,7 +2,7 @@
 
 The application layer of the [POGO Studios Archive](https://github.com/POGO-XYZ/POGO-ARCHIVE): a public interface for viewing, verifying, and exploring every physical artwork the studio has documented.
 
-**Live at [pogo-xyz.github.io/POGO-APP](https://pogo-xyz.github.io/POGO-APP/)**
+**Live at [app.pogostudios.xyz](https://app.pogostudios.xyz)**
 
 Everything here runs entirely in the browser. There is no server, no account, no tracking, and nothing is uploaded. The app only reads public files — it cannot alter the archive.
 
